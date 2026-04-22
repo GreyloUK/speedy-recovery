@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { business } from "../data";
+import { breadcrumbSchema } from "../utils/schema";
+import { composeTitle } from "../utils/seo";
+
+const title = composeTitle("Terms of Service");
+const description = `Terms of service for ${business.name} — terms on which we provide vehicle recovery and storage.`;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/terms/"
+  schema={breadcrumbSchema([
+    { label: "Home", path: "/" },
+    { label: "Terms", path: "/terms/" },
+  ])}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms" }]} />
+  </div>
+
+  <article class="legal container-page">
+    <h1>Terms of Service</h1>
+    <p class="legal__meta">Last updated: [TK effective date]</p>
+
+    <p>
+      These terms apply to recovery, transport and storage services provided by
+      {business.legalName} (trading as {business.shortName}).
+    </p>
+
+    <h2>Quotes and pricing</h2>
+    <p>
+      Recovery quotes are given on the phone based on pickup postcode, destination,
+      vehicle type, and any special handling requirements. Quotes are fixed for the
+      described job. Additional work (e.g. winching, wait time beyond 30 minutes,
+      detour to a different destination) is chargeable at the rate disclosed on the call.
+    </p>
+
+    <h2>Payment</h2>
+    <p>
+      For private customers, payment is due on completion unless otherwise agreed.
+      For insurer / fleet panel work we invoice direct to the contracting party.
+    </p>
+
+    <h2>Liability</h2>
+    <p>
+      We carry goods-in-transit and public liability insurance. Our liability for loss
+      or damage arising from our negligence is limited to the insured value. We are
+      not liable for pre-existing damage disclosed before uplift, nor for losses
+      caused by acts of third parties or events outside our reasonable control.
+    </p>
+
+    <h2>Storage</h2>
+    <p>
+      Vehicles stored at our yard are held on a day-rate basis. A secure-storage
+      receipt is issued on uplift. Release to a third party requires 24 hours' notice
+      and a signed release authority.
+    </p>
+
+    <h2>Governing law</h2>
+    <p>
+      These terms are governed by the laws of England and Wales. Disputes are subject
+      to the exclusive jurisdiction of the English courts.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      {business.legalName}, {business.primaryAddress.street},
+      {business.primaryAddress.locality}, {business.primaryAddress.region}
+      {business.primaryAddress.postcode}.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    padding-block: 2rem 3rem;
+    max-width: 68ch;
+  }
+  .legal h1 { margin-bottom: 0.5rem; }
+  .legal__meta {
+    color: var(--color-neutral-600);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .legal h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .legal p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+  }
+  .legal p + p { margin-top: 0.75rem; }
+</style>

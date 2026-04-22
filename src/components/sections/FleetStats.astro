@@ -1,0 +1,97 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+  detail: string;
+}
+
+const stats: Stat[] = [
+  { value: "6", label: "Recovery vehicles", detail: "Each carries two cars — more capacity per dispatch than most operators." },
+  { value: "12-ton", label: "Heavy recovery truck", detail: "For vans, 4x4s, transporters and anything a typical flatbed can't take." },
+  { value: "HIAB", label: "Crane-equipped lift", detail: "For classics, low-clearance cars and vehicles that can't be winched." },
+  { value: "24/7", label: "Genuine coverage", detail: "Christmas, bank holidays, 4am — no out-of-hours surcharge, no callback." },
+];
+---
+
+<section class="fleet">
+  <div class="container-page fleet__inner">
+    <header class="fleet__head">
+      <span class="section-label">Fleet &amp; capacity</span>
+      <h2>A fleet that handles what the cheaper operator declines.</h2>
+    </header>
+
+    <ul class="fleet__list">
+      {stats.map((s) => (
+        <li>
+          <span class="fleet__value">{s.value}</span>
+          <span class="fleet__label">{s.label}</span>
+          <p>{s.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .fleet {
+    background: var(--color-neutral-50);
+  }
+  .fleet__inner {
+    padding-block: 3.5rem;
+  }
+
+  .fleet__head { max-width: 640px; }
+  .fleet__head h2 { margin-top: 0.6rem; }
+
+  .fleet__list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-neutral-300);
+  }
+
+  .fleet__list li {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-neutral-300);
+  }
+
+  .fleet__value {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--color-primary-900);
+    line-height: 1;
+    margin-right: 0.75rem;
+  }
+  .fleet__label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--color-primary-700);
+    font-size: 1rem;
+  }
+  .fleet__list p {
+    margin-top: 0.5rem;
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 44ch;
+  }
+
+  @media (min-width: 768px) {
+    .fleet__list {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .fleet__list li {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+      border-bottom: none;
+      border-right: 1px solid var(--color-neutral-300);
+    }
+    .fleet__list li:last-child { border-right: none; }
+    .fleet__list li + li { padding-left: 1.5rem; }
+  }
+</style>

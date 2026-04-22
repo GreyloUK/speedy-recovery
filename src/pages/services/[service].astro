@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import Hero from "../../components/sections/Hero.astro";
+import TrustRibbon from "../../components/sections/TrustRibbon.astro";
+import ServiceDetail from "../../components/sections/ServiceDetail.astro";
+import PhoneCTA from "../../components/sections/PhoneCTA.astro";
+import Process from "../../components/sections/Process.astro";
+import ReviewsGoogle from "../../components/sections/ReviewsGoogle.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import AreasCovered from "../../components/sections/AreasCovered.astro";
+import ServicesNav from "../../components/sections/ServicesNav.astro";
+import { services, sharedFaqs } from "../../data";
+import type { Service } from "../../data/services";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  serviceSchema,
+} from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+export async function getStaticPaths() {
+  return services.map((s) => ({
+    params: { service: s.slug },
+    props: { service: s },
+  }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+
+const title = composeTitle(`${service.name} in London — 24/7`);
+const description = `${service.shortDescription} PAS43 certified. Call ${"07850 900 005"}.`;
+
+const combinedFaqs = [...service.faqs, ...sharedFaqs.slice(0, 2)];
+const otherServices = services.filter((s) => s.slug !== service.slug).map((s) => s.slug);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={`/services/${service.slug}/`}
+  schema={[
+    serviceSchema(service),
+    faqSchema(combinedFaqs),
+    breadcrumbSchema([
+      { label: "Home", path: "/" },
+      { label: "Services", path: "/services/" },
+      { label: service.name, path: `/services/${service.slug}/` },
+    ]),
+  ]}
+>
+  <div class="container-page" style="padding-block: 1rem 0;">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Services", href: "/services/" },
+        { label: service.name },
+      ]}
+    />
+  </div>
+
+  <Hero
+    variant="service"
+    eyebrow={service.name}
+    title={`${service.name} across London — 24/7.`}
+    lead={service.shortDescription}
+    image={service.heroImage ?? service.gridImage}
+    imageAlt={`${service.name} on the road in London`}
+  />
+
+  <TrustRibbon />
+
+  <ServiceDetail
+    longDescription={service.longDescription}
+    bullets={service.bullets}
+    priceNote={service.priceNote}
+  />
+
+  <PhoneCTA
+    tone="emergency"
+    heading={`Need ${service.name.toLowerCase()} now?`}
+    lead="One call. Fixed quote. Flatbed dispatched."
+  />
+
+  <Process />
+
+  <ReviewsGoogle />
+
+  <AreasCovered />
+
+  <FAQ items={combinedFaqs} heading={`${service.name} — your questions, answered.`} />
+
+  <ServicesNav
+    heading="Other services"
+    eyebrow="More from our operation"
+    filterSlugs={otherServices}
+  />
+
+  <PhoneCTA tone="navy" />
+</BaseLayout>

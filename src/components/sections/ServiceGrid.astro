@@ -1,0 +1,292 @@
+---
+import { services } from "../../data";
+import type { Service } from "../../data/services";
+import Icon from "../ui/Icon.astro";
+
+interface Props {
+  heading?: string;
+  eyebrow?: string;
+  lead?: string;
+  filterSlugs?: string[];
+}
+
+const {
+  heading = "What we recover",
+  eyebrow = "Services",
+  lead = "Five core services — the five insurers, police pounds and fleet dispatchers actually pay for. We don't try to be everything. Each of these is load-bearing: specialist vehicles sized for the job, drivers carrying the certifications insurer panels require, and one operator handling your call from dispatch through to delivery.",
+  filterSlugs,
+} = Astro.props;
+
+const items: Service[] = filterSlugs
+  ? filterSlugs
+      .map((slug) => services.find((s) => s.slug === slug))
+      .filter((s): s is Service => Boolean(s))
+  : [...services];
+
+function cleanCopy(s: string) {
+  return s.startsWith("[DRAFT]") ? s.replace(/^\[DRAFT\]\s*/, "") : s;
+}
+
+const anyDraft = items.some((s) => s.gridDescription.startsWith("[DRAFT]"));
+---
+
+<section class="svc-grid">
+  <div class="container-page svc-grid__inner">
+    {(heading || eyebrow || lead) && (
+      <header class="svc-grid__head">
+        {eyebrow && <span class="section-label">{eyebrow}</span>}
+        {heading && <h2>{heading}</h2>}
+        {lead && <p class="svc-grid__lead">{lead}</p>}
+        {anyDraft && (
+          <span class="svc-grid__draft">Draft copy — to be reviewed by client</span>
+        )}
+      </header>
+    )}
+
+    <ul class="svc-grid__list" data-count={items.length}>
+      {items.map((s) => (
+        <li class="svc-grid__item">
+          <a href={`/services/${s.slug}/`} class="svc-card">
+            <figure class="svc-card__media">
+              {s.gridImage ? (
+                <img
+                  src={s.gridImage}
+                  alt={`${s.name} in London — Speedy Recovery on scene`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="svc-card__placeholder" aria-hidden="true">
+                  <span>[TK photo — {s.name}]</span>
+                </span>
+              )}
+            </figure>
+
+            <div class="svc-card__body">
+              <h3>{s.name}</h3>
+              <p>{cleanCopy(s.gridDescription)}</p>
+              <span class="svc-card__link">
+                See {s.name.toLowerCase()} details
+                <Icon name="arrow-right" size={16} />
+              </span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .svc-grid {
+    background: var(--color-neutral-50);
+    border-top: 1px solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .svc-grid__inner {
+    padding-block: 3.5rem;
+  }
+
+  .svc-grid__head {
+    max-width: 62ch;
+    margin-bottom: 2.25rem;
+  }
+  .svc-grid__head h2 { margin-top: 0.6rem; }
+  .svc-grid__lead {
+    margin-top: 0.9rem;
+    color: var(--color-neutral-700);
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+  .svc-grid__draft {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--color-accent-100);
+    color: var(--color-emergency-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-xs);
+  }
+
+  .svc-grid__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .svc-grid__item {
+    margin: 0;
+    display: flex;
+  }
+
+  /* ----- Card ----- */
+  .svc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    width: 100%;
+    height: 100%;
+  }
+  .svc-card:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-hover);
+  }
+  .svc-card:focus-visible {
+    border-color: var(--color-accent-500);
+    box-shadow: 0 0 0 3px rgba(255, 176, 41, 0.25);
+  }
+
+  .svc-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-primary-950);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+  .svc-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 260ms ease;
+  }
+  .svc-card:hover .svc-card__media img {
+    transform: scale(1.04);
+  }
+
+  .svc-card__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-950) 100%);
+    text-align: center;
+    padding: 1rem;
+  }
+  .svc-card__placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px dashed rgba(255, 176, 41, 0.4);
+    border-radius: var(--radius-sm);
+  }
+  .svc-card__placeholder span {
+    position: relative;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-400);
+  }
+
+  .svc-card__body {
+    padding: 1.5rem 1.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1 1 auto;
+  }
+  .svc-card__body h3 {
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+    color: var(--color-primary-900);
+    margin: 0;
+  }
+  .svc-card__body p {
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .svc-card__link {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: gap 180ms ease, color 180ms ease;
+  }
+  .svc-card:hover .svc-card__link {
+    gap: 0.6rem;
+    color: var(--color-accent-600);
+  }
+  .svc-card__link :global(svg) { flex: none; }
+
+  /* ----- Breakpoints ----- */
+  @media (min-width: 768px) {
+    .svc-grid__inner { padding-block: 4rem; }
+    .svc-grid__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Orphan-closer: when the last card would sit alone on an odd-count row,
+       let it span the full row as a horizontal feature card. */
+    .svc-grid__item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: stretch;
+    }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card__media {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 260px;
+      border-bottom: none;
+      border-right: 1px solid var(--color-neutral-200);
+    }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card__body {
+      padding: 2rem 2rem 2rem;
+      justify-content: center;
+      gap: 0.9rem;
+    }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card__body p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .svc-grid__inner { padding-block: 4.5rem; }
+    .svc-grid__list { gap: 1.75rem; }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card__media {
+      min-height: 320px;
+    }
+    .svc-grid__item:last-child:nth-child(odd) .svc-card__body {
+      padding: 2.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .svc-card,
+    .svc-card__media img,
+    .svc-card__link {
+      transition: none;
+    }
+    .svc-card:hover .svc-card__media img {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,164 @@
+---
+import { locations } from "../../data";
+
+const bases = locations.filter((l) => !l.basedAt);
+const coverage = locations.filter((l) => Boolean(l.basedAt));
+const avgResponse = Math.round(
+  locations.reduce((sum, l) => sum + l.responseMinutes, 0) / locations.length,
+);
+
+const stats = [
+  { label: "Operating bases", value: `${bases.length} verified` },
+  { label: "Coverage areas", value: `${coverage.length} active` },
+  { label: "Avg response", value: `${avgResponse} min` },
+  { label: "Dispatch", value: "24 hours, every day" },
+];
+---
+
+<section class="areas-hero">
+  <div class="container-page areas-hero__inner">
+    <div class="areas-hero__content">
+      <span class="section-label-dark">Coverage</span>
+      <h1>Vehicle Recovery Areas Covered in London</h1>
+      <p class="areas-hero__tagline">
+        Two operating bases. {locations.length} areas dispatched.
+      </p>
+      <p class="areas-hero__lead">
+        Most recovery operators claim "London" and drive from wherever the
+        last job finished. We run from two actual bases — a registered yard
+        in Harrow and an operating point in Perivale — which is how our
+        response stays inside 25 minutes across north-west and west London.
+      </p>
+      <p class="areas-hero__kicker">
+        Pick your area below. Verified Google Business Profile addresses on
+        our base pages; clean coverage cards for the rest.
+      </p>
+    </div>
+
+    <aside class="areas-hero__sheet" aria-label="Coverage summary">
+      <header>
+        <span class="section-label-dark">Status</span>
+        <h2>What we cover, measured.</h2>
+      </header>
+      <dl>
+        {stats.map((row) => (
+          <div>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .areas-hero {
+    background: var(--color-primary-950);
+    color: var(--color-neutral-100);
+    position: relative;
+    overflow: hidden;
+  }
+  .areas-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 10%, rgba(255, 176, 41, 0.10), transparent 55%);
+    pointer-events: none;
+  }
+
+  .areas-hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 3rem 3.25rem;
+  }
+
+  .areas-hero__content h1 {
+    color: #fff;
+    margin-top: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .areas-hero__tagline {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 800;
+    color: var(--color-accent-400);
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+  }
+  .areas-hero__lead {
+    margin-top: 1.1rem;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--color-neutral-200);
+    max-width: 54ch;
+  }
+  .areas-hero__kicker {
+    margin-top: 0.9rem;
+    color: var(--color-neutral-400);
+    font-size: 1rem;
+    max-width: 54ch;
+  }
+
+  .areas-hero__sheet {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.5rem 0.25rem;
+    position: relative;
+  }
+  .areas-hero__sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--color-accent-500);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .areas-hero__sheet header h2 {
+    color: #fff;
+    margin-top: 0.35rem;
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  }
+
+  .areas-hero__sheet dl {
+    margin: 1.25rem 0 0;
+  }
+  .areas-hero__sheet dl > div {
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .areas-hero__sheet dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-400);
+  }
+  .areas-hero__sheet dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 900px) {
+    .areas-hero__inner {
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3rem;
+      padding-block: 4.25rem 4.5rem;
+      align-items: center;
+    }
+    .areas-hero__sheet { padding: 1.75rem 1.75rem 0.5rem; }
+  }
+</style>

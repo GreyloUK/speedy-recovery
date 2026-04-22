@@ -1,0 +1,231 @@
+---
+import { services } from "../../data";
+import type { Service } from "../../data/services";
+import Icon from "../ui/Icon.astro";
+
+type Scenario = {
+  slug: Service["slug"];
+  headline: string;
+  body: string;
+  answerLabel: string;
+};
+
+const scenarios: Scenario[] = [
+  {
+    slug: "car-recovery",
+    headline: "Your car has stopped moving",
+    body: "Breakdown, flat battery, blown tyre — anywhere in London, any hour. Flatbed on scene, fixed quote confirmed on the call.",
+    answerLabel: "We dispatch",
+  },
+  {
+    slug: "accident-recovery",
+    headline: "You've just had a collision",
+    body: "Flatbed lift so the vehicle isn't rolled again. Direct liaison with your insurer or broker. Secure storage at the yard if you need it.",
+    answerLabel: "We handle",
+  },
+  {
+    slug: "police-pound-release",
+    headline: "Your car is in a police pound",
+    body: "PG9s, seizure notices, release paperwork — sorted. Most Metropolitan Police pounds cleared next-day once the fees are settled.",
+    answerLabel: "We unlock",
+  },
+  {
+    slug: "specialist-recovery",
+    headline: "EV, hybrid, keyless or motorbike",
+    body: "Flatbed-only transport with manufacturer-approved neutral procedures. No ground-towing a keyless or a high-voltage drivetrain.",
+    answerLabel: "We specialise",
+  },
+  {
+    slug: "vehicle-storage",
+    headline: "Your vehicle needs somewhere secure",
+    body: "CCTV-monitored yard at our Harrow base (HA2 6AE). Short-stay after a recovery or longer-term — billed transparently by the day.",
+    answerLabel: "We store",
+  },
+];
+
+const rows = scenarios
+  .map((sc) => ({ ...sc, service: services.find((s) => s.slug === sc.slug)! }))
+  .filter((r) => r.service);
+---
+
+<section class="scenarios">
+  <div class="container-page scenarios__inner">
+    <header class="scenarios__head">
+      <span class="section-label">Pick by situation</span>
+      <h2>What's happened?</h2>
+      <p>
+        The quickest way to the right service. Each row is a situation we handle
+        every week — tap through to the service page for the details on how.
+      </p>
+    </header>
+
+    <ol class="scenarios__list">
+      {rows.map((r, i) => (
+        <li class="scenarios__row">
+          <a href={`/services/${r.service.slug}/`} class="scenarios__link">
+            <span class="scenarios__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+
+            <div class="scenarios__body">
+              <h3 class="scenarios__headline">{r.headline}</h3>
+              <p class="scenarios__copy">{r.body}</p>
+            </div>
+
+            <div class="scenarios__answer">
+              <span class="scenarios__answer-label">{r.answerLabel}</span>
+              <span class="scenarios__answer-name">{r.service.name}</span>
+            </div>
+
+            <span class="scenarios__arrow" aria-hidden="true">
+              <Icon name="arrow-right" size={18} />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .scenarios {
+    background: #fff;
+  }
+  .scenarios__inner {
+    padding-block: 3.5rem;
+  }
+
+  .scenarios__head {
+    max-width: 62ch;
+    margin-bottom: 2rem;
+  }
+  .scenarios__head h2 { margin-top: 0.5rem; }
+  .scenarios__head p {
+    margin-top: 0.8rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1.02rem;
+  }
+
+  .scenarios__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .scenarios__row {
+    margin: 0;
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+  .scenarios__row:last-child { border-bottom: 0; }
+
+  .scenarios__link {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas:
+      "num body arrow arrow"
+      "num answer arrow arrow";
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    padding: 1.35rem 0.25rem 1.35rem;
+    color: inherit;
+    transition: background-color 160ms ease;
+  }
+  .scenarios__link:hover,
+  .scenarios__link:focus-visible {
+    background: var(--color-neutral-50);
+    outline: none;
+  }
+
+  .scenarios__num {
+    grid-area: num;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--color-accent-600);
+    letter-spacing: 0.12em;
+    min-width: 2ch;
+    padding-inline: 0.75rem 0;
+  }
+
+  .scenarios__body {
+    grid-area: body;
+    min-width: 0;
+  }
+  .scenarios__headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    color: var(--color-primary-900);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .scenarios__copy {
+    margin: 0.35rem 0 0;
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  .scenarios__answer {
+    grid-area: answer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-top: 0.9rem;
+    margin-top: 0.6rem;
+    border-top: 1px dashed var(--color-neutral-300);
+  }
+  .scenarios__answer-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-neutral-500);
+  }
+  .scenarios__answer-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--color-primary-800);
+    letter-spacing: -0.005em;
+  }
+  .scenarios__link:hover .scenarios__answer-name { color: var(--color-accent-600); }
+
+  .scenarios__arrow {
+    grid-area: arrow;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-700);
+    padding-inline: 0.5rem;
+    transition: color 160ms ease;
+  }
+  .scenarios__link:hover .scenarios__arrow { color: var(--color-accent-600); }
+
+  @media (min-width: 820px) {
+    .scenarios__link {
+      grid-template-columns: auto minmax(0, 1.45fr) minmax(0, 1fr) auto;
+      grid-template-areas: "num body answer arrow";
+      padding: 1.5rem 0.25rem;
+      gap: 0 2rem;
+    }
+    .scenarios__answer {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: 0;
+      border-left: 1px solid var(--color-neutral-200);
+      padding-left: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scenarios__link,
+    .scenarios__arrow,
+    .scenarios__answer-name {
+      transition: none;
+    }
+  }
+</style>

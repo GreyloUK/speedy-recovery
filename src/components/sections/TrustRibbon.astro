@@ -1,0 +1,99 @@
+---
+import { credentials } from "../../data";
+import pas43Logo from "../../assets/images/trust-badges/pas43.svg";
+import rhaLogo from "../../assets/images/trust-badges/rha.svg";
+import ivrLogo from "../../assets/images/trust-badges/ivr.svg";
+import aaLogo from "../../assets/images/trust-badges/aa.svg";
+import fmgLogo from "../../assets/images/trust-badges/fmg.svg";
+
+const logoMap: Record<string, { src: string; width: number; height: number }> = {
+  pas43: pas43Logo,
+  "o-licence": rhaLogo,
+  ivr: ivrLogo,
+  aa: aaLogo,
+  fmg: fmgLogo,
+};
+---
+
+<section class="trust-ribbon">
+  <div class="container-page trust-ribbon__inner">
+    <span class="section-label-dark">Accredited &amp; approved</span>
+    <ul>
+      {credentials.map((c) => (
+        <li>
+          <span class="trust-ribbon__chip" aria-hidden="true">
+            {logoMap[c.id] && (
+              <img src={logoMap[c.id].src} alt="" width="32" height="32" loading="lazy" decoding="async" />
+            )}
+          </span>
+          <span class="trust-ribbon__label">{c.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust-ribbon {
+    background: var(--color-primary-900);
+    color: var(--color-neutral-100);
+    border-block: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .trust-ribbon__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-block: 1.35rem;
+  }
+
+  .trust-ribbon ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .trust-ribbon li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .trust-ribbon__chip {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    border: 1px solid rgba(255, 176, 41, 0.35);
+    padding: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+  .trust-ribbon__chip img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .trust-ribbon__label {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--color-neutral-100);
+  }
+
+  @media (min-width: 768px) {
+    .trust-ribbon__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+</style>

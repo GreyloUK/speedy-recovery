@@ -1,0 +1,119 @@
+---
+import Icon from "../ui/Icon.astro";
+
+interface Props {
+  longDescription: string;
+  bullets: string[];
+  priceNote: string;
+}
+
+const { longDescription, bullets, priceNote } = Astro.props;
+const isDraft = longDescription.startsWith("[DRAFT]");
+const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescription;
+---
+
+<section class="svc-detail">
+  <div class="container-page svc-detail__inner">
+    <div class="svc-detail__body">
+      {isDraft && (
+        <span class="svc-detail__draft">Draft copy — to be reviewed by client</span>
+      )}
+      <p>{body}</p>
+      <p class="svc-detail__price">
+        <Icon name="check" size={16} />
+        {priceNote}
+      </p>
+    </div>
+    <aside class="svc-detail__checks">
+      <span class="section-label">What's included</span>
+      <ul>
+        {bullets.map((b) => (
+          <li>
+            <Icon name="check" size={16} />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .svc-detail {
+    background: #fff;
+  }
+  .svc-detail__inner {
+    padding-block: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .svc-detail__body p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+    font-size: 1.05rem;
+    max-width: 62ch;
+  }
+
+  .svc-detail__draft {
+    display: inline-block;
+    background: var(--color-accent-100);
+    color: var(--color-emergency-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-xs);
+    margin-bottom: 1rem;
+  }
+
+  .svc-detail__price {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .svc-detail__checks {
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .svc-detail__checks h3 { margin-top: 0.5rem; }
+
+  .svc-detail__checks ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .svc-detail__checks li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    color: var(--color-neutral-800);
+    line-height: 1.45;
+  }
+
+  .svc-detail__checks li :global(svg) {
+    color: var(--color-accent-600);
+    margin-top: 3px;
+  }
+
+  @media (min-width: 900px) {
+    .svc-detail__inner {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

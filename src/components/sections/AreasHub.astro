@@ -1,0 +1,401 @@
+---
+import { locations } from "../../data";
+import Icon from "../ui/Icon.astro";
+
+const bases = locations.filter((l) => !l.basedAt);
+const coverage = locations.filter((l) => Boolean(l.basedAt));
+
+function baseName(slug: string | undefined) {
+  if (!slug) return "";
+  return locations.find((l) => l.slug === slug)?.name ?? "";
+}
+---
+
+<section class="areas-hub">
+  <div class="container-page areas-hub__inner">
+    <!-- ===== Operating bases ===== -->
+    <header class="areas-hub__head">
+      <span class="section-label">Operating bases</span>
+      <h2>Where the trucks actually live.</h2>
+      <p>
+        Two verified sites. Each one a registered operating point with its
+        own fleet allocation and coverage ring.
+      </p>
+    </header>
+
+    <ul class="bases">
+      {bases.map((l) => (
+        <li class="bases__item">
+          <a href={`/areas/${l.slug}/`} class="base-card">
+            <figure class="base-card__media">
+              {l.heroImage ? (
+                <img
+                  src={l.heroImage}
+                  alt={`${l.name} — ${l.address.street}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="base-card__placeholder" aria-hidden="true">
+                  <Icon name="map-pin" size={28} />
+                </span>
+              )}
+              {l.verified && (
+                <span class="base-card__badge">
+                  <Icon name="badge-check" size={14} /> GBP verified
+                </span>
+              )}
+            </figure>
+
+            <div class="base-card__body">
+              <span class="section-label">{l.postcode}</span>
+              <h3>{l.name}</h3>
+              <p class="base-card__addr">
+                {l.address.street}<br />
+                {l.address.locality}, {l.address.region}
+                {" "}
+                <span class:list={[l.address.postcode.startsWith("[TK") && "tk"]}>
+                  {l.address.postcode}
+                </span>
+              </p>
+
+              <dl class="base-card__meta">
+                <div>
+                  <dt>Response</dt>
+                  <dd>{l.responseMinutes} min avg</dd>
+                </div>
+                <div>
+                  <dt>Nearby</dt>
+                  <dd>{l.nearbyAreas.slice(0, 3).join(" · ")}</dd>
+                </div>
+              </dl>
+
+              <span class="base-card__link">
+                View {l.name} base <Icon name="arrow-right" size={16} />
+              </span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- ===== Coverage areas ===== -->
+    {coverage.length > 0 && (
+      <header class="areas-hub__head areas-hub__head--second">
+        <span class="section-label">Coverage areas</span>
+        <h2>Dispatched from the nearer base.</h2>
+        <p>
+          Postcodes we serve on the same fleet, same certifications, same
+          24/7 dispatch. Fastest response when your area borders one of the
+          bases above.
+        </p>
+      </header>
+    )}
+
+    {coverage.length > 0 && (
+      <ul class="coverage">
+        {coverage.map((l) => (
+          <li class="coverage__item">
+            <a href={`/areas/${l.slug}/`} class="coverage-card">
+              <span class="coverage-card__post">{l.postcode}</span>
+              <h3 class="coverage-card__name">{l.name}</h3>
+
+              <dl class="coverage-card__meta">
+                <div>
+                  <dt>Dispatched from</dt>
+                  <dd>{baseName(l.basedAt)}</dd>
+                </div>
+                <div>
+                  <dt>Response</dt>
+                  <dd>{l.responseMinutes} min avg</dd>
+                </div>
+              </dl>
+
+              <span class="coverage-card__link" aria-hidden="true">
+                View area <Icon name="arrow-right" size={15} />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>
+
+<style>
+  .areas-hub {
+    background: #fff;
+  }
+  .areas-hub__inner {
+    padding-block: 3.5rem;
+  }
+
+  .areas-hub__head {
+    max-width: 62ch;
+    margin-bottom: 1.75rem;
+  }
+  .areas-hub__head--second {
+    margin-top: 3.25rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-neutral-200);
+  }
+  .areas-hub__head h2 { margin-top: 0.5rem; }
+  .areas-hub__head p {
+    margin-top: 0.75rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1rem;
+  }
+
+  /* ---- Bases (2-up, photo-led) ---- */
+  .bases {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .bases__item { margin: 0; }
+
+  .base-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    color: inherit;
+    box-shadow: var(--shadow-card);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+    height: 100%;
+  }
+  .base-card:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-hover);
+  }
+  .base-card:focus-visible {
+    border-color: var(--color-accent-500);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 176, 41, 0.22);
+  }
+
+  .base-card__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-primary-950);
+  }
+  .base-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .base-card__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-400);
+    background: linear-gradient(135deg, var(--color-primary-900), var(--color-primary-950));
+  }
+
+  .base-card__badge {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+    border: 1px solid var(--color-accent-600);
+    padding: 0.3rem 0.55rem;
+    border-radius: var(--radius-xs);
+  }
+
+  .base-card__body {
+    padding: 1.4rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1 1 auto;
+  }
+  .base-card__body h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+    line-height: 1;
+    color: var(--color-primary-900);
+    margin: 0.25rem 0 0;
+    letter-spacing: -0.005em;
+  }
+
+  .base-card__addr {
+    margin: 0;
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .base-card__meta {
+    margin: 0.4rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--color-neutral-200);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .base-card__meta > div {
+    background: #fff;
+    padding: 0.8rem 0.95rem;
+  }
+  .base-card__meta dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-primary-700);
+    margin-bottom: 0.2rem;
+  }
+  .base-card__meta dd {
+    margin: 0;
+    color: var(--color-neutral-900);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .base-card__link {
+    margin-top: auto;
+    padding-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: gap 180ms ease, color 180ms ease;
+  }
+  .base-card:hover .base-card__link {
+    gap: 0.6rem;
+    color: var(--color-accent-600);
+  }
+
+  /* ---- Coverage (3-up, compact) ---- */
+  .coverage {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--color-neutral-200);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .coverage__item {
+    margin: 0;
+    display: flex;
+  }
+
+  .coverage-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: #fff;
+    padding: 1.2rem 1.25rem 1.25rem;
+    color: inherit;
+    width: 100%;
+    transition: background-color 180ms ease;
+  }
+  .coverage-card:hover { background: var(--color-neutral-50); }
+  .coverage-card:focus-visible {
+    background: var(--color-neutral-50);
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: -2px;
+  }
+
+  .coverage-card__post {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent-600);
+  }
+  .coverage-card__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+    line-height: 1.05;
+    color: var(--color-primary-900);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+
+  .coverage-card__meta {
+    margin: 0.2rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .coverage-card__meta dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-neutral-500);
+    margin-bottom: 0.1rem;
+  }
+  .coverage-card__meta dd {
+    margin: 0;
+    color: var(--color-neutral-900);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .coverage-card__link {
+    margin-top: auto;
+    padding-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 160ms ease, gap 160ms ease;
+  }
+  .coverage-card:hover .coverage-card__link {
+    gap: 0.55rem;
+    color: var(--color-accent-600);
+  }
+
+  @media (min-width: 720px) {
+    .bases { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  }
+  @media (min-width: 820px) {
+    .coverage { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1100px) {
+    .areas-hub__inner { padding-block: 4.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .base-card,
+    .base-card__link,
+    .coverage-card,
+    .coverage-card__link {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import Icon from "./Icon.astro";
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="crumbs">
+  <ol>
+    {items.map((c, i) => (
+      <li>
+        {c.href ? (
+          <a href={c.href}>{c.label}</a>
+        ) : (
+          <span aria-current="page">{c.label}</span>
+        )}
+        {i < items.length - 1 && (
+          <Icon name="arrow-right" size={14} class="sep" />
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .crumbs {
+    font-size: 1rem;
+    color: var(--color-neutral-600);
+  }
+  .crumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .crumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .crumbs a {
+    color: var(--color-primary-700);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .crumbs a:hover {
+    text-decoration: underline;
+  }
+  .crumbs [aria-current="page"] {
+    color: var(--color-neutral-700);
+  }
+  .crumbs .sep {
+    color: var(--color-neutral-400);
+  }
+</style>

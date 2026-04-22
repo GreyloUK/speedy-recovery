@@ -1,0 +1,131 @@
+---
+import { business } from "../../data";
+import Button from "../ui/Button.astro";
+import Icon from "../ui/Icon.astro";
+
+interface Props {
+  heading?: string;
+  lead?: string;
+  tone?: "navy" | "emergency" | "light";
+}
+
+const {
+  heading = "On the roadside now? Call us.",
+  lead = "24/7 dispatch. One call: fixed price, flatbed, vehicle moved.",
+  tone = "navy",
+} = Astro.props;
+---
+
+<section class={`phone-cta phone-cta--${tone}`}>
+  <div class="container-page phone-cta__inner">
+    <div class="phone-cta__text">
+      <h2>{heading}</h2>
+      <p>{lead}</p>
+    </div>
+    <div class="phone-cta__action">
+      <Button
+        href={business.phone.href}
+        variant={tone === "light" ? "primary" : "primary"}
+        size="lg"
+        iconBefore="phone"
+      >
+        <span class="phone-cta__stack">
+          <span class="phone-cta__meta">Call 24/7</span>
+          <span class="phone-cta__num">{business.phone.display}</span>
+        </span>
+      </Button>
+      {tone === "emergency" && (
+        <span class="phone-cta__badge">
+          <Icon name="clock" size={14} /> 24 hours, every day
+        </span>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .phone-cta {
+    color: var(--color-neutral-50);
+  }
+  .phone-cta--navy {
+    background: var(--color-primary-900);
+  }
+  .phone-cta--emergency {
+    background: linear-gradient(180deg, var(--color-emergency-500), var(--color-emergency-700));
+  }
+  .phone-cta--light {
+    background: var(--color-neutral-50);
+    color: var(--color-primary-900);
+    border-block: 1px solid var(--color-neutral-200);
+  }
+
+  .phone-cta__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-block: 2.5rem 2.75rem;
+    align-items: center;
+  }
+
+  .phone-cta h2 {
+    color: inherit;
+    font-size: clamp(1.4rem, 2vw, 1.85rem);
+    margin: 0;
+  }
+  .phone-cta--light h2 { color: var(--color-primary-900); }
+
+  .phone-cta p {
+    margin-top: 0.5rem;
+    color: inherit;
+    opacity: 0.9;
+    max-width: 50ch;
+  }
+  .phone-cta--light p { color: var(--color-neutral-700); opacity: 1; }
+
+  .phone-cta__action {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .phone-cta__stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    text-align: left;
+  }
+  .phone-cta__meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  .phone-cta__num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
+  .phone-cta__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (min-width: 768px) {
+    .phone-cta__inner {
+      grid-template-columns: 1.5fr auto;
+      gap: 2.5rem;
+      padding-block: 3rem;
+    }
+    .phone-cta__action { justify-content: flex-end; }
+  }
+</style>

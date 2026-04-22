@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import ServicesHubHero from "../../components/sections/ServicesHubHero.astro";
+import ServicesScenarios from "../../components/sections/ServicesScenarios.astro";
+import { breadcrumbSchema } from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+const title = composeTitle("Vehicle Recovery Services in London");
+const description = "Our five London vehicle recovery services — car, accident, police pound release, specialist, and secure storage. PAS43 certified, 24/7. Call now.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/services/"
+  schema={breadcrumbSchema([
+    { label: "Home", path: "/" },
+    { label: "Services", path: "/services/" },
+  ])}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+  </div>
+
+  <ServicesHubHero />
+
+  <ServicesScenarios />
+</BaseLayout>

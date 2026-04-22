@@ -1,0 +1,98 @@
+---
+import Icon from "./Icon.astro";
+
+type Variant = "primary" | "secondary" | "ghost-dark";
+type Size = "md" | "lg";
+
+interface Props {
+  href: string;
+  variant?: Variant;
+  size?: Size;
+  iconBefore?: string;
+  iconAfter?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  iconBefore,
+  iconAfter,
+  class: className = "",
+} = Astro.props;
+
+const isExternal = /^https?:/.test(href);
+const isTel = href.startsWith("tel:");
+const rel = isExternal ? "noopener noreferrer" : undefined;
+const target = isExternal ? "_blank" : undefined;
+---
+
+<a
+  href={href}
+  class={`btn btn--${variant} btn--${size} ${className}`}
+  rel={rel}
+  target={target}
+  data-tel={isTel ? "true" : undefined}
+>
+  {iconBefore && <Icon name={iconBefore} size={size === "lg" ? 20 : 18} />}
+  <span><slot /></span>
+  {iconAfter && <Icon name={iconAfter} size={size === "lg" ? 20 : 18} />}
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .btn--md {
+    padding: 0.75rem 1.1rem;
+    font-size: 1rem;
+  }
+
+  .btn--lg {
+    padding: 1rem 1.35rem;
+    font-size: 1.0625rem;
+  }
+
+  .btn--primary {
+    background: var(--color-accent-500);
+    color: var(--color-primary-950);
+    border: 1px solid var(--color-accent-600);
+  }
+  .btn--primary:hover {
+    background: var(--color-accent-400);
+    border-color: var(--color-accent-500);
+  }
+
+  .btn--secondary {
+    background: transparent;
+    color: var(--color-primary-800);
+    border: 1px solid var(--color-primary-300);
+  }
+  .btn--secondary:hover {
+    background: var(--color-primary-50);
+    border-color: var(--color-primary-500);
+    color: var(--color-primary-900);
+  }
+
+  .btn--ghost-dark {
+    background: transparent;
+    color: var(--color-neutral-50);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .btn--ghost-dark:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+</style>

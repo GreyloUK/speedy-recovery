@@ -1,0 +1,250 @@
+---
+import Icon from "../ui/Icon.astro";
+
+interface Step {
+  title: string;
+  body: string;
+  image?: string | null;
+  imageAlt?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  steps?: Step[];
+}
+
+const {
+  eyebrow = "What happens when you call",
+  heading = "From your call to vehicle moved — usually inside an hour.",
+  steps = [
+    {
+      title: "One call, 24/7",
+      body: "You call us. We confirm pickup postcode, destination, vehicle type and give you a fixed quote on the line. No meter running, no surprise add-ons.",
+      image: "/images/process/step-1-call.webp",
+      imageAlt: "Recovery dispatcher taking a 24/7 call in the operations room.",
+    },
+    {
+      title: "Flatbed dispatched",
+      body: "Nearest truck is dispatched immediately — typical London response 25 minutes. Driver texts you when they're 10 minutes out.",
+      image: "/images/process/step-2-dispatch.webp",
+      imageAlt: "Flatbed recovery truck leaving the depot yard at night.",
+    },
+    {
+      title: "Loaded and delivered",
+      body: "Vehicle loaded onto a flatbed (no rolling damage), delivered to your chosen destination — your home, a repairer, or our secure yard.",
+      image: "/images/process/step-3-loaded.webp",
+      imageAlt: "Vehicle being winched onto a flatbed recovery truck.",
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="process">
+  <div class="container-page process__inner">
+    <header class="process__head">
+      <span class="section-label-dark">{eyebrow}</span>
+      <h2>{heading}</h2>
+    </header>
+
+    <ol class="process__steps">
+      {steps.map((s, i) => (
+        <li class="process__card">
+          <div class="process__media" aria-hidden={s.image ? undefined : "true"}>
+            {s.image ? (
+              <img src={s.image} alt={s.imageAlt ?? ""} loading="lazy" decoding="async" />
+            ) : (
+              <div class="process__placeholder">
+                <Icon name="truck" size={32} />
+                <span>[TK Step {i + 1} photo]</span>
+              </div>
+            )}
+            <div class="process__scrim"></div>
+          </div>
+
+          <div class="process__content">
+            <span class="process__numeral" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+            <span class="process__step-label">Step {i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
+
+          {i < steps.length - 1 && (
+            <span class="process__arrow" aria-hidden="true">
+              <Icon name="arrow-right" size={20} />
+            </span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--color-primary-950);
+    color: var(--color-neutral-100);
+    position: relative;
+    overflow: hidden;
+  }
+  .process::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 0%, rgba(255, 176, 41, 0.08), transparent 55%);
+    pointer-events: none;
+  }
+
+  .process__inner {
+    padding-block: 4rem 4.5rem;
+    position: relative;
+  }
+
+  .process__head {
+    max-width: 640px;
+  }
+  .process__head h2 {
+    color: #fff;
+    margin-top: 0.6rem;
+  }
+
+  .process__steps {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    counter-reset: process-step;
+  }
+
+  .process__card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    min-height: 360px;
+    background: var(--color-primary-900);
+    box-shadow: var(--shadow-panel);
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .process__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .process__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(11, 14, 28, 0.35) 0%,
+      rgba(11, 14, 28, 0.55) 40%,
+      rgba(11, 14, 28, 0.92) 100%
+    );
+  }
+
+  .process__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-primary-800), var(--color-primary-950));
+    color: var(--color-accent-400);
+    outline: 1px dashed var(--color-accent-500);
+    outline-offset: -10px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .process__content {
+    position: relative;
+    z-index: 1;
+    padding: 1.75rem 1.5rem 1.75rem;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process__numeral {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(4.5rem, 10vw, 7rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-accent-400);
+    text-stroke: 2px var(--color-accent-400);
+    margin-bottom: 0.5rem;
+  }
+
+  .process__step-label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent-400);
+    margin-bottom: 0.35rem;
+  }
+
+  .process__card h3 {
+    color: #fff;
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .process__card p {
+    color: var(--color-neutral-200);
+    line-height: 1.55;
+    font-size: 1rem;
+    margin: 0;
+    max-width: 40ch;
+  }
+
+  .process__arrow {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .process__steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .process__card {
+      min-height: 460px;
+    }
+
+    .process__arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      right: -1.75rem;
+      transform: translate(50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--color-accent-400);
+      color: var(--color-primary-950);
+      z-index: 2;
+      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.5);
+    }
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+import { business } from "../../data";
+import Button from "../ui/Button.astro";
+import Icon from "../ui/Icon.astro";
+
+interface Reason {
+  iconName: string;
+  title: string;
+  body: string;
+}
+
+const reasons: Reason[] = [
+  {
+    iconName: "shield-check-bold",
+    title: "Insurer-panel ready",
+    body: "PAS43 2012, full O-Licence and IVR-certified drivers on file — claim-approved recoveries billed direct.",
+  },
+  {
+    iconName: "truck-bold",
+    title: "Fleet sized for the job",
+    body: "6 vehicles including flatbeds, a 12-ton recovery truck and HIAB — the vehicles others decline.",
+  },
+  {
+    iconName: "doc-check-bold",
+    title: "Paperwork handled",
+    body: "PG9, Metropolitan Police pound release, direct-bill to insurers, chain-of-custody storage receipts.",
+  },
+  {
+    iconName: "clock-bold",
+    title: "One operator, fixed quote",
+    body: "No dispatcher hand-offs. The operator who takes your call books the job and sends the truck.",
+  },
+];
+---
+
+<section class="why-us">
+  <div class="container-page why-us__inner">
+    <div class="why-us__intro">
+      <h2>Why businesses choose Speedy Recovery.</h2>
+      <p>
+        Insurer panels, fleet dispatchers and police pounds only work with
+        operators who carry the right paperwork, the right fleet and the
+        right process. We built Speedy Recovery around exactly that — PAS43
+        2012 certified, full O-Licence holders, IVR-accredited drivers, and a
+        6-vehicle fleet sized to handle anything from a stranded hatchback
+        to a 12-ton commercial.
+      </p>
+      <p>
+        Every job runs through a single operator — from the first ring of
+        the phone to the point a receipt lands in your inbox. No dispatcher
+        hand-offs, no meter running, no surprise add-ons when the flatbed
+        arrives. The quote you get on the call is the quote you pay.
+      </p>
+      <p>
+        That's why the AA dispatch us, why FMG contract us, and why local
+        brokers and garages send repeat work our way — because the second
+        call is always the easy one, and the nth call is still the same
+        operator who picked up first time.
+      </p>
+
+      <div class="why-us__cta">
+        <Button
+          href={business.phone.href}
+          variant="primary"
+          size="lg"
+          iconBefore="phone"
+        >
+          <span class="why-us__call-stack">
+            <span class="why-us__call-meta">Call 24/7</span>
+            <span class="why-us__call-num">{business.phone.display}</span>
+          </span>
+        </Button>
+      </div>
+    </div>
+
+    <ul class="why-us__reasons">
+      {reasons.map((r) => (
+        <li class="why-us__card">
+          <div class="why-us__icon-tile" aria-hidden="true">
+            <Icon name={r.iconName} size={28} strokeWidth={2.25} />
+          </div>
+          <div class="why-us__card-body">
+            <h3>{r.title}</h3>
+            <p>{r.body}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why-us {
+    background: #fff;
+  }
+
+  .why-us__inner {
+    padding-block: 3.25rem;
+  }
+
+  /* ----- Centred intro ----- */
+  .why-us__intro {
+    max-width: 78ch;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .why-us__intro h2 {
+    margin: 0;
+    max-width: 22ch;
+    margin-inline: auto;
+  }
+
+  .why-us__intro p {
+    margin-top: 1.15rem;
+    color: var(--color-neutral-700);
+    font-size: 1.0625rem;       /* 17px */
+    line-height: 1.65;
+  }
+  .why-us__intro p + p {
+    margin-top: 0.9rem;
+  }
+
+  .why-us__cta {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+  }
+  .why-us__call-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    text-align: left;
+  }
+  .why-us__call-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  .why-us__call-num {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  /* ----- Proof cards (horizontal, navy+amber plaques) ----- */
+  .why-us__reasons {
+    list-style: none;
+    padding: 0;
+    margin: 2.75rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .why-us__card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 1.25rem 1.35rem 1.35rem;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+  }
+
+  .why-us__icon-tile {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-900);
+    color: var(--color-accent-400);
+    border-radius: var(--radius-sm);
+    flex: none;
+  }
+  .why-us__icon-tile :global(svg) {
+    display: block;
+  }
+
+  .why-us__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+  .why-us__card-body h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;          /* ~18.4px */
+    color: var(--color-primary-900);
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .why-us__card-body p {
+    margin: 0;
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  /* ----- Breakpoints ----- */
+  @media (min-width: 640px) {
+    .why-us__inner { padding-block: 3.75rem; }
+    .why-us__reasons {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+      margin-top: 3rem;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .why-us__inner { padding-block: 4.25rem; }
+    .why-us__intro p { font-size: 1.0625rem; }
+    .why-us__reasons {
+      gap: 1.25rem;
+      margin-top: 3.25rem;
+    }
+    .why-us__card {
+      padding: 1.4rem 1.5rem 1.55rem;
+    }
+  }
+</style>

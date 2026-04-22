@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import AreasHubHero from "../../components/sections/AreasHubHero.astro";
+import AreasHub from "../../components/sections/AreasHub.astro";
+import { breadcrumbSchema } from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+const title = composeTitle("Vehicle Recovery Areas in London");
+const description = "Our London vehicle recovery coverage — verified bases in Harrow and Perivale, plus Greenford, Ealing and Hayes. 25-min average response. 24/7.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/areas/"
+  schema={breadcrumbSchema([
+    { label: "Home", path: "/" },
+    { label: "Areas", path: "/areas/" },
+  ])}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Areas" }]} />
+  </div>
+
+  <AreasHubHero />
+
+  <AreasHub />
+</BaseLayout>

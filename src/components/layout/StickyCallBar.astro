@@ -1,0 +1,54 @@
+---
+import { business } from "../../data";
+import Icon from "../ui/Icon.astro";
+---
+
+<a href={business.phone.href} class="sticky-call" aria-label={`Call ${business.phone.display}`}>
+  <Icon name="phone" size={20} />
+  <span class="sticky-call__stack">
+    <span class="sticky-call__meta">Call 24/7 — we're open now</span>
+    <span class="sticky-call__num">{business.phone.display}</span>
+  </span>
+</a>
+
+<style>
+  .sticky-call {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--color-accent-500);
+    color: var(--color-primary-950);
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--color-accent-600);
+    font-weight: 700;
+    box-shadow: 0 -4px 16px -4px rgba(0, 0, 0, 0.15);
+  }
+
+  .sticky-call__stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .sticky-call__meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+  .sticky-call__num {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  @media (min-width: 1024px) {
+    .sticky-call { display: none; }
+  }
+</style>

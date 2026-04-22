@@ -1,0 +1,188 @@
+---
+import { business } from "../../data";
+import Button from "../ui/Button.astro";
+import Icon from "../ui/Icon.astro";
+
+type Variant = "home" | "service" | "location";
+
+interface Props {
+  variant: Variant;
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  image?: string | null;
+  imageAlt?: string;
+}
+
+const { variant, eyebrow, title, lead, image, imageAlt = "" } = Astro.props;
+---
+
+<section class={`hero hero--${variant}`}>
+  <div class="container-page hero__inner">
+    <div class="hero__content">
+      {eyebrow && <span class="section-label-dark">{eyebrow}</span>}
+      <h1>{title}</h1>
+      <p class="hero__lead">{lead}</p>
+
+      <div class="hero__cta">
+        <Button href={business.phone.href} variant="primary" size="lg" iconBefore="phone">
+          <span class="hero__call-stack">
+            <span class="hero__call-meta">Call 24/7</span>
+            <span class="hero__call-num">{business.phone.display}</span>
+          </span>
+        </Button>
+        <Button href="/services/" variant="ghost-dark" size="lg" iconAfter="arrow-right">
+          See services
+        </Button>
+      </div>
+
+      <ul class="hero__stats">
+        <li><strong>24/7</strong><span>no out-of-hours hedging</span></li>
+        <li><strong>25 min</strong><span>average response</span></li>
+        <li><strong>PAS43</strong><span>O-Licence · IVR</span></li>
+      </ul>
+    </div>
+
+    <div class="hero__asset" aria-hidden={image ? undefined : "true"}>
+      {image ? (
+        <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+      ) : (
+        <div class="hero__placeholder">
+          <Icon name="truck" size={48} />
+          <span>[TK hero photograph — flatbed on scene]</span>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(180deg, var(--color-primary-950) 0%, var(--color-primary-900) 100%);
+    color: var(--color-neutral-50);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 10%, rgba(255, 176, 41, 0.12), transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 3rem 3.5rem;
+    position: relative;
+  }
+
+  .hero__content h1 {
+    color: #fff;
+    margin-top: 0.75rem;
+  }
+  .hero__lead {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-neutral-200);
+    max-width: 56ch;
+  }
+
+  .hero__cta {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero__call-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    text-align: left;
+  }
+  .hero__call-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  .hero__call-num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
+  .hero__stats {
+    list-style: none;
+    padding: 1.5rem 0 0;
+    margin: 2rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .hero__stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .hero__stats strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent-400);
+    font-weight: 800;
+  }
+  .hero__stats span {
+    font-size: 1rem;
+    color: var(--color-neutral-300);
+    line-height: 1.4;
+  }
+
+  .hero__asset {
+    min-height: 220px;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-panel);
+  }
+  .hero__asset img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-primary-800), var(--color-primary-950));
+    color: var(--color-accent-400);
+    outline: 1px dashed var(--color-accent-500);
+    outline-offset: -8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3rem;
+      padding-block: 4.5rem 5rem;
+      align-items: center;
+    }
+    .hero__asset {
+      min-height: 380px;
+    }
+  }
+</style>

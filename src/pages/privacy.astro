@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { business } from "../data";
+import { breadcrumbSchema } from "../utils/schema";
+import { composeTitle } from "../utils/seo";
+
+const title = composeTitle("Privacy Policy");
+const description = `Privacy policy for ${business.name} — how we collect, use and protect personal data under UK GDPR.`;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/privacy/"
+  noindex={false}
+  schema={breadcrumbSchema([
+    { label: "Home", path: "/" },
+    { label: "Privacy", path: "/privacy/" },
+  ])}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy" }]} />
+  </div>
+
+  <article class="legal container-page">
+    <h1>Privacy Policy</h1>
+    <p class="legal__meta">Last updated: [TK effective date]</p>
+
+    <p>
+      This policy explains how {business.name} (trading as {business.shortName}) collects,
+      uses and protects your personal data when you call us, email us, or use this website.
+    </p>
+
+    <h2>What we collect</h2>
+    <p>
+      When you phone us to book a recovery, we record: your name, the pickup location,
+      the destination, vehicle registration, and a contact number. When you email us we
+      retain the email and any attachments (V5, insurance documents) for as long as the
+      job and any related insurer or pound reconciliation is active.
+    </p>
+
+    <h2>What we do with it</h2>
+    <p>
+      Data is used to dispatch recovery, coordinate with insurers / pounds / repairers,
+      and to invoice. We do not sell or share personal data with third parties beyond
+      those operationally required to complete the recovery.
+    </p>
+
+    <h2>How long we keep it</h2>
+    <p>
+      Job data is retained for 6 years to meet UK accounting and insurance-claim
+      record-keeping obligations. CCTV footage from our yard is retained for 30 days
+      except where preserved for an active incident investigation.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      You have the right under UK GDPR to access, correct, or request deletion of your
+      personal data. Email [TK privacy email] to exercise any of these rights.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Data controller: {business.legalName}, {business.primaryAddress.street},
+      {business.primaryAddress.locality}, {business.primaryAddress.region}
+      {business.primaryAddress.postcode}.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    padding-block: 2rem 3rem;
+    max-width: 68ch;
+  }
+  .legal h1 { margin-bottom: 0.5rem; }
+  .legal__meta {
+    color: var(--color-neutral-600);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .legal h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .legal p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+  }
+  .legal p + p { margin-top: 0.75rem; }
+</style>

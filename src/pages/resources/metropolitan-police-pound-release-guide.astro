@@ -1,0 +1,154 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import PhoneCTA from "../../components/sections/PhoneCTA.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import { sharedFaqs, services } from "../../data";
+import { breadcrumbSchema, faqSchema } from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+const poundService = services.find((s) => s.slug === "police-pound-release");
+
+const title = composeTitle("Metropolitan Police Pound Release Guide — Charlton, Perivale");
+const description = "A practical guide to releasing your vehicle from a Metropolitan Police pound — paperwork required, fees, process, and how we handle the release on your behalf.";
+
+const guideFaqs = poundService?.faqs ?? [];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/resources/metropolitan-police-pound-release-guide/"
+  schema={[
+    faqSchema(guideFaqs),
+    breadcrumbSchema([
+      { label: "Home", path: "/" },
+      { label: "Resources", path: "/resources/" },
+      { label: "Metropolitan Police Pound Release Guide" },
+    ]),
+  ]}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Resources" },
+        { label: "Metropolitan Police Pound Release Guide" },
+      ]}
+    />
+  </div>
+
+  <article class="guide container-page">
+    <span class="section-label">Guide</span>
+    <h1>How to get a vehicle out of a Metropolitan Police pound.</h1>
+    <p class="guide__lead">
+      A practical walk-through — the paperwork you'll need, the fees, the order of operations,
+      and the window staff hours at Charlton and Perivale.
+    </p>
+
+    <h2>Which pound has your vehicle?</h2>
+    <p>
+      All Metropolitan Police-seized vehicles in London go to one of two main pounds:
+      <strong>Charlton</strong> (south-east London, off the A206) and
+      <strong>Perivale</strong> (west London, off the A40). The officer or warden who
+      removed the vehicle will have left a TRN (traceable reference number) slip
+      showing which. If you don't have the slip, TRACE — the central enquiry line —
+      can tell you: 0845 206 8602.
+    </p>
+
+    <h2>What paperwork you'll need</h2>
+    <ul class="guide__list">
+      <li>
+        <strong>V5 logbook</strong> showing you are the registered keeper. If the V5
+        is with DVLA (recent change of keeper), a letter of authority from the new keeper
+        plus DVLA confirmation of application is accepted at pound discretion.
+      </li>
+      <li>
+        <strong>A current insurance certificate</strong> naming the driver who will
+        collect the vehicle, or naming us if we're collecting on your behalf.
+      </li>
+      <li>
+        <strong>Photo ID</strong> matching the person collecting (passport or
+        photo driving licence).
+      </li>
+      <li>
+        <strong>The release fee</strong> — payable to the pound by card.
+        At 2026 rates this is <span class="tk">[TK current release fee]</span> for a
+        standard car, with a daily storage charge of <span class="tk">[TK daily storage rate]</span>
+        per day.
+      </li>
+    </ul>
+
+    <h2>If we're doing the release for you</h2>
+    <p>
+      Send us the V5, the insurance certificate and a signed letter of authority.
+      We pay the release and storage fees on your behalf, load the vehicle onto a
+      flatbed (most pound-held cars need PG9 inspection, which means no ground-tow),
+      and deliver to your chosen address. Same-day turnaround in most cases.
+      Our <a href="/services/police-pound-release/">police pound release service</a> page
+      has the full details and pricing.
+    </p>
+
+    <h2>Opening hours</h2>
+    <p>
+      Both Charlton and Perivale pounds are open 8am–11pm, 7 days a week. The release
+      window stops 30 minutes before closing — don't arrive at 10:45pm expecting to
+      drive out at 10:55pm. Check current pound hours on the Met Police website
+      before travelling, as they occasionally change on bank holidays.
+    </p>
+  </article>
+
+  <PhoneCTA
+    tone="emergency"
+    heading="Your car is at Charlton or Perivale?"
+    lead="We'll handle the paperwork and deliver it to you, usually same-day."
+  />
+
+  {guideFaqs.length > 0 && <FAQ items={guideFaqs} heading="Common questions about pound release." />}
+
+  <PhoneCTA tone="navy" />
+</BaseLayout>
+
+<style>
+  .guide {
+    padding-block: 2rem 3rem;
+    max-width: 72ch;
+  }
+  .guide h1 {
+    margin-top: 0.6rem;
+  }
+  .guide__lead {
+    margin-top: 1rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1.1rem;
+  }
+  .guide h2 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.35rem;
+  }
+  .guide p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+  }
+  .guide p + p { margin-top: 0.75rem; }
+  .guide a {
+    color: var(--color-primary-700);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .guide__list {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .guide__list li {
+    color: var(--color-neutral-800);
+    line-height: 1.55;
+  }
+</style>

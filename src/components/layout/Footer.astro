@@ -1,0 +1,158 @@
+---
+import { business, navigation, credentials } from "../../data";
+---
+
+<footer class="footer">
+  <div class="container-page footer__inner">
+    <div class="footer__brand">
+      <a href="/" class="footer__brand-link" aria-label={business.name}>
+        <img src="/speedy-recovery-logo.png" alt={business.name} class="footer__logo" />
+      </a>
+      <a href={business.phone.href} class="footer__phone">{business.phone.display}</a>
+      <div class="footer__addr">
+        <strong>{business.primaryAddress.street}</strong><br />
+        {business.primaryAddress.locality}<br />
+        {business.primaryAddress.region} {business.primaryAddress.postcode}
+      </div>
+    </div>
+
+    <div class="footer__nav">
+      {navigation.footer.map((group) => (
+        <div>
+          <h3>{group.heading}</h3>
+          <ul>
+            {group.links.map((l) => (
+              <li><a href={l.href}>{l.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="footer__credentials container-page">
+    <ul>
+      {credentials.map((c) => (
+        <li>{c.label}</li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="footer__legal container-page">
+    <span>&copy; {new Date().getFullYear()} {business.legalName}. All rights reserved.</span>
+    <span>24 hours, every day.</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary-950);
+    color: var(--color-neutral-200);
+    padding-block: 3rem 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer__brand-link {
+    display: inline-block;
+    line-height: 0;
+  }
+  .footer__logo {
+    display: block;
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+  }
+  .footer__phone {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-accent-400);
+  }
+  .footer__addr {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-neutral-300);
+  }
+
+  .footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1.5rem;
+  }
+  .footer__nav h3 {
+    color: var(--color-accent-400);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .footer__nav a {
+    color: var(--color-neutral-200);
+    font-size: 1rem;
+  }
+  .footer__nav a:hover {
+    color: #fff;
+  }
+
+  .footer__credentials {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .footer__credentials ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    color: var(--color-neutral-300);
+    font-size: 1rem;
+  }
+  .footer__credentials li::before {
+    content: "· ";
+    margin-right: 0.25rem;
+    color: var(--color-accent-400);
+  }
+  .footer__credentials li:first-child::before { content: ""; }
+
+  .footer__legal {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    color: var(--color-neutral-400);
+    font-size: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer__inner {
+      grid-template-columns: 1fr 2fr;
+    }
+    .footer__nav {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

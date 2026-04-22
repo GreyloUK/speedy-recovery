@@ -1,0 +1,152 @@
+---
+import Icon from "../ui/Icon.astro";
+import { locations } from "../../data";
+import type { Location } from "../../data/locations";
+
+interface Props {
+  location: Location;
+}
+
+const { location } = Astro.props;
+const isDraft = location.intro.startsWith("[DRAFT]");
+const body = isDraft ? location.intro.replace(/^\[DRAFT\]\s*/, "") : location.intro;
+
+const baseLocation = location.basedAt
+  ? locations.find((l) => l.slug === location.basedAt)
+  : undefined;
+const baseLabel = baseLocation
+  ? `Dispatched from ${baseLocation.name}`
+  : "Operating base";
+---
+
+<section class="loc-detail">
+  <div class="container-page loc-detail__inner">
+    <div class="loc-detail__body">
+      {isDraft && (
+        <span class="loc-detail__draft">Draft copy — to be reviewed by client</span>
+      )}
+      <p>{body}</p>
+
+      <dl class="loc-detail__meta">
+        <div>
+          <dt>{baseLabel}</dt>
+          <dd>
+            {location.address.street}, {location.address.locality}<br />
+            {location.address.region} <span class:list={[location.address.postcode.startsWith("[TK") && "tk"]}>{location.address.postcode}</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Average response</dt>
+          <dd>{location.responseMinutes} minutes</dd>
+        </div>
+        {!location.basedAt && (
+          <div>
+            <dt>Verified address</dt>
+            <dd>{location.verified ? "Yes — Google Business Profile verified" : "Pending verification"}</dd>
+          </div>
+        )}
+      </dl>
+    </div>
+
+    <aside class="loc-detail__areas">
+      <span class="section-label">Nearby areas we cover</span>
+      <ul>
+        {location.nearbyAreas.map((a) => (
+          <li><Icon name="map-pin" size={14} /> {a}</li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .loc-detail {
+    background: #fff;
+  }
+  .loc-detail__inner {
+    padding-block: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .loc-detail__body p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+    font-size: 1.05rem;
+    max-width: 62ch;
+  }
+
+  .loc-detail__draft {
+    display: inline-block;
+    background: var(--color-accent-100);
+    color: var(--color-emergency-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-xs);
+    margin-bottom: 1rem;
+  }
+
+  .loc-detail__meta {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    border-top: 1px solid var(--color-neutral-200);
+    padding-top: 1.5rem;
+  }
+
+  .loc-detail__meta dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-primary-700);
+    margin-bottom: 0.25rem;
+  }
+  .loc-detail__meta dd {
+    margin: 0;
+    color: var(--color-neutral-800);
+    line-height: 1.45;
+  }
+
+  .loc-detail__areas {
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .loc-detail__areas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+  }
+
+  .loc-detail__areas li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-neutral-800);
+    font-size: 1rem;
+  }
+  .loc-detail__areas li :global(svg) {
+    color: var(--color-accent-600);
+  }
+
+  @media (min-width: 768px) {
+    .loc-detail__meta { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .loc-detail__inner {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

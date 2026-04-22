@@ -1,0 +1,160 @@
+---
+import { reviews, reviewsSummary } from "../../data";
+import Icon from "../ui/Icon.astro";
+
+const fullStars = Math.round(reviewsSummary.averageRating);
+---
+
+<section class="reviews">
+  <div class="container-page reviews__inner">
+    <header class="reviews__head">
+      <span class="section-label">Google reviews</span>
+      <div class="reviews__score">
+        <div class="reviews__score-main">
+          <Icon name="google" size={32} />
+          <span class="reviews__rating">{reviewsSummary.averageRating.toFixed(1)}</span>
+        </div>
+        <div class="reviews__score-meta">
+          <div class="reviews__stars" aria-label={`${reviewsSummary.averageRating} out of 5`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Icon name="star" size={18} class={i < fullStars ? "star star--on" : "star"} />
+            ))}
+          </div>
+          <span class="reviews__count">{reviewsSummary.totalReviews} verified Google reviews</span>
+        </div>
+      </div>
+    </header>
+
+    <ul class="reviews__list">
+      {reviews.map((r) => (
+        <li class="review">
+          <div class="review__stars" aria-hidden="true">
+            {Array.from({ length: r.rating }).map(() => (
+              <Icon name="star" size={14} class="star--on" />
+            ))}
+          </div>
+          <blockquote>{r.text}</blockquote>
+          <footer>
+            <strong class={r.author.startsWith("[TK") ? "tk" : undefined}>{r.author}</strong>
+            <span>Verified Google review · {new Date(r.dateISO).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}</span>
+          </footer>
+        </li>
+      ))}
+    </ul>
+
+    <a class="reviews__link" href={reviewsSummary.googleProfileUrl}>
+      See all reviews on Google <Icon name="arrow-right" size={16} />
+    </a>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    background: var(--color-neutral-50);
+  }
+  .reviews__inner {
+    padding-block: 3.5rem;
+  }
+
+  .reviews__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .reviews__score {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    max-width: 460px;
+  }
+
+  .reviews__score-main {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .reviews__rating {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--color-primary-900);
+    line-height: 1;
+  }
+
+  .reviews__stars {
+    display: flex;
+    gap: 2px;
+  }
+  .reviews :global(.star) { color: var(--color-neutral-300); }
+  .reviews :global(.star--on) { color: #fbbf24; fill: #fbbf24; }
+
+  .reviews__count {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-neutral-600);
+    margin-top: 0.2rem;
+    font-weight: 600;
+  }
+
+  .reviews__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .review {
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+  }
+
+  .review__stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0.6rem;
+  }
+
+  .review blockquote {
+    margin: 0;
+    color: var(--color-neutral-800);
+    line-height: 1.5;
+  }
+
+  .review footer {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .review footer strong { color: var(--color-primary-900); font-size: 1rem; }
+  .review footer span {
+    color: var(--color-neutral-600);
+    font-size: 1rem;
+    margin-top: 0.15rem;
+  }
+
+  .reviews__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-700);
+  }
+  .reviews__link:hover {
+    color: var(--color-accent-600);
+  }
+
+  @media (min-width: 768px) {
+    .reviews__list { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

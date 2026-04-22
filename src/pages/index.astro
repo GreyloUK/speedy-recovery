@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import TrustRibbon from "../components/sections/TrustRibbon.astro";
+import WhyChooseUs from "../components/sections/WhyChooseUs.astro";
+import ServiceGrid from "../components/sections/ServiceGrid.astro";
+import ServicesNav from "../components/sections/ServicesNav.astro";
+import Process from "../components/sections/Process.astro";
+import FleetStats from "../components/sections/FleetStats.astro";
+import Credentials from "../components/sections/Credentials.astro";
+import ReviewsGoogle from "../components/sections/ReviewsGoogle.astro";
+import AreasCovered from "../components/sections/AreasCovered.astro";
+import PhoneCTA from "../components/sections/PhoneCTA.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import { sharedFaqs, seo } from "../data";
+import { localBusinessSchema, faqSchema } from "../utils/schema";
+---
+
+<BaseLayout
+  title={seo.defaultTitle}
+  description={seo.defaultDescription}
+  canonicalPath="/"
+  schema={[localBusinessSchema(), faqSchema(sharedFaqs)]}
+>
+  <Hero
+    variant="home"
+    eyebrow="24/7 · London-wide"
+    title="24/7 Vehicle Recovery across London"
+    lead="Stuck on the roadside, after a crash, or collecting from the pound — our own fleet, our own drivers, 25 minutes away. PAS43 certified. O-Licence holder. Direct AA and FMG partner."
+    image="/images/home-hero.webp"
+    imageAlt="Speedy Recovery flatbed truck on a wet London street at dusk."
+  />
+
+  <TrustRibbon />
+
+  <WhyChooseUs />
+
+  <ServicesNav
+    eyebrow="What we handle"
+    heading="Five services. One operator. All 24/7."
+    lead="Breakdowns, accidents, police pounds, specialist vehicles and secure storage — the five jobs insurers and fleet dispatchers actually pay for."
+  />
+
+  <PhoneCTA
+    tone="emergency"
+    heading="On a hard shoulder? Call now."
+    lead="No out-of-hours surcharge. No callback. No meter running."
+  />
+
+  <Process />
+
+  <FleetStats />
+
+  <Credentials />
+
+  <ReviewsGoogle />
+
+  <ServiceGrid />
+
+  <AreasCovered />
+
+  <FAQ items={sharedFaqs} />
+
+  <PhoneCTA
+    tone="navy"
+    heading="One call, fixed quote, flatbed dispatched."
+    lead="If your vehicle has stopped moving — anywhere in London, any hour of the day — we can help right now."
+  />
+</BaseLayout>

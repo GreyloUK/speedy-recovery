@@ -1,0 +1,227 @@
+---
+import { business, navigation } from "../../data";
+import Icon from "../ui/Icon.astro";
+---
+
+<div class="mm" data-mobile-menu aria-hidden="true">
+  <div class="mm__scrim" data-mobile-menu-close aria-hidden="true"></div>
+  <aside class="mm__panel" role="dialog" aria-label="Mobile navigation">
+    <div class="mm__head">
+      <span class="mm__brand">{business.shortName}</span>
+      <button
+        type="button"
+        class="mm__close"
+        aria-label="Close menu"
+        data-mobile-menu-close
+      >
+        <Icon name="x" size={22} />
+      </button>
+    </div>
+
+    <nav aria-label="Mobile primary">
+      <ul class="mm__list">
+        {navigation.primary.map((item) => (
+          item.children ? (
+            <li class="mm__group" data-mm-group>
+              <div class="mm__row">
+                <a href={item.href} class="mm__link">{item.label}</a>
+                <button
+                  type="button"
+                  class="mm__expand"
+                  aria-label={`Show ${item.label.toLowerCase()} sub-menu`}
+                  aria-expanded="false"
+                  data-mm-expand
+                >
+                  <Icon name="chevron-down" size={18} />
+                </button>
+              </div>
+              <ul class="mm__sub" data-mm-sub>
+                <li><a href={item.href} class="mm__sub-all">All {item.label.toLowerCase()}</a></li>
+                {item.children.map((child) => (
+                  <li><a href={child.href}>{child.label}</a></li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a href={item.href} class="mm__link">{item.label}</a>
+            </li>
+          )
+        ))}
+      </ul>
+    </nav>
+
+    <a href={business.phone.href} class="mm__call">
+      <Icon name="phone" size={20} />
+      <span class="mm__call-stack">
+        <span class="mm__call-meta">Call 24/7</span>
+        <span class="mm__call-number">{business.phone.display}</span>
+      </span>
+    </a>
+  </aside>
+</div>
+
+<style>
+  .mm {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .mm[data-open="true"] { pointer-events: auto; }
+
+  .mm__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 180ms ease;
+  }
+  .mm[data-open="true"] .mm__scrim {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .mm__panel {
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    width: min(360px, 85vw);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    transform: translateX(100%);
+    transition: transform 220ms ease;
+    box-shadow: var(--shadow-panel);
+    overflow-y: auto;
+  }
+  .mm[data-open="true"] .mm__panel {
+    transform: translateX(0);
+  }
+
+  .mm__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mm__brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--color-primary-900);
+  }
+  .mm__close {
+    background: none;
+    border: 1px solid var(--color-neutral-300);
+    padding: 0.4rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-primary-900);
+  }
+
+  .mm__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mm__list > li {
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+  .mm__list > li:first-child {
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  .mm__link {
+    display: block;
+    padding: 0.95rem 0.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-primary-900);
+  }
+
+  .mm__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mm__row .mm__link { flex: 1 1 auto; }
+
+  .mm__expand {
+    background: none;
+    border: 0;
+    padding: 0.85rem 0.6rem;
+    color: var(--color-primary-700);
+    cursor: pointer;
+    line-height: 0;
+    transition: transform 180ms ease, color 180ms ease;
+  }
+  .mm__group[data-open="true"] .mm__expand {
+    transform: rotate(180deg);
+    color: var(--color-accent-600);
+  }
+
+  .mm__sub {
+    list-style: none;
+    padding: 0 0 0.5rem 1rem;
+    margin: 0;
+    display: none;
+    border-top: 1px solid var(--color-neutral-200);
+    background: var(--color-neutral-50);
+    margin-inline: -0.5rem;
+    padding-inline: 1.25rem;
+  }
+  .mm__group[data-open="true"] .mm__sub { display: block; }
+
+  .mm__sub li a {
+    display: block;
+    padding: 0.7rem 0.25rem;
+    font-size: 1rem;
+    color: var(--color-primary-900);
+    font-weight: 500;
+  }
+  .mm__sub li a:hover { color: var(--color-accent-600); }
+  .mm__sub li + li a { border-top: 1px solid var(--color-neutral-200); }
+
+  .mm__sub-all {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700 !important;
+    color: var(--color-primary-700) !important;
+    padding-top: 0.9rem !important;
+  }
+
+  .mm__call {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-accent-500);
+    color: var(--color-primary-950);
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    border: 1px solid var(--color-accent-600);
+  }
+  .mm__call-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .mm__call-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-primary-900);
+    opacity: 0.8;
+  }
+  .mm__call-number {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+</style>

@@ -1,0 +1,160 @@
+---
+const operation = [
+  { label: "Certified", value: "PAS43 2012" },
+  { label: "Authority", value: "O-Licence" },
+  { label: "Drivers", value: "IVR-certified" },
+  { label: "Fleet", value: "6 vehicles · 12-ton · HIAB" },
+  { label: "Partners", value: "AA · FMG direct" },
+  { label: "Dispatch", value: "24 hours, every day" },
+];
+---
+
+<section class="svc-hero">
+  <div class="container-page svc-hero__inner">
+    <div class="svc-hero__content">
+      <span class="section-label-dark">Services</span>
+      <h1>Vehicle Recovery Services in London</h1>
+      <p class="svc-hero__tagline">
+        Five services. Every one load-bearing.
+      </p>
+      <p class="svc-hero__lead">
+        We do the five jobs that insurer panels, police pounds and fleet
+        dispatchers actually pay for — and we do them with the certifications,
+        the trucks and the drivers that gate that work in the first place.
+      </p>
+      <p class="svc-hero__kicker">
+        Pick the service that matches your situation, or scroll down to
+        choose by what's happened.
+      </p>
+    </div>
+
+    <aside class="svc-hero__sheet" aria-label="Operation summary">
+      <header>
+        <span class="section-label-dark">Operation</span>
+        <h2>The sheet behind the call.</h2>
+      </header>
+      <dl>
+        {operation.map((row) => (
+          <div>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .svc-hero {
+    background: var(--color-primary-950);
+    color: var(--color-neutral-100);
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(255, 176, 41, 0.10), transparent 55%);
+    pointer-events: none;
+  }
+
+  .svc-hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 3rem 3.25rem;
+  }
+
+  .svc-hero__content h1 {
+    color: #fff;
+    margin-top: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .svc-hero__tagline {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 800;
+    color: var(--color-accent-400);
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+  }
+  .svc-hero__lead {
+    margin-top: 1.1rem;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--color-neutral-200);
+    max-width: 54ch;
+  }
+  .svc-hero__kicker {
+    margin-top: 0.9rem;
+    color: var(--color-neutral-400);
+    font-size: 1rem;
+    max-width: 54ch;
+  }
+
+  /* Operation fact-sheet — letterhead-style divided cells */
+  .svc-hero__sheet {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.5rem 0.25rem;
+    position: relative;
+  }
+  .svc-hero__sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--color-accent-500);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .svc-hero__sheet header h2 {
+    color: #fff;
+    margin-top: 0.35rem;
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  }
+
+  .svc-hero__sheet dl {
+    margin: 1.25rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .svc-hero__sheet dl > div {
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .svc-hero__sheet dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-400);
+  }
+  .svc-hero__sheet dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 900px) {
+    .svc-hero__inner {
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3rem;
+      padding-block: 4.25rem 4.5rem;
+      align-items: center;
+    }
+    .svc-hero__sheet { padding: 1.75rem 1.75rem 0.5rem; }
+  }
+</style>

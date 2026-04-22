@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import Hero from "../../components/sections/Hero.astro";
+import TrustRibbon from "../../components/sections/TrustRibbon.astro";
+import LocationDetail from "../../components/sections/LocationDetail.astro";
+import NapCard from "../../components/sections/NapCard.astro";
+import ServicesNav from "../../components/sections/ServicesNav.astro";
+import PhoneCTA from "../../components/sections/PhoneCTA.astro";
+import ReviewsGoogle from "../../components/sections/ReviewsGoogle.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import AreasCovered from "../../components/sections/AreasCovered.astro";
+import { locations, sharedFaqs } from "../../data";
+import type { Location } from "../../data/locations";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  locationLocalBusinessSchema,
+} from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+export async function getStaticPaths() {
+  return locations.map((l) => ({
+    params: { location: l.slug },
+    props: { location: l },
+  }));
+}
+
+interface Props {
+  location: Location;
+}
+
+const { location } = Astro.props;
+
+const baseLocation = location.basedAt
+  ? locations.find((l) => l.slug === location.basedAt)
+  : undefined;
+
+const title = composeTitle(`Vehicle Recovery in ${location.name} — 24/7`);
+const description = `24/7 vehicle recovery in ${location.name} — ${location.postcode} and surrounding postcodes. ${location.responseMinutes}-min average response. PAS43 certified. Call us.`;
+
+const combinedFaqs = [...location.faqs, ...sharedFaqs.slice(0, 2)];
+
+const heroLead = location.basedAt && baseLocation
+  ? `Dispatched from our ${baseLocation.name} base — typical response ${location.responseMinutes} minutes. PAS43, O-Licence, IVR.`
+  : `Operating from ${location.address.locality} — typical response ${location.responseMinutes} minutes. PAS43, O-Licence, IVR.`;
+
+const schema = [
+  faqSchema(combinedFaqs),
+  breadcrumbSchema([
+    { label: "Home", path: "/" },
+    { label: "Areas", path: "/areas/" },
+    { label: location.name, path: `/areas/${location.slug}/` },
+  ]),
+];
+if (!location.basedAt) {
+  schema.unshift(locationLocalBusinessSchema(location));
+}
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={`/areas/${location.slug}/`}
+  schema={schema}
+>
+  <div class="container-page" style="padding-block: 1rem 0;">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Areas", href: "/areas/" },
+        { label: location.name },
+      ]}
+    />
+  </div>
+
+  <Hero
+    variant="location"
+    eyebrow={`${location.name} · ${location.postcode}`}
+    title={`24/7 vehicle recovery in ${location.name}.`}
+    lead={heroLead}
+    image={location.heroImage}
+    imageAlt={`Recovery vehicle on scene in ${location.name}`}
+  />
+
+  <TrustRibbon />
+
+  <LocationDetail location={location} />
+
+  <PhoneCTA
+    tone="emergency"
+    heading={`On the roadside in ${location.name}?`}
+    lead="One call and a flatbed is on the way."
+  />
+
+  <ServicesNav
+    heading={`Services available in ${location.name}`}
+    eyebrow={location.basedAt && baseLocation ? `Dispatched from ${baseLocation.name}` : "What we handle from this base"}
+    filterSlugs={location.servicesOffered}
+  />
+
+  <ReviewsGoogle />
+
+  <AreasCovered excludeSlug={location.slug} />
+
+  <FAQ items={combinedFaqs} heading={`${location.name} — common questions.`} />
+
+  {location.basedAt ? (
+    <PhoneCTA tone="navy" />
+  ) : (
+    <NapCard location={location} />
+  )}
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import Icon from "../ui/Icon.astro";
+import type { Faq } from "../../data/faqs";
+
+interface Props {
+  items: Faq[];
+  eyebrow?: string;
+  heading?: string;
+}
+
+const { items, eyebrow = "Common questions", heading = "Straight answers." } = Astro.props;
+---
+
+<section class="faq">
+  <div class="container-page faq__inner">
+    <header class="faq__head">
+      <span class="section-label">{eyebrow}</span>
+      <h2>{heading}</h2>
+    </header>
+
+    <ul class="faq__list">
+      {items.map((f, i) => (
+        <li data-faq-item>
+          <button
+            type="button"
+            class="faq__trigger"
+            aria-expanded="false"
+            aria-controls={`faq-panel-${i}`}
+            data-faq-trigger
+          >
+            <span>{f.q}</span>
+            <Icon name="chevron-down" size={18} class="faq__chev" />
+          </button>
+          <div id={`faq-panel-${i}`} class="faq__panel" data-faq-panel>
+            <p>{f.a}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script>
+  import "../../scripts/faq";
+</script>
+
+<style>
+  .faq {
+    background: #fff;
+  }
+  .faq__inner {
+    padding-block: 3.5rem;
+  }
+
+  .faq__head { max-width: 640px; }
+  .faq__head h2 { margin-top: 0.6rem; }
+
+  .faq__list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  .faq__list li {
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .faq__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.2rem 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-primary-900);
+    cursor: pointer;
+  }
+
+  .faq__chev {
+    flex-shrink: 0;
+    color: var(--color-neutral-600);
+    transition: transform 180ms ease;
+  }
+
+  [data-faq-item][data-open="true"] .faq__chev {
+    transform: rotate(180deg);
+    color: var(--color-accent-600);
+  }
+
+  .faq__panel {
+    display: none;
+    padding-bottom: 1.25rem;
+  }
+  [data-faq-item][data-open="true"] .faq__panel {
+    display: block;
+  }
+
+  .faq__panel p {
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    max-width: 68ch;
+  }
+</style>

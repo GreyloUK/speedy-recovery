@@ -1,0 +1,226 @@
+---
+import { locations } from "../../data";
+
+interface Props {
+  excludeSlug?: string;
+}
+
+const { excludeSlug } = Astro.props;
+
+const items = excludeSlug
+  ? locations.filter((l) => l.slug !== excludeSlug)
+  : locations;
+---
+
+<section class="areas">
+  <div class="container-page areas__inner">
+    <header class="areas__head">
+      <span class="section-label">Areas covered</span>
+      <h2>London-wide, dispatched from two operating bases.</h2>
+      <p>
+        Our registered base in Harrow covers north-west London; our Perivale
+        operating point covers west London and the A40 corridor. The whole
+        capital served from the nearer of the two.
+      </p>
+    </header>
+
+    <ul class="areas__list">
+      {items.map((l) => (
+        <li class="areas__item">
+          <a href={`/areas/${l.slug}/`} class="card">
+            <figure class="card__media">
+              {l.heroImage ? (
+                <img
+                  src={l.heroImage}
+                  alt={`Recovery vehicle on scene in ${l.name}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="card__placeholder" aria-hidden="true">
+                  <span>[TK photo]</span>
+                </span>
+              )}
+
+              <div class="card__veil" aria-hidden="true"></div>
+
+              <figcaption class="card__caption">
+                <span class="card__post">{l.postcode}</span>
+                <h3 class="card__name">{l.name}</h3>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .areas {
+    background: #fff;
+  }
+  .areas__inner {
+    padding-block: 3.5rem;
+  }
+
+  .areas__head { max-width: 640px; }
+  .areas__head h2 { margin-top: 0.6rem; }
+  .areas__head p {
+    margin-top: 0.75rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+  }
+
+  .areas__list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .areas__item {
+    margin: 0;
+  }
+
+  /* ---- The card ---- */
+
+  .card {
+    display: block;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-neutral-200);
+    background: var(--color-primary-950);
+    box-shadow: var(--shadow-card);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary-700);
+    box-shadow: 0 14px 36px -16px rgba(0, 0, 0, 0.35);
+  }
+
+  .card:focus-visible {
+    border-color: var(--color-accent-500);
+    box-shadow: 0 0 0 3px rgba(255, 176, 41, 0.35);
+  }
+
+  /* Media area: 3:2 aspect ratio (DESIGN.md approved) */
+  .card__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-primary-950);
+  }
+
+  .card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 220ms ease;
+  }
+  .card:hover .card__media img {
+    filter: brightness(0.92) saturate(1.05);
+  }
+
+  /* Honest placeholder when no photo yet */
+  .card__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-950) 100%);
+  }
+  .card__placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px dashed rgba(255, 176, 41, 0.4);
+    border-radius: var(--radius-sm);
+  }
+  .card__placeholder span {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-400);
+    opacity: 0.85;
+  }
+
+  /* Bottom gradient veil so caption sits cleanly on any photo */
+  .card__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-primary-950) 0%,
+      rgba(11, 14, 28, 0.65) 28%,
+      rgba(11, 14, 28, 0) 60%
+    );
+    pointer-events: none;
+  }
+
+  .card__caption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    padding: 1.1rem 1.25rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    color: #fff;
+  }
+
+  .card__post {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-400);
+    padding: 0.2rem 0.55rem;
+    background: rgba(0, 0, 0, 0.32);
+    border: 1px solid rgba(255, 176, 41, 0.35);
+    border-radius: var(--radius-xs);
+    backdrop-filter: blur(2px);
+  }
+
+  .card__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    /* slight text shadow keeps the name legible if the photo is bright */
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  }
+
+  /* ---- Grid breakpoints ---- */
+
+  @media (min-width: 640px) {
+    .areas__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .areas__list {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>

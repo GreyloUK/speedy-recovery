@@ -1,0 +1,181 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import Icon from "../components/ui/Icon.astro";
+import Button from "../components/ui/Button.astro";
+import PhoneCTA from "../components/sections/PhoneCTA.astro";
+import { business, locations } from "../data";
+import { breadcrumbSchema, localBusinessSchema } from "../utils/schema";
+import { composeTitle } from "../utils/seo";
+
+const title = composeTitle("Contact — 24/7 vehicle recovery in London");
+const description = "Contact Affordable Speedy Recovery — 24/7 phone dispatch on 07850 900 005. Registered base: Cardoc House, North Harrow, HA2 6AE.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/contact/"
+  schema={[
+    localBusinessSchema(),
+    breadcrumbSchema([
+      { label: "Home", path: "/" },
+      { label: "Contact", path: "/contact/" },
+    ]),
+  ]}
+>
+  <div class="container-page" style="padding-block: 1.25rem 0;">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
+  </div>
+
+  <section class="contact container-page">
+    <div class="contact__main">
+      <span class="section-label">Contact</span>
+      <h1>One phone number. 24 hours. Every day.</h1>
+      <p>
+        Calling is always fastest. Dispatch is 24/7 and the line is answered by the
+        team operating the trucks — not a call centre.
+      </p>
+
+      <div class="contact__call">
+        <Button href={business.phone.href} variant="primary" size="lg" iconBefore="phone">
+          <span class="contact__call-stack">
+            <span class="contact__call-meta">Call 24/7</span>
+            <span class="contact__call-num">{business.phone.display}</span>
+          </span>
+        </Button>
+        <a href={business.email.href} class="contact__email">
+          <Icon name="mail" size={18} />
+          <span class:list={[business.email.general.startsWith("[TK") && "tk"]}>{business.email.general}</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="contact__bases">
+      <span class="section-label">Operating bases</span>
+      <ul>
+        {locations.map((l) => (
+          <li>
+            <Icon name="map-pin" size={20} />
+            <div>
+              <h3>{l.name}</h3>
+              <address>
+                {l.address.street}<br />
+                {l.address.locality}<br />
+                {l.address.region} <span class:list={[l.address.postcode.startsWith("[TK") && "tk"]}>{l.address.postcode}</span>
+              </address>
+              <a href={`/areas/${l.slug}/`}>See {l.name} coverage →</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </section>
+
+  <PhoneCTA
+    tone="emergency"
+    heading="Already on the roadside? Call, don't email."
+    lead="Email is for paperwork. Phone is for dispatch."
+  />
+</BaseLayout>
+
+<style>
+  .contact {
+    padding-block: 2rem 3.5rem;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contact__main h1 {
+    margin-top: 0.6rem;
+    max-width: 18ch;
+  }
+  .contact__main p {
+    margin-top: 0.75rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    max-width: 50ch;
+    font-size: 1.05rem;
+  }
+
+  .contact__call {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .contact__call-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    text-align: left;
+  }
+  .contact__call-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  .contact__call-num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  .contact__email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-primary-700);
+    font-weight: 600;
+  }
+
+  .contact__bases ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact__bases li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    padding: 1.1rem;
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+  }
+  .contact__bases li :global(svg) {
+    color: var(--color-accent-600);
+    margin-top: 3px;
+  }
+  .contact__bases h3 {
+    color: var(--color-primary-900);
+    font-size: 1.1rem;
+  }
+  .contact__bases address {
+    font-style: normal;
+    color: var(--color-neutral-700);
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .contact__bases a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .contact {
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
