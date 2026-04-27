@@ -117,3 +117,11 @@
   padding: 0 0.2em;
   border-radius: var(--radius-xs);
 }
+
+@utility breadcrumb-band {
+  padding-block: 1.25rem 0;
+}
+
+@utility breadcrumb-band-tight {
+  padding-block: 1rem 0;
+}

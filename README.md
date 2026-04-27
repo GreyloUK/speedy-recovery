@@ -1,6 +1,6 @@
-# Affordable Speedy Recovery — Astro site
+# Speedy Recovery — Astro site
 
-24/7 vehicle recovery site for Affordable Speedy Recovery (London).
+24/7 vehicle recovery site for Speedy Recovery (London + M25).
 
 ## Stack
 

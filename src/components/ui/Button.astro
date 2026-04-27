@@ -24,6 +24,8 @@ const {
 
 const isExternal = /^https?:/.test(href);
 const isTel = href.startsWith("tel:");
+const isMail = href.startsWith("mailto:");
+const skipPrefetch = isExternal || isTel || isMail;
 const rel = isExternal ? "noopener noreferrer" : undefined;
 const target = isExternal ? "_blank" : undefined;
 ---
@@ -34,6 +36,7 @@ const target = isExternal ? "_blank" : undefined;
   rel={rel}
   target={target}
   data-tel={isTel ? "true" : undefined}
+  data-astro-prefetch={skipPrefetch ? "false" : undefined}
 >
   {iconBefore && <Icon name={iconBefore} size={size === "lg" ? 20 : 18} />}
   <span><slot /></span>

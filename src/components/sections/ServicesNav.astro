@@ -12,7 +12,7 @@ interface Props {
 }
 
 const {
-  heading = "Five services. One operator. All 24/7.",
+  heading = "Core services. One operator. All 24/7.",
   eyebrow = "What we handle",
   lead,
   filterSlugs,
@@ -195,11 +195,13 @@ const items: Service[] = filterSlugs
   .svc-nav__cell:hover .svc-nav__arrow { color: var(--color-accent-600); }
   .svc-nav--dark .svc-nav__cell:hover .svc-nav__arrow { color: var(--color-accent-300); }
 
-  /* Responsive column counts, tuned for typical item counts of 3–5. */
+  /* Responsive column counts, tuned for changing service counts. */
   @media (min-width: 640px) {
     .svc-nav__list[data-count="3"],
     .svc-nav__list[data-count="4"],
-    .svc-nav__list[data-count="5"] {
+    .svc-nav__list[data-count="5"],
+    .svc-nav__list[data-count="6"],
+    .svc-nav__list[data-count="7"] {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -213,10 +215,20 @@ const items: Service[] = filterSlugs
     .svc-nav__list[data-count="5"] {
       grid-template-columns: repeat(3, 1fr);
     }
+    .svc-nav__list[data-count="6"],
+    .svc-nav__list[data-count="7"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   @media (min-width: 1100px) {
     .svc-nav__list[data-count="5"] {
       grid-template-columns: repeat(5, 1fr);
+    }
+    .svc-nav__list[data-count="6"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .svc-nav__list[data-count="7"] {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 

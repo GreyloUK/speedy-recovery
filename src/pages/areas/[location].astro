@@ -36,8 +36,47 @@ const baseLocation = location.basedAt
   ? locations.find((l) => l.slug === location.basedAt)
   : undefined;
 
-const title = composeTitle(`Vehicle Recovery in ${location.name} — 24/7`);
-const description = `24/7 vehicle recovery in ${location.name} — ${location.postcode} and surrounding postcodes. ${location.responseMinutes}-min average response. PAS43 certified. Call us.`;
+const pageSeo: Record<string, { title: string; description: string; heroTitle: string }> = {
+  harrow: {
+    title: "Car Recovery Harrow — 24/7 Vehicle Recovery",
+    description:
+      "24/7 car recovery in Harrow, North Harrow and HA postcodes. PAS43 certified, O-Licence holder, secure yard and 20-min typical response.",
+    heroTitle: "Car Recovery Harrow — 24/7",
+  },
+  perivale: {
+    title: "Car Recovery Perivale & Perivale Car Pound Help",
+    description:
+      "Car recovery in Perivale, UB6 and help collecting from Perivale car pound. 24/7 flatbed recovery from Speedy Recovery's Walmgate Road base.",
+    heroTitle: "Car Recovery Perivale & Perivale Car Pound Help",
+  },
+  greenford: {
+    title: "Car Recovery Greenford — 24/7 Vehicle Recovery",
+    description:
+      "24/7 car recovery in Greenford, UB6, A40 and nearby industrial estates. Dispatched from Perivale with 15-min typical response.",
+    heroTitle: "Car Recovery Greenford — 24/7",
+  },
+  ealing: {
+    title: "Car Recovery Ealing — 24/7 Vehicle Recovery",
+    description:
+      "24/7 car recovery in Ealing, W5, W13, Ealing Broadway, West Ealing and Hanger Lane. Dispatched from Perivale, PAS43 certified.",
+    heroTitle: "Car Recovery Ealing — 24/7",
+  },
+  hayes: {
+    title: "Car Recovery Hayes — 24/7 Vehicle Recovery",
+    description:
+      "24/7 car recovery in Hayes, UB3, Heathrow corridor, A312 and A4. Flatbed recovery for cars, vans and light commercials.",
+    heroTitle: "Car Recovery Hayes — 24/7",
+  },
+};
+
+const seo = pageSeo[location.slug] ?? {
+  title: `Vehicle Recovery in ${location.name} — 24/7`,
+  description: `24/7 vehicle recovery in ${location.name} — ${location.postcode} and surrounding postcodes. ${location.responseMinutes}-min average response. PAS43 certified. Call us.`,
+  heroTitle: `24/7 vehicle recovery in ${location.name}.`,
+};
+
+const title = composeTitle(seo.title);
+const description = seo.description;
 
 const combinedFaqs = [...location.faqs, ...sharedFaqs.slice(0, 2)];
 
@@ -64,7 +103,7 @@ if (!location.basedAt) {
   canonicalPath={`/areas/${location.slug}/`}
   schema={schema}
 >
-  <div class="container-page" style="padding-block: 1rem 0;">
+  <div class="container-page breadcrumb-band-tight">
     <Breadcrumbs
       items={[
         { label: "Home", href: "/" },
@@ -77,7 +116,7 @@ if (!location.basedAt) {
   <Hero
     variant="location"
     eyebrow={`${location.name} · ${location.postcode}`}
-    title={`24/7 vehicle recovery in ${location.name}.`}
+    title={seo.heroTitle}
     lead={heroLead}
     image={location.heroImage}
     imageAlt={`Recovery vehicle on scene in ${location.name}`}

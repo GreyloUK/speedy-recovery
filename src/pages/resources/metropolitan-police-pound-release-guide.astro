@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import PhoneCTA from "../../components/sections/PhoneCTA.astro";
 import FAQ from "../../components/sections/FAQ.astro";
-import { sharedFaqs, services } from "../../data";
+import { services } from "../../data";
 import { breadcrumbSchema, faqSchema } from "../../utils/schema";
 import { composeTitle } from "../../utils/seo";
 
@@ -28,7 +28,7 @@ const guideFaqs = poundService?.faqs ?? [];
     ]),
   ]}
 >
-  <div class="container-page" style="padding-block: 1.25rem 0;">
+  <div class="container-page breadcrumb-band">
     <Breadcrumbs
       items={[
         { label: "Home", href: "/" },
@@ -73,9 +73,10 @@ const guideFaqs = poundService?.faqs ?? [];
       </li>
       <li>
         <strong>The release fee</strong> — payable to the pound by card.
-        At 2026 rates this is <span class="tk">[TK current release fee]</span> for a
-        standard car, with a daily storage charge of <span class="tk">[TK daily storage rate]</span>
-        per day.
+        At 2026 rates, the statutory removal charge for a standard car or light
+        van up to 3.5 tonnes, found upright on-road and not substantially damaged,
+        is £192, with storage charged at £26 per 24 hours or part thereof. Charges
+        vary by vehicle weight, condition and where it was recovered from.
       </li>
     </ul>
 
@@ -86,7 +87,7 @@ const guideFaqs = poundService?.faqs ?? [];
       flatbed (most pound-held cars need PG9 inspection, which means no ground-tow),
       and deliver to your chosen address. Same-day turnaround in most cases.
       Our <a href="/services/police-pound-release/">police pound release service</a> page
-      has the full details and pricing.
+      has the full details.
     </p>
 
     <h2>Opening hours</h2>

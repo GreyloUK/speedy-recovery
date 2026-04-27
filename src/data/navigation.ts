@@ -8,10 +8,12 @@ type PrimaryItem = NavLink & {
 };
 
 const servicesChildren: readonly NavLink[] = [
-  { label: "Car Recovery", href: "/services/car-recovery/" },
+  { label: "Car, Van & Motorcycle Recovery", href: "/services/car-recovery/" },
   { label: "Accident Recovery", href: "/services/accident-recovery/" },
   { label: "Police Pound Release", href: "/services/police-pound-release/" },
   { label: "Specialist Recovery", href: "/services/specialist-recovery/" },
+  { label: "Vehicle Repossession", href: "/services/vehicle-repossession/" },
+  { label: "Supercar & Classic Car Transportation", href: "/services/supercar-classic-car-transportation/" },
   { label: "Vehicle Storage", href: "/services/vehicle-storage/" },
 ];
 

@@ -3,7 +3,12 @@ import { business } from "../../data";
 import Icon from "../ui/Icon.astro";
 ---
 
-<a href={business.phone.href} class="sticky-call" aria-label={`Call ${business.phone.display}`}>
+<a
+  href={business.phone.href}
+  class="sticky-call"
+  aria-label={`Call ${business.phone.display}`}
+  data-astro-prefetch="false"
+>
   <Icon name="phone" size={20} />
   <span class="sticky-call__stack">
     <span class="sticky-call__meta">Call 24/7 — we're open now</span>

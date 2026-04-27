@@ -1,13 +1,28 @@
 ---
+import { Image } from "astro:assets";
+import type { LocalImageProps } from "astro:assets";
 import Icon from "../ui/Icon.astro";
+import { business } from "../../data";
+
+type LocalImage = LocalImageProps["src"];
 
 interface Props {
   longDescription: string;
+  detailSections: { heading: string; body: string }[];
   bullets: string[];
   priceNote: string;
+  serviceSlug?: string;
+  galleryImages?: { image: LocalImage; alt: string }[];
 }
 
-const { longDescription, bullets, priceNote } = Astro.props;
+const {
+  longDescription,
+  detailSections,
+  bullets,
+  priceNote,
+  serviceSlug,
+  galleryImages = [],
+} = Astro.props;
 const isDraft = longDescription.startsWith("[DRAFT]");
 const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescription;
 ---
@@ -19,21 +34,81 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
         <span class="svc-detail__draft">Draft copy — to be reviewed by client</span>
       )}
       <p>{body}</p>
+      <div class="svc-detail__sections">
+        {detailSections.map((section) => (
+          <section class="svc-detail__section">
+            <h2>{section.heading}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+      </div>
+      {galleryImages.length > 0 && (
+        <div class="svc-detail__gallery" aria-label="Service photographs">
+          {galleryImages.map((item) => (
+            <figure>
+              <Image
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                widths={[360, 560, 760, 960]}
+                sizes="(min-width: 900px) 29vw, calc(50vw - 1.75rem)"
+                quality="mid"
+              />
+            </figure>
+          ))}
+        </div>
+      )}
+      {serviceSlug === "police-pound-release" && (
+        <div class="svc-detail__callout">
+          <span class="section-label">Police pound guide</span>
+          <h2>Release process, documents and statutory charges</h2>
+          <p>
+            If you need the document checklist before booking recovery, use our
+            Metropolitan Police pound release guide. It explains what the pound
+            asks for; this page is for arranging collection and transport.
+          </p>
+          <a href="/resources/metropolitan-police-pound-release-guide/">
+            Read the release guide <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
+      )}
       <p class="svc-detail__price">
         <Icon name="check" size={16} />
         {priceNote}
       </p>
     </div>
-    <aside class="svc-detail__checks">
-      <span class="section-label">What's included</span>
-      <ul>
-        {bullets.map((b) => (
-          <li>
-            <Icon name="check" size={16} />
-            <span>{b}</span>
-          </li>
-        ))}
-      </ul>
+    <aside class="svc-detail__rail">
+      <div class="svc-detail__checks">
+        <span class="section-label">What's included</span>
+        <ul>
+          {bullets.map((b) => (
+            <li>
+              <Icon name="check" size={16} />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="svc-detail__side-card svc-detail__side-card--call">
+        <span class="section-label">Fast dispatch</span>
+        <p>Speak to a recovery operator and get a fixed quote before the truck leaves.</p>
+        <a href={business.phone.href} data-astro-prefetch="false">
+          <Icon name="phone" size={16} />
+          {business.phone.display}
+        </a>
+      </div>
+
+      <div class="svc-detail__side-card">
+        <span class="section-label">Operator checks</span>
+        <ul>
+          <li>PAS43 certified</li>
+          <li>Full O-Licence holder</li>
+          <li>IVR-trained drivers</li>
+          <li>Own 6-vehicle fleet</li>
+        </ul>
+      </div>
     </aside>
   </div>
 </section>
@@ -47,6 +122,7 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    align-items: start;
   }
 
   .svc-detail__body p {
@@ -54,6 +130,61 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
     line-height: 1.65;
     font-size: 1.05rem;
     max-width: 62ch;
+  }
+  .svc-detail__sections {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .svc-detail__section h2 {
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    margin: 0 0 0.55rem;
+  }
+  .svc-detail__section p {
+    margin: 0;
+  }
+  .svc-detail__callout {
+    margin-top: 2rem;
+    padding: 1.35rem;
+    border: 1px solid var(--color-neutral-200);
+    border-left: 4px solid var(--color-accent-500);
+    border-radius: var(--radius-md);
+    background: var(--color-neutral-50);
+    max-width: 62ch;
+  }
+  .svc-detail__callout h2 {
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+    margin-top: 0.4rem;
+  }
+  .svc-detail__callout a {
+    margin-top: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-primary-700);
+    font-weight: 700;
+  }
+
+  .svc-detail__gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-top: 2rem;
+    max-width: 62ch;
+  }
+  .svc-detail__gallery figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-primary-950);
+    border: 1px solid var(--color-neutral-200);
+  }
+  .svc-detail__gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .svc-detail__draft {
@@ -79,7 +210,14 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
     font-size: 1rem;
   }
 
-  .svc-detail__checks {
+  .svc-detail__rail {
+    display: grid;
+    gap: 1rem;
+    align-self: start;
+  }
+
+  .svc-detail__checks,
+  .svc-detail__side-card {
     background: var(--color-neutral-50);
     border: 1px solid var(--color-neutral-200);
     border-radius: var(--radius-md);
@@ -88,7 +226,8 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
 
   .svc-detail__checks h3 { margin-top: 0.5rem; }
 
-  .svc-detail__checks ul {
+  .svc-detail__checks ul,
+  .svc-detail__side-card ul {
     list-style: none;
     padding: 0;
     margin-top: 0.75rem;
@@ -110,10 +249,43 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
     margin-top: 3px;
   }
 
+  .svc-detail__side-card p {
+    margin: 0.65rem 0 1rem;
+    color: var(--color-neutral-800);
+    line-height: 1.55;
+  }
+
+  .svc-detail__side-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--color-primary-700);
+    font-weight: 800;
+  }
+
+  .svc-detail__side-card li {
+    color: var(--color-neutral-800);
+    line-height: 1.45;
+  }
+
+  .svc-detail__side-card--call {
+    background: var(--color-primary-900);
+    border-color: var(--color-primary-900);
+  }
+
+  .svc-detail__side-card--call .section-label,
+  .svc-detail__side-card--call p,
+  .svc-detail__side-card--call a {
+    color: #fff;
+  }
+
   @media (min-width: 900px) {
     .svc-detail__inner {
       grid-template-columns: 1.5fr 1fr;
       gap: 3rem;
+    }
+    .svc-detail__gallery {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

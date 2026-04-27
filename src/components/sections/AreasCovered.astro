@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { locations } from "../../data";
 
 interface Props {
@@ -16,11 +17,11 @@ const items = excludeSlug
   <div class="container-page areas__inner">
     <header class="areas__head">
       <span class="section-label">Areas covered</span>
-      <h2>London-wide, dispatched from two operating bases.</h2>
+      <h2>London + M25 coverage, dispatched from two operating bases.</h2>
       <p>
         Our registered base in Harrow covers north-west London; our Perivale
-        operating point covers west London and the A40 corridor. The whole
-        capital served from the nearer of the two.
+        operating point covers west London and the A40 corridor. London + M25
+        calls are served from the nearer of the two.
       </p>
     </header>
 
@@ -30,11 +31,14 @@ const items = excludeSlug
           <a href={`/areas/${l.slug}/`} class="card">
             <figure class="card__media">
               {l.heroImage ? (
-                <img
+                <Image
                   src={l.heroImage}
                   alt={`Recovery vehicle on scene in ${l.name}`}
                   loading="lazy"
                   decoding="async"
+                  widths={[360, 560, 760, 960]}
+                  sizes="(min-width: 900px) 31vw, calc(100vw - 2.5rem)"
+                  quality="mid"
                 />
               ) : (
                 <span class="card__placeholder" aria-hidden="true">

@@ -1,8 +1,8 @@
 export const business = {
-  name: "Affordable Speedy Recovery",
+  name: "Speedy Recovery",
   shortName: "Speedy Recovery",
   legalName: "Affordable Speedy Recovery Ltd",
-  tagline: "24/7 vehicle recovery across London",
+  tagline: "24/7 vehicle recovery across London + M25",
 
   phone: {
     display: "07850 900 005",
@@ -11,8 +11,8 @@ export const business = {
   },
 
   email: {
-    general: "[TK general email]",
-    href: "mailto:[TK general email]",
+    general: "info@affordablespeedyrecovery.co.uk",
+    href: "mailto:info@affordablespeedyrecovery.co.uk",
   },
 
   hours: {
@@ -28,6 +28,6 @@ export const business = {
     country: "GB",
   },
 
-  founded: "[TK founding year]",
-  ownerName: "[TK owner name]",
+  founded: "1995",
+  ownerName: "Sam Shafi",
 } as const;

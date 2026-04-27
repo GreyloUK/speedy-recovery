@@ -8,8 +8,8 @@ import { business, locations } from "../data";
 import { breadcrumbSchema, localBusinessSchema } from "../utils/schema";
 import { composeTitle } from "../utils/seo";
 
-const title = composeTitle("Contact — 24/7 vehicle recovery in London");
-const description = "Contact Affordable Speedy Recovery — 24/7 phone dispatch on 07850 900 005. Registered base: Cardoc House, North Harrow, HA2 6AE.";
+const title = composeTitle("Contact — 24/7 vehicle recovery in London + M25");
+const description = "Contact Speedy Recovery — 24/7 phone dispatch on 07850 900 005. Registered base: Cardoc House, North Harrow, HA2 6AE.";
 ---
 
 <BaseLayout
@@ -24,7 +24,7 @@ const description = "Contact Affordable Speedy Recovery — 24/7 phone dispatch 
     ]),
   ]}
 >
-  <div class="container-page" style="padding-block: 1.25rem 0;">
+  <div class="container-page breadcrumb-band">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
   </div>
 
@@ -44,7 +44,7 @@ const description = "Contact Affordable Speedy Recovery — 24/7 phone dispatch 
             <span class="contact__call-num">{business.phone.display}</span>
           </span>
         </Button>
-        <a href={business.email.href} class="contact__email">
+        <a href={business.email.href} class="contact__email" data-astro-prefetch="false">
           <Icon name="mail" size={18} />
           <span class:list={[business.email.general.startsWith("[TK") && "tk"]}>{business.email.general}</span>
         </a>

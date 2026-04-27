@@ -1,4 +1,4 @@
-# Design Philosophy — Affordable Speedy Recovery
+# Design Philosophy — Speedy Recovery
 
 > The durable reference for how this site looks, why, and how to apply the
 > direction to new sections or new pages without drifting.
@@ -22,7 +22,7 @@ audience is three distinct groups arriving in three distinct states:
   signal.
 
 All three trust **operational credibility** (PAS43, O-Licence, IVR, AA,
-FMG partnership marks, 6-vehicle fleet, 12-ton recovery truck, HIAB)
+FMG partnership marks, 6-vehicle fleet, 7.5-ton recovery truck, HIAB)
 over marketing polish. If a customer lands on the site and clocks
 *the design*, we've failed. They should clock the **phone number**,
 the **"PAS43 certified"** credential, a **photo of a flatbed on the
@@ -139,7 +139,7 @@ over photos are an approved pattern.
 - **Barlow** (body, 400/500/600/700) at 16–17px minimum. 14–15px for
   secondary text and meta.
 - **No italic / typographic-split headlines.** Recovery H1s are
-  declarative: *"24/7 vehicle recovery across London."* /
+  declarative: *"24/7 vehicle recovery across London + M25."* /
   *"Stuck on the hard shoulder? We're 25 minutes away."* /
   *"Police pound release, paperwork handled."*
 - **Uppercase tracked labels** at 12px in **primary-700** on light
@@ -212,7 +212,7 @@ stranded motorist actually trust:
    recognisable brand logos (not just words).
 3. **Google reviews** — score + count + star row, "Verified Google
    review" footers, link to profile. Not initials-and-stars cards.
-4. **Fleet specifics** — "6 recovery vehicles · 12-ton truck · HIAB"
+4. **Fleet specifics** — "6 recovery vehicles · 7.5-ton truck · HIAB"
    as a numbered stat strip. Concrete beats vague ("modern fleet").
 5. **24/7, genuine** — "24 hours, every day." Stated absolute, not
    hedged.

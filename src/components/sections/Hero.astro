@@ -1,16 +1,19 @@
 ---
+import { Image } from "astro:assets";
+import type { LocalImageProps } from "astro:assets";
 import { business } from "../../data";
 import Button from "../ui/Button.astro";
 import Icon from "../ui/Icon.astro";
 
 type Variant = "home" | "service" | "location";
+type LocalImage = LocalImageProps["src"];
 
 interface Props {
   variant: Variant;
   eyebrow?: string;
   title: string;
   lead: string;
-  image?: string | null;
+  image?: LocalImage | null;
   imageAlt?: string;
 }
 
@@ -45,7 +48,16 @@ const { variant, eyebrow, title, lead, image, imageAlt = "" } = Astro.props;
 
     <div class="hero__asset" aria-hidden={image ? undefined : "true"}>
       {image ? (
-        <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+        <Image
+          src={image}
+          alt={imageAlt}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          widths={[480, 720, 960, 1200]}
+          sizes="(min-width: 900px) 45vw, calc(100vw - 2.5rem)"
+          quality="mid"
+        />
       ) : (
         <div class="hero__placeholder">
           <Icon name="truck" size={48} />

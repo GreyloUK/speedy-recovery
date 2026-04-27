@@ -32,8 +32,8 @@ interface Props {
 
 const { service } = Astro.props;
 
-const title = composeTitle(`${service.name} in London — 24/7`);
-const description = `${service.shortDescription} PAS43 certified. Call ${"07850 900 005"}.`;
+const title = composeTitle(service.seoTitle);
+const description = service.metaDescription;
 
 const combinedFaqs = [...service.faqs, ...sharedFaqs.slice(0, 2)];
 const otherServices = services.filter((s) => s.slug !== service.slug).map((s) => s.slug);
@@ -53,7 +53,7 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
     ]),
   ]}
 >
-  <div class="container-page" style="padding-block: 1rem 0;">
+  <div class="container-page breadcrumb-band-tight">
     <Breadcrumbs
       items={[
         { label: "Home", href: "/" },
@@ -66,18 +66,21 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
   <Hero
     variant="service"
     eyebrow={service.name}
-    title={`${service.name} across London — 24/7.`}
+    title={service.heroTitle}
     lead={service.shortDescription}
     image={service.heroImage ?? service.gridImage}
-    imageAlt={`${service.name} on the road in London`}
+    imageAlt={`${service.name} on the road in London + M25`}
   />
 
   <TrustRibbon />
 
   <ServiceDetail
     longDescription={service.longDescription}
+    detailSections={service.detailSections}
     bullets={service.bullets}
     priceNote={service.priceNote}
+    serviceSlug={service.slug}
+    galleryImages={service.galleryImages}
   />
 
   <PhoneCTA

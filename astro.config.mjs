@@ -2,12 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import { siteConfig } from './src/data/index.ts';
+import { seo } from './src/data/seo.ts';
 
 // https://astro.build/config
 export default defineConfig({
-  // Site URL is pulled from siteConfig.seo.siteUrl - update it there
-  site: siteConfig.seo.siteUrl,
+  // Site URL is pulled from src/data/seo.ts - update it there
+  site: seo.siteUrl,
   
   // URL format: Always use trailing slashes (e.g., /services/ not /services)
   trailingSlash: 'always',

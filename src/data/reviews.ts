@@ -10,35 +10,18 @@ const ReviewSchema = z.object({
 
 export type Review = z.infer<typeof ReviewSchema>;
 
-export const reviewsSummary = {
-  averageRating: 4.9,
-  totalReviews: 127,
-  googleProfileUrl: "[TK Google Business Profile URL]",
+export const reviewsSummary: {
+  averageRating: number | null;
+  totalReviews: number | null;
+  googleProfileUrl: string | null;
+  isPlaceholder: boolean;
+} = {
+  averageRating: null,
+  totalReviews: null,
+  googleProfileUrl: null,
   isPlaceholder: true,
-} as const;
+};
 
-const raw: Review[] = [
-  {
-    author: "[TK reviewer]",
-    rating: 5,
-    text: "[TK real Google review — client to export]",
-    dateISO: "2026-03-15",
-    source: "Google",
-  },
-  {
-    author: "[TK reviewer]",
-    rating: 5,
-    text: "[TK real Google review — client to export]",
-    dateISO: "2026-02-08",
-    source: "Google",
-  },
-  {
-    author: "[TK reviewer]",
-    rating: 5,
-    text: "[TK real Google review — client to export]",
-    dateISO: "2026-01-24",
-    source: "Google",
-  },
-];
+const raw: Review[] = [];
 
 export const reviews = raw.map((r) => ReviewSchema.parse(r));

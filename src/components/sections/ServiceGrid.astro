@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { services } from "../../data";
 import type { Service } from "../../data/services";
 import Icon from "../ui/Icon.astro";
@@ -13,7 +14,7 @@ interface Props {
 const {
   heading = "What we recover",
   eyebrow = "Services",
-  lead = "Five core services — the five insurers, police pounds and fleet dispatchers actually pay for. We don't try to be everything. Each of these is load-bearing: specialist vehicles sized for the job, drivers carrying the certifications insurer panels require, and one operator handling your call from dispatch through to delivery.",
+  lead = "Core recovery services for London + M25 — from roadside breakdowns and accident recovery to police pound release, specialist transport, repossession, prestige vehicle movement and secure storage. Each one is backed by our own fleet, certified drivers and one operator handling your call from dispatch through to delivery.",
   filterSlugs,
 } = Astro.props;
 
@@ -49,11 +50,14 @@ const anyDraft = items.some((s) => s.gridDescription.startsWith("[DRAFT]"));
           <a href={`/services/${s.slug}/`} class="svc-card">
             <figure class="svc-card__media">
               {s.gridImage ? (
-                <img
+                <Image
                   src={s.gridImage}
-                  alt={`${s.name} in London — Speedy Recovery on scene`}
+                  alt={`${s.name} in London + M25 — Speedy Recovery on scene`}
                   loading="lazy"
                   decoding="async"
+                  widths={[360, 560, 760, 960]}
+                  sizes="(min-width: 900px) 31vw, calc(100vw - 2.5rem)"
+                  quality="mid"
                 />
               ) : (
                 <span class="svc-card__placeholder" aria-hidden="true">

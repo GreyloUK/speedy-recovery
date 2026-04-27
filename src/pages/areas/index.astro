@@ -6,8 +6,8 @@ import AreasHub from "../../components/sections/AreasHub.astro";
 import { breadcrumbSchema } from "../../utils/schema";
 import { composeTitle } from "../../utils/seo";
 
-const title = composeTitle("Vehicle Recovery Areas in London");
-const description = "Our London vehicle recovery coverage — verified bases in Harrow and Perivale, plus Greenford, Ealing and Hayes. 25-min average response. 24/7.";
+const title = composeTitle("Vehicle Recovery Areas in London + M25");
+const description = "Our London + M25 vehicle recovery coverage — verified bases in Harrow and Perivale, plus Greenford, Ealing and Hayes. 25-min average response. 24/7.";
 ---
 
 <BaseLayout
@@ -19,7 +19,7 @@ const description = "Our London vehicle recovery coverage — verified bases in 
     { label: "Areas", path: "/areas/" },
   ])}
 >
-  <div class="container-page" style="padding-block: 1.25rem 0;">
+  <div class="container-page breadcrumb-band">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Areas" }]} />
   </div>
 

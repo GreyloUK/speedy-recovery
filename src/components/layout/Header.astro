@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logoImage from "../../assets/images/speedy-recovery-logo.png";
 import { business, navigation } from "../../data";
 import Button from "../ui/Button.astro";
 import Icon from "../ui/Icon.astro";
@@ -8,7 +10,7 @@ import MobileMenu from "./MobileMenu.astro";
 <header class="site-header">
   <div class="container-page site-header__inner">
     <a href="/" class="brand" aria-label={business.shortName}>
-      <img src="/speedy-recovery-logo.png" alt={business.shortName} class="brand__logo" />
+      <Image src={logoImage} alt={business.shortName} class="brand__logo" loading="eager" decoding="async" />
     </a>
 
     <nav class="primary-nav" aria-label="Primary">

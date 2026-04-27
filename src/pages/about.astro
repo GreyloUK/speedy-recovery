@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import aboutTeamImage from "../assets/images/about-team.jpg";
 import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import TrustRibbon from "../components/sections/TrustRibbon.astro";
 import FleetStats from "../components/sections/FleetStats.astro";
@@ -8,8 +10,8 @@ import ReviewsGoogle from "../components/sections/ReviewsGoogle.astro";
 import { breadcrumbSchema } from "../utils/schema";
 import { composeTitle } from "../utils/seo";
 
-const title = composeTitle("About Us — Vehicle Recovery London");
-const description = "Family-run vehicle recovery in London — PAS43 certified, O-Licence, 6-vehicle fleet out of Harrow. See how we run 24/7 recovery work. Call now.";
+const title = composeTitle("About Us — Vehicle Recovery London + M25");
+const description = "Family-run vehicle recovery across London + M25 — PAS43 certified, O-Licence, 6-vehicle fleet out of Harrow. See how we run 24/7 recovery work. Call now.";
 ---
 
 <BaseLayout
@@ -21,7 +23,7 @@ const description = "Family-run vehicle recovery in London — PAS43 certified, 
     { label: "About", path: "/about/" },
   ])}
 >
-  <div class="container-page" style="padding-block: 1.25rem 0;">
+  <div class="container-page breadcrumb-band">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
   </div>
 
@@ -29,29 +31,29 @@ const description = "Family-run vehicle recovery in London — PAS43 certified, 
     <div class="container-page about__inner">
       <div class="about__content">
         <span class="section-label">About</span>
-        <h1>Family-run vehicle recovery in London — not a call-centre middleman.</h1>
+        <h1>Family-run vehicle recovery across London + M25 — not a call-centre middleman.</h1>
 
         <div class="about__body">
           <p class="about__lead">
-            Affordable Speedy Recovery is a
-            <span class="tk">[TK founded — e.g. 2007]</span>
-            family-run vehicle recovery operator based in North Harrow, serving
-            London twenty-four hours a day, every day of the year. The yard, the
-            trucks and the drivers are all ours — no subcontracting, no
-            call-centre routing, no "partner" network with a faceless dispatch
-            fee baked into your quote.
+            Speedy Recovery is a family-run vehicle recovery operator founded
+            in 1995, based in North Harrow and serving London + M25 twenty-four
+            hours a day, every day of the year. The yard, the trucks and the
+            drivers are all ours — no subcontracting, no call-centre routing,
+            no "partner" network with a faceless dispatch fee baked into your
+            quote.
           </p>
 
           <p>
-            We were started by
-            <span class="tk">[TK owner name]</span>
-            with a single flatbed and a short coverage ring around Harrow. The
+            The business is now in its second generation, with Sam Shafi taking
+            over from his dad and continuing the same hands-on approach: answer
+            the phone, send the right truck and keep the customer informed. The
             operation grew the way serious trade businesses do: one insurer
             contract, one garage relationship, one police-pound clearance at a
-            time. Today we run six recovery vehicles — including a 12-ton
-            recovery truck and a HIAB for commercial jobs — dispatched from
-            our registered yard at Cardoc House in North Harrow and our
-            operating point on Walmgate Road, Perivale.
+            time. Today we run six recovery vehicles — including a 7.5-ton
+            recovery truck for heavier and/or loaded vehicles, plus a HIAB for
+            commercial jobs — dispatched from our registered yard at Cardoc
+            House in North Harrow and our operating point on Walmgate Road,
+            Perivale.
           </p>
 
           <p>
@@ -63,7 +65,7 @@ const description = "Family-run vehicle recovery in London — PAS43 certified, 
             pounds and fleet dispatchers check before they'll release a
             vehicle into your custody. We work directly with
             <strong>the AA, FMG</strong> and a network of local garages across
-            north-west and west London.
+            north-west and west London, with London + M25 coverage.
           </p>
 
           <p>
@@ -81,11 +83,14 @@ const description = "Family-run vehicle recovery in London — PAS43 certified, 
 
       <aside class="about__media" aria-hidden="true">
         <figure>
-          <img
-            src="/images/about-team.jpg"
+          <Image
+            src={aboutTeamImage}
             alt="Speedy Recovery driver at the Harrow yard"
             loading="lazy"
             decoding="async"
+            widths={[360, 520, 720, 900]}
+            sizes="(min-width: 900px) 36vw, calc(100vw - 2.5rem)"
+            quality="mid"
           />
           <figcaption>
             <span class="about__caption-label">On the yard</span>

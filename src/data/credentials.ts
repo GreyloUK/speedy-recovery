@@ -17,7 +17,7 @@ const raw: Credential[] = [
     label: "PAS43 2012 certified",
     summary:
       "The recognised UK standard for roadside vehicle recovery — required by most insurer panels before a claim-approved job is released.",
-    certNumber: "[TK PAS43 cert number]",
+    certNumber: null,
     iconName: "badge-check",
     category: "accreditation",
   },
@@ -26,7 +26,7 @@ const raw: Credential[] = [
     label: "O-Licence holder",
     summary:
       "Full DVSA Operator's Licence. Required to carry vehicles commercially and to move PG9-prohibited recoveries on a flatbed.",
-    certNumber: "[TK O-Licence number]",
+    certNumber: null,
     iconName: "file-check",
     category: "accreditation",
   },

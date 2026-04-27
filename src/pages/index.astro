@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import homeHeroImage from "../assets/images/home-hero.webp";
 import Hero from "../components/sections/Hero.astro";
 import TrustRibbon from "../components/sections/TrustRibbon.astro";
 import WhyChooseUs from "../components/sections/WhyChooseUs.astro";
@@ -24,10 +25,10 @@ import { localBusinessSchema, faqSchema } from "../utils/schema";
 >
   <Hero
     variant="home"
-    eyebrow="24/7 · London-wide"
-    title="24/7 Vehicle Recovery across London"
-    lead="Stuck on the roadside, after a crash, or collecting from the pound — our own fleet, our own drivers, 25 minutes away. PAS43 certified. O-Licence holder. Direct AA and FMG partner."
-    image="/images/home-hero.webp"
+    eyebrow="24/7 · London + M25"
+    title="24/7 Vehicle Recovery across London + M25"
+    lead="Stuck on the roadside, recovering after a crash, arranging police pound release or moving a specialist vehicle? Speedy Recovery runs its own fleet, its own drivers and a 25-minute average response across London + M25. PAS43 certified, O-Licence holder, IVR-trained operators, direct AA and FMG partner, with secure storage and business recovery support available around the clock."
+    image={homeHeroImage}
     imageAlt="Speedy Recovery flatbed truck on a wet London street at dusk."
   />
 
@@ -37,8 +38,8 @@ import { localBusinessSchema, faqSchema } from "../utils/schema";
 
   <ServicesNav
     eyebrow="What we handle"
-    heading="Five services. One operator. All 24/7."
-    lead="Breakdowns, accidents, police pounds, specialist vehicles and secure storage — the five jobs insurers and fleet dispatchers actually pay for."
+    heading="Core services. One operator. All 24/7."
+    lead="Breakdowns, accidents, police pounds, specialist vehicles, repossession, prestige transport and secure storage — handled by our own fleet and drivers."
   />
 
   <PhoneCTA
@@ -64,6 +65,6 @@ import { localBusinessSchema, faqSchema } from "../utils/schema";
   <PhoneCTA
     tone="navy"
     heading="One call, fixed quote, flatbed dispatched."
-    lead="If your vehicle has stopped moving — anywhere in London, any hour of the day — we can help right now."
+    lead="If your vehicle has stopped moving — anywhere across London + M25, any hour of the day — we can help right now."
   />
 </BaseLayout>

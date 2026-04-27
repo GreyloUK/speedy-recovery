@@ -1,10 +1,17 @@
 ---
+import { Image } from "astro:assets";
+import type { LocalImageProps } from "astro:assets";
+import stepOneImage from "../../assets/images/process/step-1-call.webp";
+import stepTwoImage from "../../assets/images/process/step-2-dispatch.webp";
+import stepThreeImage from "../../assets/images/process/step-3-loaded.webp";
 import Icon from "../ui/Icon.astro";
+
+type LocalImage = LocalImageProps["src"];
 
 interface Step {
   title: string;
   body: string;
-  image?: string | null;
+  image?: LocalImage | null;
   imageAlt?: string;
 }
 
@@ -21,19 +28,19 @@ const {
     {
       title: "One call, 24/7",
       body: "You call us. We confirm pickup postcode, destination, vehicle type and give you a fixed quote on the line. No meter running, no surprise add-ons.",
-      image: "/images/process/step-1-call.webp",
+      image: stepOneImage,
       imageAlt: "Recovery dispatcher taking a 24/7 call in the operations room.",
     },
     {
       title: "Flatbed dispatched",
       body: "Nearest truck is dispatched immediately — typical London response 25 minutes. Driver texts you when they're 10 minutes out.",
-      image: "/images/process/step-2-dispatch.webp",
+      image: stepTwoImage,
       imageAlt: "Flatbed recovery truck leaving the depot yard at night.",
     },
     {
       title: "Loaded and delivered",
       body: "Vehicle loaded onto a flatbed (no rolling damage), delivered to your chosen destination — your home, a repairer, or our secure yard.",
-      image: "/images/process/step-3-loaded.webp",
+      image: stepThreeImage,
       imageAlt: "Vehicle being winched onto a flatbed recovery truck.",
     },
   ],
@@ -52,7 +59,15 @@ const {
         <li class="process__card">
           <div class="process__media" aria-hidden={s.image ? undefined : "true"}>
             {s.image ? (
-              <img src={s.image} alt={s.imageAlt ?? ""} loading="lazy" decoding="async" />
+              <Image
+                src={s.image}
+                alt={s.imageAlt ?? ""}
+                loading="lazy"
+                decoding="async"
+                widths={[360, 520, 720, 900]}
+                sizes="(min-width: 1000px) 31vw, calc(100vw - 2.5rem)"
+                quality="mid"
+              />
             ) : (
               <div class="process__placeholder">
                 <Icon name="truck" size={32} />

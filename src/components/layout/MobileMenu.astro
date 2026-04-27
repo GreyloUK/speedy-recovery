@@ -51,7 +51,7 @@ import Icon from "../ui/Icon.astro";
       </ul>
     </nav>
 
-    <a href={business.phone.href} class="mm__call">
+    <a href={business.phone.href} class="mm__call" data-astro-prefetch="false">
       <Icon name="phone" size={20} />
       <span class="mm__call-stack">
         <span class="mm__call-meta">Call 24/7</span>
