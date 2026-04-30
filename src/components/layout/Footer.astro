@@ -1,14 +1,14 @@
 ---
-import { Image } from "astro:assets";
-import logoImage from "../../assets/images/speedy-recovery-logo.png";
 import { business, navigation, credentials } from "../../data";
+
+const logoSrc = "/images/Logo%20Design-01.svg";
 ---
 
 <footer class="footer">
   <div class="container-page footer__inner">
     <div class="footer__brand">
       <a href="/" class="footer__brand-link" aria-label={business.name}>
-        <Image src={logoImage} alt={business.name} class="footer__logo" loading="lazy" decoding="async" />
+        <img src={logoSrc} alt={business.name} class="footer__logo" loading="lazy" decoding="async" />
       </a>
       <a href={business.phone.href} class="footer__phone" data-astro-prefetch="false">{business.phone.display}</a>
       <div class="footer__addr">
