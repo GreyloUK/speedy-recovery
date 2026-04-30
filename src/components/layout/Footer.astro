@@ -1,7 +1,7 @@
 ---
 import { business, navigation, credentials } from "../../data";
 
-const logoSrc = "/images/Logo%20Design-01.svg";
+const logoSrc = "/images/Speed%20Recovery%20Logo.svg";
 ---
 
 <footer class="footer">
@@ -10,6 +10,9 @@ const logoSrc = "/images/Logo%20Design-01.svg";
       <a href="/" class="footer__brand-link" aria-label={business.name}>
         <img src={logoSrc} alt={business.name} class="footer__logo" loading="lazy" decoding="async" />
       </a>
+      <p class="footer__summary">
+        24/7 vehicle recovery, transport and secure storage across London and the M25.
+      </p>
       <a href={business.phone.href} class="footer__phone" data-astro-prefetch="false">{business.phone.display}</a>
       <div class="footer__addr">
         <strong>{business.primaryAddress.street}</strong><br />
@@ -48,8 +51,9 @@ const logoSrc = "/images/Logo%20Design-01.svg";
 
 <style>
   .footer {
-    background: var(--color-primary-950);
-    color: var(--color-neutral-200);
+    background: var(--color-neutral-50);
+    color: var(--color-primary-900);
+    border-top: 4px solid var(--color-accent-500);
     padding-block: 3rem 1.5rem;
     margin-top: 4rem;
   }
@@ -64,25 +68,37 @@ const logoSrc = "/images/Logo%20Design-01.svg";
     display: inline-block;
     line-height: 0;
   }
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .footer__logo {
     display: block;
-    height: 64px;
-    width: auto;
+    width: clamp(280px, 24vw, 380px);
+    height: auto;
     object-fit: contain;
+  }
+  .footer__summary {
+    max-width: 24rem;
+    margin: 1rem 0 0;
+    color: var(--color-neutral-700);
+    font-size: 1rem;
+    line-height: 1.5;
   }
   .footer__phone {
     display: inline-block;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--color-accent-400);
+    color: var(--color-emergency-700);
   }
   .footer__addr {
     margin-top: 1rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--color-neutral-300);
+    color: var(--color-neutral-700);
   }
 
   .footer__nav {
@@ -91,7 +107,7 @@ const logoSrc = "/images/Logo%20Design-01.svg";
     gap: 1.75rem 1.5rem;
   }
   .footer__nav h3 {
-    color: var(--color-accent-400);
+    color: var(--color-primary-700);
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -108,17 +124,17 @@ const logoSrc = "/images/Logo%20Design-01.svg";
     gap: 0.45rem;
   }
   .footer__nav a {
-    color: var(--color-neutral-200);
+    color: var(--color-primary-900);
     font-size: 1rem;
   }
   .footer__nav a:hover {
-    color: #fff;
+    color: var(--color-accent-700);
   }
 
   .footer__credentials {
     margin-top: 2rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--color-neutral-200);
   }
   .footer__credentials ul {
     list-style: none;
@@ -127,25 +143,25 @@ const logoSrc = "/images/Logo%20Design-01.svg";
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.5rem;
-    color: var(--color-neutral-300);
+    color: var(--color-neutral-700);
     font-size: 1rem;
   }
   .footer__credentials li::before {
     content: "· ";
     margin-right: 0.25rem;
-    color: var(--color-accent-400);
+    color: var(--color-accent-700);
   }
   .footer__credentials li:first-child::before { content: ""; }
 
   .footer__legal {
     margin-top: 1.25rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--color-neutral-200);
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: space-between;
-    color: var(--color-neutral-400);
+    color: var(--color-neutral-600);
     font-size: 1rem;
   }
 
