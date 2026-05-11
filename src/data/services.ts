@@ -4,6 +4,7 @@ import classicCarRecoveryImage from "../assets/images/classic-car-recovery.jpeg"
 import crashedCarRecoveryImage from "../assets/images/crashed-car-recovery.jpeg";
 import dpdVanRecoveryImage from "../assets/images/dpd-van-recovery.jpg";
 import emergencyServicesVehicleRecoveryImage from "../assets/images/emergency-services-vehicle-recovery.jpeg";
+import forkliftRecoveryImage from "../assets/images/forklift recovery.jpg";
 import jaguarRecoveryImage from "../assets/images/jaguar-recovery.jpeg";
 import lamborghiniRecoveryImage from "../assets/images/lamborghini-recovery.jpg";
 import lamboRecoveryImage from "../assets/images/lambo-recovery.jpeg";
@@ -381,9 +382,13 @@ const raw: Service[] = [
       "PAS43-certified operator + IVR-certified drivers",
     ],
     priceNote: "Quoted on vehicle type and pickup location — flatbed/HIAB included, not an upgrade",
-    heroImage: motorbikeRecoveryImage,
-    gridImage: motorbikeRecoveryImage,
+    heroImage: forkliftRecoveryImage,
+    gridImage: forkliftRecoveryImage,
     galleryImages: [
+      {
+        image: forkliftRecoveryImage,
+        alt: "Forklift recovered by Speedy Recovery specialist transport",
+      },
       {
         image: motorbikeRecoveryImage,
         alt: "Motorbike secured on a Speedy Recovery flatbed",

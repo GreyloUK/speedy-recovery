@@ -25,7 +25,9 @@ const mapParts = [
   postcodeIsTk ? null : location.address.postcode,
 ].filter(Boolean) as string[];
 const mapQuery = mapParts.join(", ");
-const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
+const mapEmbedSrc =
+  location.mapEmbedSrc ??
+  `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
 const gbpHref =
   location.gbpUrl ??
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;

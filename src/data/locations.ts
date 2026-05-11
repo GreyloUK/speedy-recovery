@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { business } from "./business";
 import ealingImage from "../assets/images/areas/ealing.jpg";
 import greenfordImage from "../assets/images/areas/greenford.jpg";
 import harrowImage from "../assets/images/areas/harrow.jpg";
@@ -59,6 +60,7 @@ const LocationSchema = z.object({
   verified: z.boolean(),
   napIntro: z.string().min(40).optional(),
   gbpUrl: z.string().url().optional(),
+  mapEmbedSrc: z.string().url().optional(),
 });
 
 export type Location = z.infer<typeof LocationSchema>;
@@ -143,6 +145,8 @@ const raw: Location[] = [
     ],
     heroImage: harrowImage,
     verified: true,
+    gbpUrl: business.googleProfiles.harrow.href,
+    mapEmbedSrc: business.googleProfiles.harrow.embedSrc,
     napIntro:
       "Our registered base sits just off Pinner Road in North Harrow — a secure yard that also serves as our vehicle storage facility. From here we cover HA1 through HA8, Stanmore, Pinner and Edgware, with a 20-minute average response across the borough.",
   },
@@ -208,6 +212,8 @@ const raw: Location[] = [
     ],
     heroImage: perivaleImage,
     verified: false,
+    gbpUrl: business.googleProfiles.perivalePolicePound.href,
+    mapEmbedSrc: business.googleProfiles.perivalePolicePound.embedSrc,
     napIntro:
       "Our Perivale operating point on Walmgate Road covers UB5, UB6, UB7, W5, W7 and the industrial estates around Greenford and Park Royal. The A40 corridor is a core part of our patch — we keep a vehicle positioned here for sub-25-minute response.",
   },
