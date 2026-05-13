@@ -1,0 +1,10 @@
+# Legacy .php URL → new Astro routes (migration from old site)
+/about.php                                       /about/                                  301
+/what-we-do.php                                  /services/                               301
+/contact.php                                     /contact/                                301
+/gallery.php                                     /                                        301
+/perivale-police-pound-vehicle-recovery.php      /services/police-pound-release/          301
+/ealing-breakdown-recovery.php                   /areas/ealing/                           301
+/breakdown-recovery-perivale.php                 /areas/perivale/                         301
+/breakdown-recovery-hayes.php                    /areas/hayes/                            301
+/greenford-breakdown-recovery.php                /areas/greenford/                        301
