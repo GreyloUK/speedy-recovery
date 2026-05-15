@@ -58,6 +58,7 @@ const LocationSchema = z.object({
   faqs: z.array(FaqSchema).min(2).max(5),
   heroImage: NullableImageSchema,
   verified: z.boolean(),
+  gbpName: z.string().min(1).optional(),
   napIntro: z.string().min(40).optional(),
   gbpUrl: z.string().url().optional(),
   mapEmbedSrc: z.string().url().optional(),
@@ -87,7 +88,10 @@ const raw: Location[] = [
     name: "Harrow",
     postcode: "HA2",
     address: { ...harrowAddress },
-    geo: null,
+    geo: {
+      lat: 51.5879762,
+      lng: -0.3596593,
+    },
     intro:
       "Our registered operating base is in North Harrow, giving Speedy Recovery a genuine local presence for car recovery in Harrow, North Harrow and the wider HA postcode area. Calls across HA1, HA2, HA3, HA7 and HA8 are handled from our own yard, not passed to a call-centre network. If you have broken down near Northwick Park, Harrow-on-the-Hill, Wealdstone, Pinner, Stanmore, Sudbury Hill or the A312, we are typically with you in around 20 minutes depending on traffic. The same Harrow yard is also our secure vehicle storage facility, so accident-damaged, police-pound-released or insurer-held vehicles can be recovered and stored without changing hands. From this base we handle breakdown recovery, accident recovery, car, van and motorcycle recovery, specialist transport, repossession support and secure storage across north-west London.",
     detailSections: [
@@ -145,6 +149,7 @@ const raw: Location[] = [
     ],
     heroImage: harrowImage,
     verified: true,
+    gbpName: business.googleProfiles.harrow.name,
     gbpUrl: business.googleProfiles.harrow.href,
     mapEmbedSrc: business.googleProfiles.harrow.embedSrc,
     napIntro:
@@ -156,7 +161,10 @@ const raw: Location[] = [
     name: "Perivale",
     postcode: "UB6",
     address: { ...perivaleAddress },
-    geo: null,
+    geo: {
+      lat: 51.5606392,
+      lng: -0.31315745,
+    },
     intro:
       "Our Perivale operating point on Walmgate Road, UB6 7LH, puts us close to one of the busiest recovery corridors in west London. From here we cover car recovery in Perivale, UB6, Greenford, Northolt, Ealing, Hanwell, Park Royal and the A40. Perivale is also a key location for drivers dealing with the Metropolitan Police pound: if your vehicle is at Perivale car pound and cannot be driven away, Speedy Recovery can help with collection, flatbed transport and delivery to your home, repairer or our secure Harrow yard once the release paperwork is in place. We also cover breakdowns, accident recovery, motorcycles, vans, keyless vehicles, EVs and specialist moves from this base. Typical response around Perivale is around 22 minutes, with faster attendance possible when a truck is already positioned on the A40 corridor.",
     detailSections: [
@@ -211,7 +219,8 @@ const raw: Location[] = [
       },
     ],
     heroImage: perivaleImage,
-    verified: false,
+    verified: true,
+    gbpName: business.googleProfiles.perivalePolicePound.name,
     gbpUrl: business.googleProfiles.perivalePolicePound.href,
     mapEmbedSrc: business.googleProfiles.perivalePolicePound.embedSrc,
     napIntro:

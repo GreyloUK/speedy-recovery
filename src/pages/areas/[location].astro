@@ -92,7 +92,7 @@ const schema = [
     { label: location.name, path: `/areas/${location.slug}/` },
   ]),
 ];
-if (!location.basedAt) {
+if (!location.basedAt && location.verified) {
   schema.unshift(locationLocalBusinessSchema(location));
 }
 ---

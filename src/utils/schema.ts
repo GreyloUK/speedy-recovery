@@ -59,9 +59,17 @@ export function locationLocalBusinessSchema(location: Location): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "AutomotiveBusiness",
-    name: `${business.name} — ${location.name}`,
+    "@id": `${seo.siteUrl}/areas/${location.slug}/#localbusiness`,
+    name: location.gbpName ?? `${business.name} - ${location.name}`,
+    legalName: business.legalName,
     url: `${seo.siteUrl}/areas/${location.slug}/`,
     telephone: business.phone.e164,
+    image: new URL(seo.defaultOgImage, seo.siteUrl).toString(),
+    priceRange: "££",
+    branchOf: { "@id": `${seo.siteUrl}/#business` },
+    mainEntityOfPage: `${seo.siteUrl}/areas/${location.slug}/`,
+    hasMap: location.gbpUrl,
+    sameAs: location.gbpUrl ? [location.gbpUrl] : undefined,
     address: {
       "@type": "PostalAddress",
       streetAddress: location.address.street,
@@ -70,6 +78,13 @@ export function locationLocalBusinessSchema(location: Location): JsonLd {
       postalCode: location.address.postcode,
       addressCountry: location.address.country,
     },
+    geo: location.geo
+      ? {
+          "@type": "GeoCoordinates",
+          latitude: location.geo.lat,
+          longitude: location.geo.lng,
+        }
+      : undefined,
     areaServed: { "@type": "City", name: location.name },
     openingHours: "Mo-Su 00:00-23:59",
   };
