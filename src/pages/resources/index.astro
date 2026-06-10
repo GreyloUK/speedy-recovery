@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import PhoneCTA from "../../components/sections/PhoneCTA.astro";
+import { breadcrumbSchema } from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+
+const title = composeTitle("Police Pound Guides & Recovery Resources");
+const description =
+  "Guides to London's police car pounds — Perivale and Charlton opening times, release fees, paperwork and what to do when a vehicle can't be driven out.";
+
+const resources = [
+  {
+    title: "Perivale Car Pound — opening times, fees & collection",
+    href: "/resources/perivale-car-pound/",
+    blurb:
+      "Address, hours, contact number and the 2026 statutory release fees for the Met's west London pound on Walmgate Road, UB6 7LR — plus what to do if your vehicle can't be driven out.",
+  },
+  {
+    title: "Charlton Car Pound — opening times, fees & collection",
+    href: "/resources/charlton-car-pound/",
+    blurb:
+      "Everything you need before travelling to Bramshot Avenue, SE7 7HY — opening hours, fees, the documents the pound will ask for, and flatbed collection when driving out isn't an option.",
+  },
+  {
+    title: "Metropolitan Police pound release guide",
+    href: "/resources/metropolitan-police-pound-release-guide/",
+    blurb:
+      "The step-by-step release process common to both Met pounds — paperwork, statutory charges, deadlines, and how a recovery operator fits in.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/resources/"
+  schema={[
+    breadcrumbSchema([
+      { label: "Home", path: "/" },
+      { label: "Resources" },
+    ]),
+  ]}
+>
+  <div class="container-page breadcrumb-band">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Resources" },
+      ]}
+    />
+  </div>
+
+  <section class="resources container-page">
+    <span class="section-label">Resources</span>
+    <h1>Vehicle recovery resources and police pound guides.</h1>
+    <p class="resources__lead">
+      Vehicle recovery resources written by the team that does this work every week — accurate
+      pound opening times, the real statutory fees, and the paperwork that actually gets a
+      vehicle released. If your car is at a Met pound and can't be driven away, our
+      <a href="/services/police-pound-release/">police pound release service</a> collects it by
+      flatbed, 24/7.
+    </p>
+
+    <ul class="resources__grid">
+      {resources.map((r) => (
+        <li class="resources__card">
+          <h2><a href={r.href}>{r.title}</a></h2>
+          <p>{r.blurb}</p>
+          <a class="resources__more" href={r.href}>Read the guide →</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <PhoneCTA
+    tone="emergency"
+    heading="Vehicle at Perivale or Charlton pound?"
+    lead="We collect by flatbed once your paperwork is cleared — delivered home, to a garage or secure storage."
+  />
+</BaseLayout>
+
+<style>
+  .resources {
+    padding-block: 2rem 3rem;
+  }
+  .resources h1 {
+    margin-top: 0.6rem;
+  }
+  .resources__lead {
+    margin-top: 1rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1.1rem;
+    max-width: 72ch;
+  }
+  .resources__lead a {
+    color: var(--color-primary-700);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .resources__grid {
+    margin-top: 2rem;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .resources__card {
+    background: var(--color-neutral-100);
+    border-radius: 0.5rem;
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .resources__card h2 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+  .resources__card h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .resources__card h2 a:hover {
+    color: var(--color-primary-700);
+  }
+  .resources__card p {
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .resources__more {
+    color: var(--color-primary-700);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .resources__more:hover {
+    text-decoration: underline;
+  }
+</style>

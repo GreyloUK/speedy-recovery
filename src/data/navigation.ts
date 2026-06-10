@@ -23,6 +23,7 @@ const areasChildren: readonly NavLink[] = [
   { label: "Greenford", href: "/areas/greenford/" },
   { label: "Ealing", href: "/areas/ealing/" },
   { label: "Hayes", href: "/areas/hayes/" },
+  { label: "Southall", href: "/areas/southall/" },
 ];
 
 export const navigation = {
@@ -37,11 +38,19 @@ export const navigation = {
     { heading: "Services", links: servicesChildren },
     { heading: "Areas", links: areasChildren },
     {
+      heading: "Resources",
+      links: [
+        { label: "Perivale Car Pound", href: "/resources/perivale-car-pound/" },
+        { label: "Charlton Car Pound", href: "/resources/charlton-car-pound/" },
+        { label: "Met Pound Release Guide", href: "/resources/metropolitan-police-pound-release-guide/" },
+        { label: "All Resources", href: "/resources/" },
+      ],
+    },
+    {
       heading: "Company",
       links: [
         { label: "About", href: "/about/" },
         { label: "Contact", href: "/contact/" },
-        { label: "Metropolitan Police Pound Guide", href: "/resources/metropolitan-police-pound-release-guide/" },
       ],
     },
     {

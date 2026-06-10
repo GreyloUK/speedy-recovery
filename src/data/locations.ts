@@ -5,6 +5,7 @@ import greenfordImage from "../assets/images/areas/greenford.jpg";
 import harrowImage from "../assets/images/areas/harrow.jpg";
 import hayesImage from "../assets/images/areas/hayes.jpg";
 import perivaleImage from "../assets/images/areas/perivale.jpg";
+import southallImage from "../assets/images/areas/southall.jpg";
 
 type LocalImage = typeof harrowImage;
 
@@ -415,6 +416,70 @@ const raw: Location[] = [
       },
     ],
     heroImage: hayesImage,
+    verified: false,
+  },
+
+  {
+    slug: "southall",
+    name: "Southall",
+    postcode: "UB1",
+    address: { ...perivaleAddress },
+    basedAt: "perivale",
+    geo: null,
+    intro:
+      "Car recovery in Southall is dispatched from our Perivale operating point, reaching UB1 and UB2 in around 20 minutes via Greenford Road and the A312. We cover the Broadway, Southall Green, Norwood Green, the Uxbridge Road corridor and the industrial land between the Grand Union Canal and the rail line — an area that produces a steady mix of private car breakdowns, loaded van recoveries and accident jobs on The Parkway. Southall's streets are busy and tightly parked, so we confirm the exact pickup point, whether the vehicle rolls and steers, and the destination before a truck leaves Perivale. From a flat battery outside a house in Old Southall to a courier van down on the A312, we recover cars, vans, motorcycles, EVs and keyless vehicles by flatbed, 24 hours a day.",
+    detailSections: [
+      {
+        heading: "Car recovery in Southall, UB1 and UB2",
+        body: "Southall recovery calls are handled from Perivale, a short run down Greenford Road or the A312. We collect from residential streets around the Broadway and Southall Green, station areas, retail car parks, garage forecourts and workplaces across UB1 and UB2. Flatbed recovery is the default for cars, vans, motorcycles, EVs and keyless vehicles, including accident-damaged vehicles that should not be driven and cars that fail to start on cold mornings. The destination — home, garage, insurer-approved repairer or secure storage — is agreed before dispatch.",
+      },
+      {
+        heading: "The Parkway, A312 and Uxbridge Road recovery",
+        body: "The A312 Parkway and the A4020 Uxbridge Road carry heavy traffic between Hayes, Heathrow and Ealing, and they generate regular breakdown and accident recovery work. A vehicle stopped on The Parkway needs clearing quickly and safely, so we confirm the direction of travel and nearest junction before the truck leaves. From the same routes we also reach Norwood Green, Heston and the M4 approaches when a job needs taking further across the corridor.",
+      },
+      {
+        heading: "Vans, trade vehicles and the industrial estates",
+        body: "Southall's industrial land along the canal and around Bridge Road produces loaded-van and light-commercial recovery work that a standard patrol cannot move. Clutch and gearbox failures, suspension damage and vehicles stuck at depot entrances need the right truck rather than a tow rope. Our fleet includes a 7.5-ton recovery truck for heavier and/or loaded vehicles, plus HIAB support where access is tight, so trade and fleet vehicles can be recovered to a repairer, depot or secure storage without a second move.",
+      },
+      {
+        heading: "Honest dispatch, real response times",
+        body: "We do not claim a Southall office — calls are dispatched from our Perivale operating point, which borders the area and keeps typical response around 20 minutes depending on traffic. That honesty matters when you are standing next to a dead vehicle deciding who to trust. The call handler will give you a realistic arrival window based on the truck's actual position, confirm a fixed price for the job, and keep you updated if A312 or Uxbridge Road traffic changes the picture. If the vehicle needs to be held rather than delivered, our secure Harrow yard is available through the same call.",
+      },
+    ],
+    responseMinutes: 20,
+    nearbyAreas: [
+      "Southall Green",
+      "Norwood Green",
+      "Hanwell",
+      "Hayes",
+      "Greenford",
+      "Heston",
+      "Ealing",
+      "West Drayton",
+    ],
+    servicesOffered: [
+      "car-recovery",
+      "accident-recovery",
+      "police-pound-release",
+      "specialist-recovery",
+      "vehicle-repossession",
+      "supercar-classic-car-transportation",
+    ],
+    faqs: [
+      {
+        q: "How quickly can you reach Southall?",
+        a: "Typically around 20 minutes from our Perivale operating point, via Greenford Road or the A312. Rush hour on the Uxbridge Road can add time — we'll give you an honest window on the call.",
+      },
+      {
+        q: "Do you cover The Parkway and the A312?",
+        a: "Yes — the A312 between Hayes and the A40 is one of our regular routes. We confirm your direction of travel and nearest junction so the truck approaches from the right side.",
+      },
+      {
+        q: "Can you recover loaded vans from the Southall industrial estates?",
+        a: "Yes. We run a 7.5-ton recovery truck for heavier and/or loaded vehicles plus HIAB support, so couriers, trades and fleet vans around Bridge Road and the canal-side estates are routine work for us.",
+      },
+    ],
+    heroImage: southallImage,
     verified: false,
   },
 ];

@@ -65,6 +65,9 @@ const ServiceSchema = z.object({
   galleryImages: z.array(GalleryImageSchema),
   iconName: z.string().min(1),
   faqs: z.array(FaqSchema).min(2).max(6),
+  relatedResources: z
+    .array(z.object({ label: z.string().min(1), href: z.string().min(1) }))
+    .optional(),
   schema: z.object({
     serviceType: z.string().min(1),
     description: z.string().min(1),
@@ -327,6 +330,20 @@ const raw: Service[] = [
         a: "We can still recover it — we operate under a full O-Licence and our drivers are IVR-certified. A PG9 vehicle has to be moved on a flatbed, which is our default anyway.",
       },
     ],
+    relatedResources: [
+      {
+        label: "Perivale Car Pound — opening times, fees & collection",
+        href: "/resources/perivale-car-pound/",
+      },
+      {
+        label: "Charlton Car Pound — opening times, fees & collection",
+        href: "/resources/charlton-car-pound/",
+      },
+      {
+        label: "Metropolitan Police pound release guide",
+        href: "/resources/metropolitan-police-pound-release-guide/",
+      },
+    ],
     schema: {
       serviceType: "Police Pound Release",
       description:
@@ -337,7 +354,7 @@ const raw: Service[] = [
   {
     slug: "specialist-recovery",
     name: "Specialist Recovery",
-    seoTitle: "Motorbike Recovery London + Specialist Vehicle Recovery",
+    seoTitle: "Motorbike & Specialist Recovery London",
     metaDescription:
       "Motorbike recovery, EV recovery, keyless car recovery and forklift transport across London + M25. IVR-trained operators and specialist loading.",
     heroTitle: "Motorbike Recovery & Specialist Vehicle Recovery",
@@ -516,7 +533,7 @@ const raw: Service[] = [
   {
     slug: "supercar-classic-car-transportation",
     name: "Supercar & Classic Car Transportation",
-    seoTitle: "Classic Car & Supercar Transport London + M25",
+    seoTitle: "Classic Car & Supercar Transport London",
     metaDescription:
       "Classic car transport, supercar recovery and prestige vehicle movement across London + M25. Careful loading for low-clearance and high-value cars.",
     heroTitle: "Classic Car & Supercar Transport London + M25",

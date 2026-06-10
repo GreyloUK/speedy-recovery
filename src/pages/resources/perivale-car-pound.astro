@@ -1,0 +1,341 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import PhoneCTA from "../../components/sections/PhoneCTA.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import { breadcrumbSchema, faqSchema } from "../../utils/schema";
+import { composeTitle } from "../../utils/seo";
+import poundCollectionImage from "../../assets/images/perivale-car-pound-collection.jpeg";
+
+const title = composeTitle("Perivale Car Pound — Opening Times & Fees");
+const description =
+  "Perivale Car Pound, Walmgate Road UB6 7LR — opening times, 2026 release fees, contact number and paperwork. Can't drive it out? We collect by flatbed.";
+
+const faqs = [
+  {
+    q: "How much is a day at Perivale car pound?",
+    a: "Storage is £26 per day (or part-day) for a car or van up to 3.5 tonnes, and £13 per day for a motorcycle. The clock starts at noon on the first day after the vehicle was brought in, and charges keep building until you collect — so acting quickly matters.",
+  },
+  {
+    q: "How much does it cost to get a car out of Perivale pound?",
+    a: "For a standard car seized on the road, upright and undamaged, the statutory removal charge is £192 plus £26 storage per day. A car recovered off-road or substantially damaged costs more — up to £384 removal. These charges are set by government regulations, not by the police or by us.",
+  },
+  {
+    q: "What are Perivale car pound's opening times?",
+    a: "11.30am to 7.30pm, seven days a week, including bank holidays. The gates close to the public at 7.30pm sharp, but if you arrive before closing you will be served. The quietest times are mid-afternoon; it's busiest 11.30am–1pm and after 5pm.",
+  },
+  {
+    q: "What is the Perivale car pound contact number?",
+    a: "The pound is run by the Metropolitan Police — call 020 7161 0944 or the non-emergency line 101 and ask for Perivale pound. For collecting a vehicle that can't be driven out, call Speedy Recovery on 07850 900 005 — our Perivale operating point is on the same road as the pound.",
+  },
+  {
+    q: "Can I drive my car out of the pound without MOT or insurance?",
+    a: "No. The pound runs computer checks before release. Without a valid MOT (or proof of a pre-booked MOT appointment) and insurance that specifically permits impound release, the vehicle must leave on a recovery truck — the pound staff call this a 'lift and shift'. That's exactly what we do.",
+  },
+  {
+    q: "What happens if I don't collect my car from Perivale pound?",
+    a: "For vehicles seized under Section 165A you normally have 7 working days from the date on the seizure notice to reclaim, and the Met can dispose of unclaimed vehicles after 14 days — by auction or scrapping. If you don't want the vehicle back, you can disclaim it at the pound and pay nothing further.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/resources/perivale-car-pound/"
+  schema={[
+    faqSchema(faqs),
+    breadcrumbSchema([
+      { label: "Home", path: "/" },
+      { label: "Resources", path: "/resources/" },
+      { label: "Perivale Car Pound" },
+    ]),
+  ]}
+>
+  <div class="container-page breadcrumb-band">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Resources", href: "/resources/" },
+        { label: "Perivale Car Pound" },
+      ]}
+    />
+  </div>
+
+  <article class="guide container-page">
+    <span class="section-label">Pound guide</span>
+    <h1>Perivale Car Pound: opening times, fees and getting your vehicle out.</h1>
+    <p class="guide__lead">
+      Perivale Car Pound on Walmgate Road, UB6 7LR is one of the Metropolitan Police's two main
+      vehicle pounds. This page covers everything you need before you travel — opening hours,
+      contact details, the 2026 statutory release fees, the documents the pound will ask for,
+      and what to do if your vehicle can't legally or physically be driven away.
+    </p>
+
+    <aside class="guide__notice">
+      <strong>We are not the Metropolitan Police.</strong> Speedy Recovery is an independent,
+      PAS43-certified vehicle recovery company. We can't release your vehicle or waive pound
+      charges — but once the pound clears your paperwork, we collect vehicles that can't be
+      driven out and deliver them anywhere in London + M25. Our
+      <a href="/areas/perivale/">Perivale operating point</a> is on the same road as the pound.
+    </aside>
+
+    <div class="guide__facts" aria-label="Perivale Car Pound key facts">
+      <div>
+        <p class="guide__facts-label">Address</p>
+        <p class="guide__facts-value">Walmgate Road, Perivale,<br />Greenford UB6 7LR</p>
+      </div>
+      <div>
+        <p class="guide__facts-label">Opening times</p>
+        <p class="guide__facts-value">11.30am – 7.30pm, 7 days a week<br />(including bank holidays)</p>
+      </div>
+      <div>
+        <p class="guide__facts-label">Pound enquiries (Met Police)</p>
+        <p class="guide__facts-value">020 7161 0944 or 101</p>
+      </div>
+      <div>
+        <p class="guide__facts-label">Flatbed collection (us, 24/7)</p>
+        <p class="guide__facts-value"><a href="tel:+447850900005">07850 900 005</a></p>
+      </div>
+    </div>
+
+    <h2>Where is Perivale Car Pound?</h2>
+    <p>
+      The pound is on Walmgate Road — off Aintree Road — in Perivale, west London. By road,
+      leave the A40 at the Perivale exit near the Hoover Building. Walmgate Road is the only
+      access to the pound. There is <strong>no public parking and no toilet on site</strong>,
+      so plan your trip accordingly.
+    </p>
+    <p>
+      By public transport: Perivale station (Central line) is the nearest Underground stop,
+      South Greenford the nearest mainline station, and buses 95 and 297 run nearby.
+    </p>
+
+    <Image
+      src={poundCollectionImage}
+      alt="Perivale car pound vehicle collection — Speedy Recovery flatbed loading a released car"
+      class="guide__image"
+      widths={[480, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 72ch"
+      loading="lazy"
+    />
+
+    <h2>Perivale Car Pound opening times</h2>
+    <p>
+      <strong>11.30am to 7.30pm, seven days a week, including public holidays.</strong> The
+      gates close at 7.30pm sharp, but anyone who arrives before closing will be served. The
+      Met says the busiest periods are midweek between 11.30am and 1pm and after 5pm — if you
+      can, aim for mid-afternoon.
+    </p>
+
+    <h2>What you need to release a vehicle from Perivale pound</h2>
+    <p>
+      The pound won't release a vehicle without the right documents, and the registered keeper
+      normally has to attend in person. In short, bring:
+    </p>
+    <ul class="guide__list">
+      <li><strong>Valid photo ID</strong> — passport, photocard driving licence or another government-issued document. Student cards and bank cards are not accepted.</li>
+      <li><strong>Your driving licence</strong> — provisional licence holders must bring a qualified supervising driver aged 21+ who has held a full licence for 3+ years, plus L plates. Learner motorcyclists need their original CBT certificate.</li>
+      <li><strong>Proof of ownership</strong> — the V5C logbook in your name, or a new keeper supplement (V5C/2) with a verifiable bill of sale, plus proof of address.</li>
+      <li><strong>Insurance that permits impound release</strong> — a standard certificate often isn't enough, and short-term cover under 30 days is usually rejected. Check the wording with your insurer before travelling.</li>
+      <li><strong>A valid MOT</strong> — or evidence of a pre-booked MOT appointment, unless the vehicle is leaving on a recovery truck.</li>
+      <li><strong>Payment</strong> — the pound takes cash (sterling), Visa, Mastercard and Maestro. No American Express, no cheques, and payment can't be taken over the phone.</li>
+    </ul>
+    <p>
+      The full requirements, including third-party collection rules and letters of authority,
+      are on the
+      <a href="https://www.met.police.uk/advice/advice-and-information/vr/vehicle-recovery/seized-vehicles/" rel="noopener">Met Police seized vehicles page</a>
+      — or read our plain-English
+      <a href="/resources/metropolitan-police-pound-release-guide/">Met pound release guide</a>.
+    </p>
+
+    <h2>Perivale Car Pound fees in 2026</h2>
+    <p>
+      Release charges are set by government under the
+      <a href="https://www.legislation.gov.uk/uksi/2023/331/made" rel="noopener">Removal, Storage and Disposal of Motor Vehicles (Amendment) Regulations 2023</a>
+      — neither the police nor anyone else can discount them. For cars and vans up to
+      3.5 tonnes:
+    </p>
+    <table class="guide__table">
+      <thead>
+        <tr><th>Charge</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Removal — on road, upright, not substantially damaged</td><td>£192</td></tr>
+        <tr><td>Removal — off road, upright</td><td>£256</td></tr>
+        <tr><td>Removal — on road, damaged or not upright</td><td>£320</td></tr>
+        <tr><td>Removal — off road, damaged or not upright</td><td>£384</td></tr>
+        <tr><td>Removal — motorcycle (any position or condition)</td><td>£192</td></tr>
+        <tr><td>Storage, per day or part-day (car/van)</td><td>£26</td></tr>
+        <tr><td>Storage, per day or part-day (motorcycle)</td><td>£13</td></tr>
+        <tr><td>Disposal (car/van)</td><td>£96</td></tr>
+        <tr><td>Disposal (motorcycle)</td><td>£64</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Heavier vehicles cost substantially more. Storage is charged per 24-hour period
+      (or part of one), starting from noon on the first day after removal — so a "quick"
+      delay of three or four days adds £78–£104 to the bill.
+    </p>
+
+    <h2>The deadlines: 7 working days, disposal after 14</h2>
+    <p>
+      If your vehicle was seized under Section 165A of the Road Traffic Act (no insurance, or
+      driving outside your licence), you're required to reclaim it within
+      <strong>7 working days</strong> of the date on the seizure notice. Unclaimed vehicles can
+      be disposed of — auctioned or scrapped — <strong>after 14 days</strong>. If you don't
+      want the vehicle back, you can attend with ID and proof of ownership and sign a
+      disclaimer instead.
+    </p>
+
+    <h2>When you'll need a recovery truck to get your car out of Perivale</h2>
+    <p>
+      A large share of vehicles at Perivale car pound can't simply be driven home. The pound
+      doesn't allow any repairs on site — not even a tyre change or windscreen repair — so if
+      any of these apply, the vehicle has to leave on a flatbed:
+    </p>
+    <ul class="guide__list">
+      <li>No valid MOT and no pre-booked test appointment</li>
+      <li>No insurance that covers driving it away (or you can't get impound cover)</li>
+      <li>A PG9 prohibition notice — the vehicle legally cannot be driven</li>
+      <li>Accident damage, or a stolen-recovered vehicle with a damaged ignition, locks or missing keys</li>
+      <li>Flat battery, drivetrain fault, or anything that makes it unsafe to drive</li>
+    </ul>
+
+    <h2>How Speedy Recovery collects from Perivale Car Pound</h2>
+    <p>
+      Our <a href="/services/police-pound-release/">police pound release service</a> handles
+      Perivale collections several times a week. Because our Perivale base is on Walmgate Road
+      itself, we're usually the closest operator to the gate. You clear the paperwork at the
+      window; we load the vehicle on a flatbed inside the release bay — meeting the Met's
+      loading and documentation rules for recovery operators — and deliver it to your home,
+      your garage, or our <a href="/services/vehicle-storage/">secure storage yard in Harrow</a>
+      if you need time to arrange repairs or insurance. One call, fixed quote, same-day in
+      most cases: <a href="tel:+447850900005">07850 900 005</a>.
+    </p>
+    <p>
+      Your vehicle at <a href="/resources/charlton-car-pound/">Charlton pound</a> instead?
+      We cover both Met pounds, 24/7.
+    </p>
+  </article>
+
+  <PhoneCTA
+    tone="emergency"
+    heading="Vehicle stuck at Perivale pound?"
+    lead="Flatbed collection from Walmgate Road — delivered home, to your garage or secure storage. Usually same-day."
+  />
+
+  <FAQ items={faqs} heading="Perivale Car Pound — common questions." />
+
+  <PhoneCTA tone="navy" />
+</BaseLayout>
+
+<style>
+  .guide {
+    padding-block: 2rem 3rem;
+    max-width: 72ch;
+  }
+  .guide h1 {
+    margin-top: 0.6rem;
+  }
+  .guide__lead {
+    margin-top: 1rem;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1.1rem;
+  }
+  .guide__notice {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-neutral-100);
+    border-left: 4px solid var(--color-primary-700);
+    border-radius: 0.25rem;
+    line-height: 1.55;
+    color: var(--color-neutral-800);
+  }
+  .guide__facts {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .guide__facts { grid-template-columns: 1fr; }
+  }
+  .guide__facts div {
+    background: var(--color-neutral-100);
+    border-radius: 0.375rem;
+    padding: 0.9rem 1.1rem;
+  }
+  .guide__facts-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-primary-700);
+    margin-bottom: 0.3rem;
+  }
+  .guide__facts-value {
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .guide__image {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  .guide h2 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.35rem;
+  }
+  .guide p {
+    color: var(--color-neutral-800);
+    line-height: 1.65;
+  }
+  .guide p + p { margin-top: 0.75rem; }
+  .guide a {
+    color: var(--color-primary-700);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .guide__list {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: disc;
+  }
+  .guide__list li {
+    color: var(--color-neutral-800);
+    line-height: 1.55;
+  }
+  .guide__table {
+    margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .guide__table th,
+  .guide__table td {
+    text-align: left;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+    color: var(--color-neutral-800);
+  }
+  .guide__table th {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary-700);
+  }
+  .guide__table td:last-child {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+</style>

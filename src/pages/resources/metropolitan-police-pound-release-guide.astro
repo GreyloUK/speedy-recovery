@@ -9,8 +9,8 @@ import { composeTitle } from "../../utils/seo";
 
 const poundService = services.find((s) => s.slug === "police-pound-release");
 
-const title = composeTitle("Metropolitan Police Pound Release Guide — Charlton, Perivale");
-const description = "A practical guide to releasing your vehicle from a Metropolitan Police pound — paperwork required, fees, process, and how we handle the release on your behalf.";
+const title = composeTitle("Met Police Pound Release Guide");
+const description = "How to release your vehicle from a Metropolitan Police pound — paperwork, statutory fees, deadlines and how flatbed collection works. Read the guide.";
 
 const guideFaqs = poundService?.faqs ?? [];
 ---
@@ -49,11 +49,19 @@ const guideFaqs = poundService?.faqs ?? [];
     <h2>Which pound has your vehicle?</h2>
     <p>
       All Metropolitan Police-seized vehicles in London go to one of two main pounds:
-      <strong>Charlton</strong> (south-east London, off the A206) and
-      <strong>Perivale</strong> (west London, off the A40). The officer or warden who
-      removed the vehicle will have left a TRN (traceable reference number) slip
-      showing which. If you don't have the slip, TRACE — the central enquiry line —
-      can tell you: 0845 206 8602.
+      <strong><a href="/resources/charlton-car-pound/">Charlton</a></strong> (Bramshot Avenue,
+      SE7 7HY — south-east London, off the A102) and
+      <strong><a href="/resources/perivale-car-pound/">Perivale</a></strong> (Walmgate Road,
+      UB6 7LR — west London, off the A40). The seizure notice given to the driver, or the
+      notice letter posted to the registered keeper, states which pound holds the vehicle.
+      Not sure? Call the Met pound line on 020 7161 0944. If the vehicle was towed by a
+      council or TfL rather than the police, use the free TRACE service instead.
+    </p>
+    <p>
+      We've put together dedicated pages for each pound with addresses, opening times,
+      travel directions and the current fee tables:
+      the <a href="/resources/perivale-car-pound/">Perivale Car Pound guide</a> and
+      the <a href="/resources/charlton-car-pound/">Charlton Car Pound guide</a>.
     </p>
 
     <h2>What paperwork you'll need</h2>
@@ -92,10 +100,13 @@ const guideFaqs = poundService?.faqs ?? [];
 
     <h2>Opening hours</h2>
     <p>
-      Both Charlton and Perivale pounds are open 8am–11pm, 7 days a week. The release
-      window stops 30 minutes before closing — don't arrive at 10:45pm expecting to
-      drive out at 10:55pm. Check current pound hours on the Met Police website
-      before travelling, as they occasionally change on bank holidays.
+      Both Charlton and Perivale pounds are open <strong>11.30am to 7.30pm, seven days a
+      week, including public holidays</strong>. The gates close to the public at 7.30pm
+      sharp, but if you arrive before closing you will be served. The busiest periods are
+      midweek 11.30am–1pm and after 5pm. Neither pound has public parking or toilets on
+      site — and remember the pounds don't allow repairs of any kind inside, so if the
+      vehicle can't legally or safely be driven, arrange a
+      <a href="/services/police-pound-release/">recovery collection</a> before you travel.
     </p>
   </article>
 
