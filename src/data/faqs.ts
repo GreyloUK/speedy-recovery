@@ -10,7 +10,7 @@ export type Faq = z.infer<typeof FaqSchema>;
 const raw: Faq[] = [
   {
     q: "Are you really 24/7?",
-    a: "Yes. 24 hours, every day of the year — including Christmas, bank holidays and the small hours. There is no 'out of hours surcharge' and no 'call back tomorrow'.",
+    a: "Yes. 24 hours, every day of the year, including Christmas, bank holidays and the small hours. There is no 'out of hours surcharge' and no 'call back tomorrow'.",
   },
   {
     q: "Which areas do you cover?",
@@ -18,15 +18,15 @@ const raw: Faq[] = [
   },
   {
     q: "What does it cost?",
-    a: "We quote a fixed price on the call — no meter running, no surprise extras. If your recovery is insurer-approved (PAS43 / AA / FMG) we usually bill the insurer direct.",
+    a: "We quote a fixed price on the call: no meter running, no surprise extras. If your recovery is insurer-approved (PAS43 / AA / FMG) we usually bill the insurer direct.",
   },
   {
     q: "Do you handle insurance work?",
-    a: "Yes. We hold PAS43 2012 certification and a full O-Licence — the credentials that put us on most insurer panels. Our drivers are IVR-certified.",
+    a: "Yes. We hold PAS43 2012 certification and a full O-Licence, the credentials that put us on most insurer panels. Our drivers are IVR-certified.",
   },
   {
     q: "Can you release a vehicle from a police pound?",
-    a: "Yes — Charlton, Perivale and every other Metropolitan Police pound. We handle the paperwork on your behalf once you've sent the required documents.",
+    a: "Yes, from Charlton, Perivale and every other Metropolitan Police pound. We handle the paperwork on your behalf once you've sent the required documents.",
   },
 ];
 

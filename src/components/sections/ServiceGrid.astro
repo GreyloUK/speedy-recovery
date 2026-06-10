@@ -14,7 +14,7 @@ interface Props {
 const {
   heading = "What we recover",
   eyebrow = "Services",
-  lead = "Core recovery services for London + M25 — from roadside breakdowns and accident recovery to police pound release, specialist transport, repossession, prestige vehicle movement and secure storage. Each one is backed by our own fleet, certified drivers and one operator handling your call from dispatch through to delivery.",
+  lead = "Core recovery services for London + M25, from roadside breakdowns and accident recovery to police pound release, specialist transport, repossession, prestige vehicle movement and secure storage. Each one is backed by our own fleet, certified drivers and one operator handling your call from dispatch through to delivery.",
   filterSlugs,
 } = Astro.props;
 
@@ -39,7 +39,7 @@ const anyDraft = items.some((s) => s.gridDescription.startsWith("[DRAFT]"));
         {heading && <h2>{heading}</h2>}
         {lead && <p class="svc-grid__lead">{lead}</p>}
         {anyDraft && (
-          <span class="svc-grid__draft">Draft copy — to be reviewed by client</span>
+          <span class="svc-grid__draft">Draft copy, to be reviewed by client</span>
         )}
       </header>
     )}
@@ -52,7 +52,7 @@ const anyDraft = items.some((s) => s.gridDescription.startsWith("[DRAFT]"));
               {s.gridImage ? (
                 <Image
                   src={s.gridImage}
-                  alt={`${s.name} in London + M25 — Speedy Recovery on scene`}
+                  alt={`${s.name} in London + M25, Speedy Recovery on scene`}
                   loading="lazy"
                   decoding="async"
                   widths={[360, 560, 760, 960]}
@@ -61,7 +61,7 @@ const anyDraft = items.some((s) => s.gridDescription.startsWith("[DRAFT]"));
                 />
               ) : (
                 <span class="svc-card__placeholder" aria-hidden="true">
-                  <span>[TK photo — {s.name}]</span>
+                  <span>[TK photo: {s.name}]</span>
                 </span>
               )}
             </figure>

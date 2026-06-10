@@ -15,9 +15,9 @@ const emailIsTk = business.email.general.startsWith("[TK");
 
 const intro =
   location.napIntro ??
-  `Our ${location.name} base serves ${location.address.postcode} and the surrounding postcodes — a typical response of ${location.responseMinutes} minutes, 24 hours a day.`;
+  `Our ${location.name} base serves ${location.address.postcode} and the surrounding postcodes, with a typical response of ${location.responseMinutes} minutes, 24 hours a day.`;
 
-// Placeholder Google Maps query — falls back to name+locality when the postcode
+// Placeholder Google Maps query: falls back to name+locality when the postcode
 // is still a [TK] draft so the embed resolves to something meaningful.
 const mapParts = [
   location.address.street,
@@ -163,7 +163,7 @@ const gbpHref =
     max-width: 60ch;
   }
 
-  /* Divided-cell meta grid — thin dividers via a 1px background. */
+  /* Divided-cell meta grid: thin dividers via a 1px background. */
   .nap__meta {
     margin: 0.5rem 0 0;
     display: grid;

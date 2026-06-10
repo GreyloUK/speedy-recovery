@@ -16,7 +16,7 @@ const raw: Credential[] = [
     id: "pas43",
     label: "PAS43 2012 certified",
     summary:
-      "The recognised UK standard for roadside vehicle recovery — required by most insurer panels before a claim-approved job is released.",
+      "The recognised UK standard for roadside vehicle recovery, required by most insurer panels before a claim-approved job is released.",
     certNumber: null,
     iconName: "badge-check",
     category: "accreditation",
@@ -34,7 +34,7 @@ const raw: Credential[] = [
     id: "ivr",
     label: "IVR-certified drivers",
     summary:
-      "Every driver on our rota holds the Institute of Vehicle Recovery competency certification — independently assessed, what insurers and pounds expect.",
+      "Every driver on our rota holds the Institute of Vehicle Recovery competency certification. It is independently assessed and is what insurers and pounds expect.",
     certNumber: null,
     iconName: "user-check",
     category: "accreditation",
@@ -52,7 +52,7 @@ const raw: Credential[] = [
     id: "fmg",
     label: "FMG partner",
     summary:
-      "Contracted partner to FMG — the UK's largest independent fleet incident management provider.",
+      "Contracted partner to FMG, the UK's largest independent fleet incident management provider.",
     certNumber: null,
     iconName: "network",
     category: "partnership",

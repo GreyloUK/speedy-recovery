@@ -23,7 +23,7 @@ const baseLabel = baseLocation
   <div class="container-page loc-detail__inner">
     <div class="loc-detail__body">
       {isDraft && (
-        <span class="loc-detail__draft">Draft copy — to be reviewed by client</span>
+        <span class="loc-detail__draft">Draft copy, to be reviewed by client</span>
       )}
       <p>{body}</p>
       <div class="loc-detail__sections">
@@ -64,7 +64,7 @@ const baseLabel = baseLocation
         {!location.basedAt && (
           <div>
             <dt>Verified address</dt>
-            <dd>{location.verified ? "Yes — Google Business Profile verified" : "Pending verification"}</dd>
+            <dd>{location.verified ? "Yes, Google Business Profile verified" : "Pending verification"}</dd>
           </div>
         )}
       </dl>

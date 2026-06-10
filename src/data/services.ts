@@ -80,16 +80,16 @@ const raw: Service[] = [
   {
     slug: "car-recovery",
     name: "Car, Van & Motorcycle Recovery",
-    seoTitle: "Car & Vehicle Recovery London + M25 — 24/7",
+    seoTitle: "Car & Vehicle Recovery London + M25 - 24/7",
     metaDescription:
       "24/7 car and vehicle recovery across London + M25 for cars, vans and motorbikes. PAS43 certified, O-Licence holder, 25-min average response.",
     heroTitle: "Car & Vehicle Recovery London + M25",
     shortDescription:
-      "24/7 car, van and motorcycle recovery across London + M25 — breakdowns, flat batteries, blown tyres, anywhere your vehicle has stopped.",
+      "24/7 car, van and motorcycle recovery across London + M25: breakdowns, flat batteries, blown tyres, anywhere your vehicle has stopped.",
     gridDescription:
-      "If your vehicle has stopped moving — a breakdown on the North Circular, a flat battery in a residential street, a blown tyre on the motorway or a motorbike that needs loading safely — we are 25 minutes away on average, any hour, every day. Our 6-vehicle fleet runs flatbeds and a 7.5-ton recovery truck, so we can move cars, vans and motorcycles without rolling damage. One call covers collection, recovery and delivery to your chosen destination.",
+      "If your vehicle has stopped moving, we are 25 minutes away on average, any hour, every day. That covers a breakdown on the North Circular, a flat battery in a residential street, a blown tyre on the motorway or a motorbike that needs loading safely. Our 6-vehicle fleet runs flatbeds and a 7.5-ton recovery truck, so we can move cars, vans and motorcycles without rolling damage. One call covers collection, recovery and delivery to your chosen destination.",
     longDescription:
-      "If your car, van or motorcycle has stopped — a breakdown on the North Circular, a flat battery in a residential street, a blown tyre on the motorway — we are 25 minutes away on average, 24 hours a day, every day of the year. Our 6-vehicle fleet includes flatbeds and a 7.5-ton recovery truck for heavier and/or loaded vehicles, so we can move anything from a city car to a long-wheelbase van without damage. We work with the AA, FMG and local garages, and we carry PAS43 certification and a full O-Licence — the credentials insurers and workshops need.",
+      "If your car, van or motorcycle has stopped, we are 25 minutes away on average, 24 hours a day, every day of the year. That covers a breakdown on the North Circular, a flat battery in a residential street or a blown tyre on the motorway. Our 6-vehicle fleet includes flatbeds and a 7.5-ton recovery truck for heavy or loaded vehicles, so we can move anything from a city car to a long-wheelbase van without damage. We work with the AA, FMG and local garages, and we carry PAS43 certification and a full O-Licence: the credentials insurers and workshops need.",
     detailSections: [
       {
         heading: "24 hour breakdown recovery for cars, vans and motorbikes",
@@ -117,14 +117,14 @@ const raw: Service[] = [
       },
     ],
     bullets: [
-      "24 hours, every day — no out-of-hours hedging",
+      "24 hours, every day, no out-of-hours hedging",
       "25-minute average response across London + M25",
       "Cars, vans and motorcycles recovered safely",
-      "Flatbed recovery — no rolling damage",
-      "7.5-ton truck for heavier and/or loaded vehicles",
+      "Flatbed recovery, no rolling damage",
+      "7.5-ton truck for heavy or loaded vehicles",
       "PAS43 certified, O-Licence holder",
     ],
-    priceNote: "Fixed quote confirmed on the call — no meter running",
+    priceNote: "Fixed quote confirmed on the call, no meter running",
     heroImage: peopleCarrierRecoveryImage,
     gridImage: dpdVanRecoveryImage,
     galleryImages: [
@@ -153,11 +153,11 @@ const raw: Service[] = [
     faqs: [
       {
         q: "How quickly can you get to me?",
-        a: "Average response across our London coverage area is 25 minutes. On a busy night it can be longer — we'll give you an honest time on the call, not a guess.",
+        a: "Average response across our London coverage area is 25 minutes. On a busy night it can be longer. We'll give you an honest time on the call, not a guess.",
       },
       {
         q: "Can you recover any vehicle?",
-        a: "Cars, vans, light commercials, motorbikes and EVs — all covered by our 6-vehicle fleet, which includes flatbeds and a 7.5-ton recovery truck for heavier and/or loaded vehicles.",
+        a: "Cars, vans, light commercials, motorbikes and EVs are all covered by our 6-vehicle fleet, which includes flatbeds and a 7.5-ton recovery truck for heavy or loaded vehicles.",
       },
       {
         q: "Is the price fixed before you arrive?",
@@ -165,29 +165,29 @@ const raw: Service[] = [
       },
       {
         q: "Do you work with insurers?",
-        a: "Yes — we hold PAS43 2012 certification and a full O-Licence, which is what insurer panels and workshops require. We have ongoing contracts with the AA, FMG and several local garages.",
+        a: "Yes. We hold PAS43 2012 certification and a full O-Licence, which is what insurer panels and workshops require. We have ongoing contracts with the AA, FMG and several local garages.",
       },
     ],
     schema: {
       serviceType: "Vehicle Recovery",
       description:
-        "24/7 car, van and motorcycle recovery service across London + M25 — breakdowns, mechanical failures, and flat batteries handled by a PAS43-certified operator.",
+        "24/7 car, van and motorcycle recovery service across London + M25: breakdowns, mechanical failures, and flat batteries handled by a PAS43-certified operator.",
     },
   },
 
   {
     slug: "accident-recovery",
     name: "Accident Recovery",
-    seoTitle: "Accident Recovery London + M25 — 24/7",
+    seoTitle: "Accident Recovery London + M25 - 24/7",
     metaDescription:
       "24/7 accident recovery service across London + M25. Insurer-ready, PAS43 certified, IVR-trained drivers and flatbed recovery after a collision.",
-    heroTitle: "Accident Recovery, London + M25 — 24/7",
+    heroTitle: "24/7 Accident Recovery, London + M25",
     shortDescription:
-      "Post-collision recovery across London + M25 — dispatched fast, coordinated with insurers, vehicle handled carefully.",
+      "Post-collision recovery across London + M25: dispatched fast, coordinated with insurers, vehicle handled carefully.",
     gridDescription:
-      "After a collision the last thing you want is to wait on a roadside managing your own logistics. We handle accident recovery across London + M25 24/7 — flatbed lift to avoid further damage, direct coordination with your insurer if you want us to, and delivery to the approved repairer, your home, or our secure yard. PAS43 2012 certification and IVR-certified drivers are what insurer panels and AA/FMG dispatch require, and our own fleet means the vehicle is handled by our drivers from collection through to delivery.",
+      "After a collision the last thing you want is to wait on a roadside managing your own logistics. We handle accident recovery across London + M25, 24/7: flatbed lift to avoid further damage, direct coordination with your insurer if you want us to, and delivery to the approved repairer, your home, or our secure yard. PAS43 2012 certification and IVR-certified drivers are what insurer panels and AA/FMG dispatch require, and our own fleet means the vehicle is handled by our drivers from collection through to delivery.",
     longDescription:
-      "After a collision the last thing you want is to wait on a roadside managing your own logistics. We handle accident recovery across London + M25 on a 24/7 basis — flatbed lift to avoid further damage, coordination with your insurer if you want us to, and delivery to the approved repairer, your home, or our secure storage yard. Our drivers are IVR-certified and operate under a full O-Licence. We carry PAS43 2012 certification, which is what most insurer panels require to approve a claim-related recovery.",
+      "After a collision the last thing you want is to wait on a roadside managing your own logistics. We handle accident recovery across London + M25 on a 24/7 basis: flatbed lift to avoid further damage, coordination with your insurer if you want us to, and delivery to the approved repairer, your home, or our secure storage yard. Our drivers are IVR-certified and operate under a full O-Licence. We carry PAS43 2012 certification, which is what most insurer panels require to approve a claim-related recovery.",
     detailSections: [
       {
         heading: "Accident recovery service after a crash",
@@ -215,8 +215,8 @@ const raw: Service[] = [
       },
     ],
     bullets: [
-      "24/7 accident dispatch — no out-of-hours gap",
-      "Flatbed lift only — no rolling a damaged vehicle",
+      "24/7 accident dispatch, no out-of-hours gap",
+      "Flatbed lift only, no rolling a damaged vehicle",
       "Insurer-approved: PAS43 2012 + O-Licence + IVR drivers",
       "Direct liaison with AA / FMG / your broker",
       "Secure yard storage available from the same call",
@@ -234,7 +234,7 @@ const raw: Service[] = [
     faqs: [
       {
         q: "Will my insurer pay for the recovery?",
-        a: "In most claim-approved cases, yes — we can bill direct. Because we hold PAS43 2012 and a full O-Licence, we're on the panel for most UK insurers and AA/FMG dispatch.",
+        a: "In most claim-approved cases, yes. We can bill direct. Because we hold PAS43 2012 and a full O-Licence, we're on the panel for most UK insurers and AA/FMG dispatch.",
       },
       {
         q: "Can you recover the vehicle to my repairer of choice?",
@@ -259,16 +259,16 @@ const raw: Service[] = [
   {
     slug: "police-pound-release",
     name: "Police Pound Release",
-    seoTitle: "Perivale & Charlton Car Pound Release — London",
+    seoTitle: "Perivale & Charlton Car Pound Release - London",
     metaDescription:
       "Need your car back from Perivale or Charlton car pound? Speedy Recovery handles police pound release, flatbed collection and delivery across London + M25.",
     heroTitle: "Need your car back from Charlton or Perivale pound?",
     shortDescription:
-      "Release your vehicle from any Metropolitan Police pound — paperwork handled, same-day collection.",
+      "Release your vehicle from any Metropolitan Police pound: paperwork handled, same-day collection.",
     gridDescription:
-      "Need your car back from Charlton or Perivale car pound? Getting a vehicle released is a paperwork exercise dressed up as a recovery job — insurance documents, V5, ID, release charges, storage charges and the right authority for the right window. We handle Metropolitan Police pound release several times a week, collecting from Perivale, Charlton and other MPS-contracted pounds, then delivering the vehicle to your home, garage or secure holding location once the documents are in order.",
+      "Need your car back from Charlton or Perivale car pound? Getting a vehicle released is mostly paperwork: insurance documents, V5, ID, release charges, storage charges and the right authority at the right window. We handle Metropolitan Police pound release several times a week, collecting from Perivale, Charlton and other MPS-contracted pounds, then delivering the vehicle to your home, garage or secure holding location once the documents are in order.",
     longDescription:
-      "If your vehicle is being held at Perivale car pound, Charlton car pound or another Metropolitan Police pound, we can help you arrange the release, collection and onward transport. Pound release is rarely just a tow: the pound needs the right proof of ownership, valid insurance, photo ID, release authority and payment of statutory removal and storage charges before a vehicle can leave. Speedy Recovery handles this work regularly, including vehicles with PG9 prohibitions, vehicles that will not start and cars that should not be driven away without inspection. With signed authority, we collect from the pound, load the vehicle onto a flatbed and deliver it to your home, repairer, storage facility or another nominated address. If the paperwork is complete, same-day release is often possible.",
+      "If your vehicle is being held at Perivale car pound, Charlton car pound or another Metropolitan Police pound, we can help you arrange the release, collection and onward transport. Pound release involves more paperwork than towing: the pound needs the right proof of ownership, valid insurance, photo ID, release authority and payment of statutory removal and storage charges before a vehicle can leave. Speedy Recovery handles this work regularly, including vehicles with PG9 prohibitions, vehicles that will not start and cars that should not be driven away without inspection. With signed authority, we collect from the pound, load the vehicle onto a flatbed and deliver it to your home, repairer, storage facility or another nominated address. If the paperwork is complete, same-day release is often possible.",
     detailSections: [
       {
         heading: "Perivale car pound collection",
@@ -297,12 +297,12 @@ const raw: Service[] = [
     ],
     bullets: [
       "Release from Charlton, Perivale and all MPS pounds",
-      "Paperwork handled — we know which form at which window",
+      "Paperwork handled: we know which form at which window",
       "Same-day collection in most cases",
-      "Flatbed delivery — no further damage on release",
+      "Flatbed delivery, no further damage on release",
       "PG9-certified operator if your vehicle needs re-inspection",
     ],
-    priceNote: "Fixed release-and-delivery quote — pound fees paid on your behalf, reconciled after",
+    priceNote: "Fixed release-and-delivery quote, with pound fees paid on your behalf and reconciled after",
     heroImage: policePoundRecoveryImage,
     gridImage: policePoundRecoveryImage,
     galleryImages: [
@@ -327,16 +327,16 @@ const raw: Service[] = [
       },
       {
         q: "What if my vehicle has a PG9 prohibition?",
-        a: "We can still recover it — we operate under a full O-Licence and our drivers are IVR-certified. A PG9 vehicle has to be moved on a flatbed, which is our default anyway.",
+        a: "We can still recover it. We operate under a full O-Licence and our drivers are IVR-certified. A PG9 vehicle has to be moved on a flatbed, which is our default anyway.",
       },
     ],
     relatedResources: [
       {
-        label: "Perivale Car Pound — opening times, fees & collection",
+        label: "Perivale Car Pound: opening times, fees & collection",
         href: "/resources/perivale-car-pound/",
       },
       {
-        label: "Charlton Car Pound — opening times, fees & collection",
+        label: "Charlton Car Pound: opening times, fees & collection",
         href: "/resources/charlton-car-pound/",
       },
       {
@@ -347,7 +347,7 @@ const raw: Service[] = [
     schema: {
       serviceType: "Police Pound Release",
       description:
-        "Metropolitan Police pound release and vehicle collection service — paperwork handled, same-day delivery across London + M25.",
+        "Metropolitan Police pound release and vehicle collection service: paperwork handled, same-day delivery across London + M25.",
     },
   },
 
@@ -359,11 +359,11 @@ const raw: Service[] = [
       "Motorbike recovery, EV recovery, keyless car recovery and forklift transport across London + M25. IVR-trained operators and specialist loading.",
     heroTitle: "Motorbike Recovery & Specialist Vehicle Recovery",
     shortDescription:
-      "EV, hybrid, keyless, forklift, motorbike and classic recovery — specialist fleet and trained drivers for vehicles others decline.",
+      "EV, hybrid, keyless, forklift, motorbike and classic recovery: specialist fleet and trained drivers for vehicles others decline.",
     gridDescription:
-      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving between sites, a motorbike that needs soft-strap transport, a classic too low to winch — these are the vehicles a generic operator declines, damages, or charges double for. We run a specialist fleet and train drivers on the protocol each type requires: flatbed-only for EVs and hybrids, manufacturer-approved entry for keyless, soft-strap or wheel-chock for bikes, HIAB lift where needed, and 7.5-ton capacity for heavier and/or loaded vehicles.",
+      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving between sites, a motorbike that needs soft-strap transport, a classic too low to winch. These are the vehicles a generic operator declines, damages, or charges double for. We run a specialist fleet and train drivers on the protocol each type requires: flatbed-only for EVs and hybrids, manufacturer-approved entry for keyless, soft-strap or wheel-chock for bikes, HIAB lift where needed, and 7.5-ton capacity for heavy or loaded vehicles.",
     longDescription:
-      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving, a motorbike that needs soft-strap transport, a classic that can't be winched — these are the vehicles a generic recovery operator declines, damages, or charges double for. We operate a specialist fleet and train our drivers in the protocols each type requires. Flatbed-only transport for EVs and hybrids, manufacturer-approved recovery procedures for keyless vehicles, soft-strap or wheel-chock transport for bikes, HIAB support for classics and low-clearance vehicles, and careful forklift transportation across London + M25. The important part is matching the recovery method to the vehicle before anything is moved. We plan the loading, restraint and destination around the risk, whether the job is urgent or booked in advance. If a vehicle has limited steering, locked brakes, unusual weight, tight access or fragile bodywork, we would rather know that on the call and send the right equipment than improvise beside the vehicle.",
+      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving, a motorbike that needs soft-strap transport, a classic that can't be winched. These are the vehicles a generic recovery operator declines, damages, or charges double for. We operate a specialist fleet and train our drivers in the protocols each type requires. Flatbed-only transport for EVs and hybrids, manufacturer-approved recovery procedures for keyless vehicles, soft-strap or wheel-chock transport for bikes, HIAB support for classics and low-clearance vehicles, and careful forklift transportation across London + M25. The important part is matching the recovery method to the vehicle before anything is moved. We plan the loading, restraint and destination around the risk, whether the job is urgent or booked in advance. If a vehicle has limited steering, locked brakes, unusual weight, tight access or fragile bodywork, we would rather know that on the call and send the right equipment than improvise beside the vehicle.",
     detailSections: [
       {
         heading: "Motorbike recovery London + M25",
@@ -391,14 +391,14 @@ const raw: Service[] = [
       },
     ],
     bullets: [
-      "EV / hybrid — flatbed transport, no drivetrain damage",
-      "Keyless cars — manufacturer-approved entry and tow protocols",
-      "Motorbikes — softstrap or wheel-chock depending on bike",
+      "EV / hybrid: flatbed transport, no drivetrain damage",
+      "Keyless cars: manufacturer-approved entry and tow protocols",
+      "Motorbikes: softstrap or wheel-chock depending on bike",
       "Forklift transportation across London + M25",
-      "Classics and low-clearance — HIAB lift, no winch damage",
+      "Classics and low-clearance: HIAB lift, no winch damage",
       "PAS43-certified operator + IVR-certified drivers",
     ],
-    priceNote: "Quoted on vehicle type and pickup location — flatbed/HIAB included, not an upgrade",
+    priceNote: "Quoted on vehicle type and pickup location. Flatbed/HIAB included, not an upgrade",
     heroImage: forkliftRecoveryImage,
     gridImage: forkliftRecoveryImage,
     galleryImages: [
@@ -423,15 +423,15 @@ const raw: Service[] = [
     faqs: [
       {
         q: "Do you really handle EVs properly?",
-        a: "Yes. EVs go on a flatbed only — never towed with wheels on the ground, which damages the drivetrain. Our drivers are trained on major manufacturer recovery protocols (Tesla, BMW, VW, Kia).",
+        a: "Yes. EVs go on a flatbed only, never towed with wheels on the ground, which damages the drivetrain. Our drivers are trained on major manufacturer recovery protocols (Tesla, BMW, VW, Kia).",
       },
       {
         q: "My keyless car is locked and the fob is out of battery. Can you still move it?",
-        a: "Yes — this is one of the commonest calls we get. We follow manufacturer-approved entry and neutral-selection procedures, no damage to the car.",
+        a: "Yes. This is one of the commonest calls we get. We follow manufacturer-approved entry and neutral-selection procedures, no damage to the car.",
       },
       {
         q: "Do you carry motorbikes?",
-        a: "Yes. We use soft-straps and a front-wheel chock on our flatbed — no straps over paint, no dropped bikes. Sports bikes, tourers, classics all covered.",
+        a: "Yes. We use soft-straps and a front-wheel chock on our flatbed: no straps over paint, no dropped bikes. Sports bikes, tourers, classics all covered.",
       },
       {
         q: "Can you recover a very low classic car?",
@@ -542,7 +542,7 @@ const raw: Service[] = [
     gridDescription:
       "Supercars, prestige cars and classic vehicles need more than a standard tow. Speedy Recovery provides careful transportation across London + M25 for vehicles that need low-clearance loading, discreet handling and drivers who understand the risk around paint, suspension, trim and value. We can collect from homes, garages, storage facilities, dealerships and repairers, then deliver to your chosen address with a clear quote agreed over the phone before the truck is dispatched.",
     longDescription:
-      "Speedy Recovery provides supercar, prestige and classic car transportation across London + M25. Whether your vehicle is being moved from home to a garage, collected from storage, delivered to a repairer or recovered after an incident, our trained operators use careful loading and secure transport procedures suited to high-value and older vehicles. We quote clearly over the phone, collect from the agreed location and deliver to your chosen destination without hidden add-ons.",
+      "Speedy Recovery provides supercar, prestige and classic car transportation across London + M25. Your vehicle might be moving from home to a garage, coming out of storage, heading to a repairer or being recovered after an incident. In each case, our trained operators use careful loading and secure transport procedures suited to high-value and older vehicles. We quote clearly over the phone, collect from the agreed location and deliver to your chosen destination without hidden add-ons.",
     detailSections: [
       {
         heading: "Classic car transport near me",
@@ -634,12 +634,12 @@ const raw: Service[] = [
   {
     slug: "vehicle-storage",
     name: "Vehicle Storage",
-    seoTitle: "Vehicle Storage London — Secure Car Storage",
+    seoTitle: "Vehicle Storage London - Secure Car Storage",
     metaDescription:
       "Secure vehicle storage in Harrow for London + M25. CCTV-monitored yard for recovered cars, insurance claims, police pound release and trade storage.",
     heroTitle: "Secure Vehicle Storage London + M25",
     shortDescription:
-      "Secure short- and long-term vehicle storage in Harrow — CCTV, gated yard, insurance-approved.",
+      "Secure short- and long-term vehicle storage in Harrow: CCTV, gated yard, insurance-approved.",
     gridDescription:
       "If you need secure vehicle storage after a recovery, accident, police pound release or insurance claim, our Harrow yard gives you a controlled place to hold the vehicle while the next step is agreed. The site is gated and CCTV-monitored, with storage receipts available for insurers, repairers and fleet operators that need clear chain-of-custody records. We can collect the vehicle ourselves, receive it after another recovery, and release it to you, a repairer or a nominated third party once authority is confirmed.",
     longDescription:
@@ -673,7 +673,7 @@ const raw: Service[] = [
     bullets: [
       "CCTV-monitored, gated yard in Harrow",
       "Insurance-approved secure-storage receipt provided",
-      "Same-day collection from recovery — ours or anyone else's",
+      "Same-day collection from recovery, ours or anyone else's",
       "Short- or longer-term storage arranged by call",
       "Release to any nominated third party with 24 hours' notice",
     ],
@@ -697,7 +697,7 @@ const raw: Service[] = [
       },
       {
         q: "Can a repairer or buyer collect without me being there?",
-        a: "Yes — with 24 hours' notice and a signed release authority from you, we'll hand the vehicle over to any nominated third party.",
+        a: "Yes. With 24 hours' notice and a signed release authority from you, we'll hand the vehicle over to any nominated third party.",
       },
     ],
     schema: {
