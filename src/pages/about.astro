@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import aboutTeamImage from "../assets/images/about-team.jpg";
+import aboutTeamImage from "../assets/images/about-recovery-truck.jpg";
 import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
 import TrustRibbon from "../components/sections/TrustRibbon.astro";
 import FleetStats from "../components/sections/FleetStats.astro";
@@ -81,11 +81,11 @@ const description = "Family-run vehicle recovery across London + M25. PAS43 cert
         </div>
       </div>
 
-      <aside class="about__media" aria-hidden="true">
+      <aside class="about__media">
         <figure>
           <Image
             src={aboutTeamImage}
-            alt="Speedy Recovery driver at the Harrow yard"
+            alt="Speedy Recovery flatbed recovery truck carrying a van on a London road"
             loading="lazy"
             decoding="async"
             widths={[360, 520, 720, 900]}
@@ -93,8 +93,8 @@ const description = "Family-run vehicle recovery across London + M25. PAS43 cert
             quality="mid"
           />
           <figcaption>
-            <span class="about__caption-label">On the yard</span>
-            <span class="about__caption-text">Harrow, HA2 6AE</span>
+            <span class="about__caption-label">On the road</span>
+            <span class="about__caption-text">London + M25, 24/7</span>
           </figcaption>
         </figure>
       </aside>

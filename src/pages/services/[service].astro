@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import Icon from "../../components/ui/Icon.astro";
 import Hero from "../../components/sections/Hero.astro";
 import TrustRibbon from "../../components/sections/TrustRibbon.astro";
 import ServiceDetail from "../../components/sections/ServiceDetail.astro";
@@ -83,28 +84,47 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
     galleryImages={service.galleryImages}
   />
 
-  {service.relatedResources && service.relatedResources.length > 0 && (
-    <section class="related-resources container-page">
-      <span class="section-label">Before you travel</span>
-      <h2>Pound guides &amp; resources</h2>
-      <ul>
-        {service.relatedResources.map((r) => (
-          <li><a href={r.href}>{r.label}</a></li>
-        ))}
-      </ul>
-    </section>
-  )}
+  {((service.relatedResources && service.relatedResources.length > 0) ||
+    (service.relatedAreas && service.relatedAreas.length > 0)) && (
+    <div class="container-page related-stack">
+      {service.relatedResources && service.relatedResources.length > 0 && (
+        <section class="related-card">
+          <div class="related-card__head">
+            <span class="section-label">Before you travel</span>
+            <h2>Pound guides &amp; resources</h2>
+          </div>
+          <ul class="related-card__links">
+            {service.relatedResources.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span>{r.label}</span>
+                  <Icon name="arrow-right" size={16} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
-  {service.relatedAreas && service.relatedAreas.length > 0 && (
-    <section class="related-resources container-page">
-      <span class="section-label">Recovery by area</span>
-      <h2>Car recovery in your area</h2>
-      <ul>
-        {service.relatedAreas.map((r) => (
-          <li><a href={r.href}>{r.label}</a></li>
-        ))}
-      </ul>
-    </section>
+      {service.relatedAreas && service.relatedAreas.length > 0 && (
+        <section class="related-card">
+          <div class="related-card__head">
+            <span class="section-label">Recovery by area</span>
+            <h2>Car recovery in your area</h2>
+          </div>
+          <ul class="related-card__links">
+            {service.relatedAreas.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span>{r.label}</span>
+                  <Icon name="arrow-right" size={16} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
   )}
 
   <PhoneCTA
@@ -131,27 +151,71 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
 </BaseLayout>
 
 <style>
-  .related-resources {
-    padding-block: 1rem 2.5rem;
-    max-width: 72ch;
+  .related-stack {
+    padding-block: 1.5rem 3rem;
+    display: grid;
+    gap: 1.25rem;
   }
-  .related-resources h2 {
-    margin-top: 0.5rem;
-    font-size: 1.35rem;
+
+  .related-card {
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    background: var(--color-neutral-50);
+    padding: 1.5rem;
   }
-  .related-resources ul {
-    margin-top: 0.75rem;
-    padding-left: 1.25rem;
+
+  .related-card__head h2 {
+    margin-top: 0.45rem;
+    font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+  }
+
+  .related-card__links {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    list-style: disc;
+    flex-wrap: wrap;
+    gap: 0.65rem;
   }
-  .related-resources a {
-    color: var(--color-primary-700);
+
+  .related-card__links li {
+    margin: 0;
+  }
+
+  .related-card__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-primary-800);
     font-weight: 700;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+    line-height: 1.2;
+    transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+  }
+
+  .related-card__links a :global(svg) {
+    color: var(--color-accent-600);
+    flex-shrink: 0;
+    transition: transform 180ms ease;
+  }
+
+  .related-card__links a:hover {
+    border-color: var(--color-primary-700);
+    color: var(--color-primary-900);
+    box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .related-card__links a:hover :global(svg) {
+    transform: translateX(2px);
+  }
+
+  @media (min-width: 900px) {
+    .related-stack {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
+    }
   }
 </style>
