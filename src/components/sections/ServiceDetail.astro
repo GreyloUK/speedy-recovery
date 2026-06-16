@@ -135,9 +135,12 @@ const body = isDraft ? longDescription.replace(/^\[DRAFT\]\s*/, "") : longDescri
 
   .svc-detail__body p {
     color: var(--color-neutral-800);
-    line-height: 1.65;
-    font-size: 1.05rem;
-    max-width: 62ch;
+    line-height: 1.7;
+    font-size: 1.125rem;
+    max-width: 66ch;
+  }
+  .svc-detail__body p + p {
+    margin-top: 1.1rem;
   }
   .svc-detail__sections {
     display: grid;
