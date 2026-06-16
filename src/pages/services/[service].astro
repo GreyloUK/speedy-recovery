@@ -95,6 +95,18 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
     </section>
   )}
 
+  {service.relatedAreas && service.relatedAreas.length > 0 && (
+    <section class="related-resources container-page">
+      <span class="section-label">Recovery by area</span>
+      <h2>Car recovery in your area</h2>
+      <ul>
+        {service.relatedAreas.map((r) => (
+          <li><a href={r.href}>{r.label}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <PhoneCTA
     tone="emergency"
     heading={`Need ${service.name.toLowerCase()} now?`}

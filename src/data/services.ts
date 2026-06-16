@@ -68,6 +68,9 @@ const ServiceSchema = z.object({
   relatedResources: z
     .array(z.object({ label: z.string().min(1), href: z.string().min(1) }))
     .optional(),
+  relatedAreas: z
+    .array(z.object({ label: z.string().min(1), href: z.string().min(1) }))
+    .optional(),
   schema: z.object({
     serviceType: z.string().min(1),
     description: z.string().min(1),
@@ -167,6 +170,10 @@ const raw: Service[] = [
         q: "Do you work with insurers?",
         a: "Yes. We hold PAS43 2012 certification and a full O-Licence, which is what insurer panels and workshops require. We have ongoing contracts with the AA, FMG and several local garages.",
       },
+    ],
+    relatedAreas: [
+      { label: "Car recovery in Harrow", href: "/areas/harrow/" },
+      { label: "Car recovery in Perivale", href: "/areas/perivale/" },
     ],
     schema: {
       serviceType: "Vehicle Recovery",

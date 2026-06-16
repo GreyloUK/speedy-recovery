@@ -17,6 +17,13 @@ const baseLocation = location.basedAt
 const baseLabel = baseLocation
   ? `Dispatched from ${baseLocation.name}`
   : "Operating base";
+
+// Our verified operating bases (no `basedAt`), minus the page we're on.
+// Used to cross-link recovery between bases with descriptive anchors,
+// concentrating "car recovery <base>" link equity on the base pages.
+const otherBases = locations.filter(
+  (l) => !l.basedAt && l.slug !== location.slug,
+);
 ---
 
 <section class="loc-detail">
@@ -47,6 +54,21 @@ const baseLabel = baseLocation
             See police pound release <Icon name="arrow-right" size={16} />
           </a>
         </div>
+      )}
+
+      {otherBases.length > 0 && (
+        <nav class="loc-detail__bases" aria-label="Recovery from our other bases">
+          <span class="section-label">Recovery from our other bases</span>
+          <ul>
+            {otherBases.map((b) => (
+              <li>
+                <a href={`/areas/${b.slug}/`}>
+                  Car recovery in {b.name} <Icon name="arrow-right" size={14} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
 
       <dl class="loc-detail__meta">
@@ -144,6 +166,38 @@ const baseLabel = baseLocation
     padding: 0.35rem 0.6rem;
     border-radius: var(--radius-xs);
     margin-bottom: 1rem;
+  }
+
+  .loc-detail__bases {
+    margin-top: 2rem;
+    max-width: 62ch;
+  }
+  .loc-detail__bases ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .loc-detail__bases a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    background: var(--color-neutral-50);
+    color: var(--color-primary-700);
+    font-weight: 700;
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+  .loc-detail__bases a:hover {
+    border-color: var(--color-primary-700);
+    color: var(--color-accent-600);
+  }
+  .loc-detail__bases a :global(svg) {
+    color: var(--color-accent-600);
   }
 
   .loc-detail__meta {

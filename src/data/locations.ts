@@ -2,7 +2,7 @@ import { z } from "zod";
 import { business } from "./business";
 import ealingImage from "../assets/images/areas/ealing.jpg";
 import greenfordImage from "../assets/images/areas/greenford.jpg";
-import harrowImage from "../assets/images/areas/harrow.jpg";
+import harrowImage from "../assets/images/areas/car-recovery-harrow.jpg";
 import hayesImage from "../assets/images/areas/hayes.jpg";
 import perivaleImage from "../assets/images/areas/perivale.jpg";
 import southallImage from "../assets/images/areas/southall.jpg";
@@ -52,7 +52,7 @@ const LocationSchema = z.object({
     })
     .nullable(),
   intro: z.string().min(40),
-  detailSections: z.array(ContentSectionSchema).min(2).max(5),
+  detailSections: z.array(ContentSectionSchema).min(2).max(7),
   responseMinutes: z.number().int().positive(),
   nearbyAreas: z.array(z.string().min(1)).min(3),
   servicesOffered: z.array(z.string().min(1)).min(3),
@@ -94,23 +94,31 @@ const raw: Location[] = [
       lng: -0.3596593,
     },
     intro:
-      "Speedy Recovery's registered base is at Cardoc House in North Harrow, so car recovery in Harrow is dispatched from our own yard rather than routed through a call-centre network. We cover HA1, HA2, HA3, HA7 and HA8 every day, and we typically reach Northwick Park, Harrow-on-the-Hill, Wealdstone, Pinner, Stanmore, Sudbury Hill and the A312 in about 20 minutes. The same yard is our secure vehicle storage facility, which means an accident-damaged or pound-released vehicle can be recovered and stored without being handed to another firm. From Harrow we run breakdown recovery, accident recovery, car, van and motorcycle recovery, specialist transport, repossession support and secure storage across north-west London.",
+      "Car recovery in Harrow runs from our own registered yard at Cardoc House in North Harrow, HA2 6AE, so a flatbed is dispatched from inside the borough rather than routed through a national call centre. We are PAS43 certified, hold a full O-Licence and run IVR-trained drivers, we work directly on the AA and FMG panels, and the same Harrow yard is our secure, CCTV-monitored storage facility. Being based in HA2 means a typical 20-minute response across HA1, HA2, HA3, HA7 and HA8, covering Harrow-on-the-Hill, Wealdstone, Pinner, Stanmore, Kenton and Hatch End, plus the A40, A409, A410 and A312. From this base we handle breakdowns, accident recovery, police pound collection, secure storage and car, van, 4x4 and motorcycle recovery, 24 hours a day, with a fixed price agreed before the truck leaves the yard.",
     detailSections: [
       {
-        heading: "Car recovery in Harrow and HA postcodes",
-        body: "Most Harrow jobs come from residential streets, station car parks, school roads, local garages and the main routes out towards Wembley, Northolt, Edgware and the M1. We cover HA1 to HA8 with flatbed recovery for cars, vans and motorcycles. Flat battery, blown tyre, clutch failure, accident damage or a car that simply will not start: give us the pickup postcode and the destination and we will quote a realistic arrival time before the truck leaves the yard.",
+        heading: "Car recovery in Harrow for cars, vans, 4x4s and motorbikes",
+        body: "Most Harrow callouts come from residential streets, station car parks, school runs, garage forecourts and the main routes out towards Wembley, Edgware, Northolt and the M1. We recover cars, vans from short-wheelbase up to long-wheelbase and Luton box vans, 4x4s, motorhomes and motorcycles, all on a flatbed so nothing is dragged. Modern vehicles are routine too: EVs, hybrids and keyless cars are loaded with the correct neutral procedure and high-voltage handling, never ground-towed. Whether it is a flat battery, a blown tyre, a clutch or gearbox failure, accident damage or a car that simply will not start, give us the pickup postcode and the destination and we confirm a realistic arrival time before the truck leaves.",
       },
       {
-        heading: "Secure vehicle storage from our Harrow yard",
-        body: "The Harrow site is also our secure storage yard, which helps when a vehicle cannot go straight home after recovery. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock come off the truck and into controlled storage, then get released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place. One operator handles the whole chain, so there are fewer handovers and you always know where the vehicle is.",
+        heading: "Roadside help in Harrow before you need a tow",
+        body: "Not every Harrow job ends with the car on the back of a truck. A lot of calls are quick roadside fixes: a jump start for a dead battery, help when you are locked out or have lost your keys, a wheel change after a blown or flat tyre, or fuel brought to you when you have run dry or misfuelled. If the fault is something we can safely sort at the kerb, we get you moving again without a full recovery charge. If it cannot be fixed safely on the spot, the same driver loads the vehicle and takes it where it needs to go, so you are not waiting twice. We tell you honestly on the call which of the two it is likely to be.",
       },
       {
-        heading: "Breakdowns, accident recovery and specialist vehicle moves",
-        body: "From Harrow we handle everyday breakdowns alongside jobs that need planning: EVs, keyless cars, motorcycles, classic cars, supercars and loaded light commercials. Our six-truck fleet includes flatbeds, HIAB support and a 7.5-ton recovery truck for heavy or loaded vehicles, so the right truck is assigned before dispatch. If the vehicle needs to go to a local garage, an insurer-approved repairer or an address anywhere inside the M25, we arrange that on the same call.",
+        heading: "Accident recovery, police pound release and auction collections",
+        body: "From Harrow we also handle the jobs that need more than a standard breakdown call. After a collision we recover accident-damaged cars by flatbed and can take them to your insurer-approved repairer, a garage of your choice or our own yard while a claim is sorted. If your vehicle has been seized and held at the Perivale or Charlton car pound, we collect it once the release paperwork is ready and deliver it home or to a repairer. We also collect cars bought at auction or on eBay and bring them back to Harrow or wherever you need them, which saves driving an unseen or untaxed vehicle across London. Tell us the destination and we plan the whole move on one call.",
       },
       {
-        heading: "Local routes we attend from Harrow",
-        body: "Common callouts include the A312, Pinner Road, Kenton Road, Northwick Park, Harrow town centre, Stanmore Hill and Rayners Lane, plus the runs towards Wembley, Edgware and the M1. We also collect from homes, garages, business premises and car parks where the problem is less dramatic but the vehicle still needs a proper recovery truck. Every Harrow job is dispatched from, and if needed stored at, our own HA2 yard.",
+        heading: "Secure vehicle storage at our Harrow yard",
+        body: "The Harrow site is also our secure storage yard, which matters when a vehicle cannot go straight home after recovery. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock come off the truck and into a gated, CCTV-monitored compound, then get released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place. Because one operator handles recovery and storage, there are fewer handovers, a clear chain of custody and you always know where the vehicle is. Storage can be arranged on the same call as the recovery, short term while parts or approval are sorted, or longer if a claim or sale takes time.",
+      },
+      {
+        heading: "Harrow neighbourhoods and routes we cover",
+        body: "We cover the whole of Harrow and the HA postcodes, including North Harrow, South Harrow, Harrow-on-the-Hill, Harrow town centre, Wealdstone, Kenton, Pinner, Hatch End, Rayners Lane, Stanmore and Edgware. Common callout points include the A40, the A409 Headstone Road, the A410 Uxbridge Road, the A312, Pinner Road, Kenton Road, Northwick Park and the runs towards Wembley and the M1. We attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. Every Harrow job is dispatched from, and if needed stored at, our own HA2 yard, so the response time we quote is based on where the truck actually is.",
+      },
+      {
+        heading: "Why Harrow drivers choose Speedy Recovery",
+        body: "We are genuinely based in Harrow, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels. Our six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
       },
     ],
     responseMinutes: 20,
@@ -146,6 +154,14 @@ const raw: Location[] = [
       {
         q: "Do you cover the whole of north-west London?",
         a: "Yes. We regularly work across Wembley, Ealing, Hayes, Greenford and Uxbridge from our Harrow base. We cover central London too, though response times are longer.",
+      },
+      {
+        q: "Can you recover an electric or keyless car in Harrow?",
+        a: "Yes. EVs, hybrids and keyless cars are recovered on a flatbed only, never ground-towed, using the correct neutral-selection and high-voltage handling procedure for the vehicle. A dead key fob, a locked transmission or an electronic handbrake is a routine call for us.",
+      },
+      {
+        q: "Can you collect a car I bought at auction or on eBay and bring it to Harrow?",
+        a: "Yes. We regularly collect auction, dealer and private-sale vehicles and deliver them to Harrow or anywhere across London and the M25, which avoids driving an unseen, untaxed or uninsured car home. Give us the collection postcode and we confirm a fixed price before we set off.",
       },
     ],
     heroImage: harrowImage,
