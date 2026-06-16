@@ -1,6 +1,6 @@
 ---
 import Icon from "../ui/Icon.astro";
-import { locations } from "../../data";
+import { locations, business } from "../../data";
 import type { Location } from "../../data/locations";
 
 interface Props {
@@ -24,6 +24,12 @@ const baseLabel = baseLocation
 const otherBases = locations.filter(
   (l) => !l.basedAt && l.slug !== location.slug,
 );
+
+// Split a section body on blank lines so a long block can render as a
+// lead-in paragraph, an optional bullet list, then any wrap-up paragraphs.
+function paragraphs(text: string): string[] {
+  return text.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
+}
 ---
 
 <section class="loc-detail">
@@ -32,14 +38,25 @@ const otherBases = locations.filter(
       {isDraft && (
         <span class="loc-detail__draft">Draft copy, to be reviewed by client</span>
       )}
-      <p>{body}</p>
+      <p class="loc-detail__intro">{body}</p>
       <div class="loc-detail__sections">
-        {location.detailSections.map((section) => (
-          <section class="loc-detail__section">
-            <h2>{section.heading}</h2>
-            <p>{section.body}</p>
-          </section>
-        ))}
+        {location.detailSections.map((section) => {
+          const [lead, ...rest] = paragraphs(section.body);
+          return (
+            <section class="loc-detail__section">
+              <h2>{section.heading}</h2>
+              {lead && <p>{lead}</p>}
+              {section.bullets && section.bullets.length > 0 && (
+                <ul class="loc-detail__list">
+                  {section.bullets.map((b) => (
+                    <li><Icon name="check" size={18} /><span>{b}</span></li>
+                  ))}
+                </ul>
+              )}
+              {rest.map((p) => <p>{p}</p>)}
+            </section>
+          );
+        })}
       </div>
       {location.slug === "perivale" && (
         <div class="loc-detail__callout">
@@ -92,13 +109,34 @@ const otherBases = locations.filter(
       </dl>
     </div>
 
-    <aside class="loc-detail__areas">
-      <span class="section-label">Nearby areas we cover</span>
-      <ul>
-        {location.nearbyAreas.map((a) => (
-          <li><Icon name="map-pin" size={14} /> {a}</li>
-        ))}
-      </ul>
+    <aside class="loc-detail__rail">
+      <div class="loc-detail__call">
+        <span class="section-label-dark">24/7 dispatch</span>
+        <p>Speak to a recovery operator now and get a fixed quote before the truck leaves the yard.</p>
+        <a href={business.phone.href} class="loc-detail__call-btn" data-astro-prefetch="false">
+          <Icon name="phone" size={18} />
+          {business.phone.display}
+        </a>
+      </div>
+
+      <div class="loc-detail__areas">
+        <span class="section-label">Nearby areas we cover</span>
+        <ul>
+          {location.nearbyAreas.map((a) => (
+            <li><Icon name="map-pin" size={14} /> {a}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="loc-detail__badges">
+        <span class="section-label">Operator checks</span>
+        <ul>
+          <li><Icon name="check" size={16} /><span>PAS43 2012 certified</span></li>
+          <li><Icon name="check" size={16} /><span>Full O-Licence holder</span></li>
+          <li><Icon name="check" size={16} /><span>IVR-trained drivers</span></li>
+          <li><Icon name="check" size={16} /><span>24/7, {location.responseMinutes}-min typical response</span></li>
+        </ul>
+      </div>
     </aside>
   </div>
 </section>
@@ -117,34 +155,71 @@ const otherBases = locations.filter(
 
   .loc-detail__body p {
     color: var(--color-neutral-800);
-    line-height: 1.65;
-    font-size: 1.05rem;
-    max-width: 62ch;
+    line-height: 1.7;
+    font-size: 1.125rem;
+    max-width: 66ch;
+  }
+  .loc-detail__body p + p {
+    margin-top: 1.1rem;
+  }
+  .loc-detail__intro {
+    font-size: 1.2rem;
+    color: var(--color-neutral-900);
   }
   .loc-detail__sections {
     display: grid;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 2.75rem;
+    margin-top: 2.75rem;
   }
   .loc-detail__section h2 {
     font-size: clamp(1.3rem, 2vw, 1.8rem);
-    margin: 0 0 0.55rem;
+    margin: 0 0 0.75rem;
   }
   .loc-detail__section p {
     margin: 0;
   }
+
+  /* Scannable bullet lists inside a section: lead-in -> list -> wrap-up */
+  .loc-detail__list {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
+    display: grid;
+    gap: 0.7rem;
+    max-width: 66ch;
+  }
+  .loc-detail__list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    color: var(--color-neutral-800);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+  .loc-detail__list li :global(svg) {
+    color: var(--color-accent-600);
+    margin-top: 0.28rem;
+  }
+  .loc-detail__list + p {
+    margin-top: 1.1rem;
+  }
+
   .loc-detail__callout {
-    margin-top: 2rem;
+    margin-top: 2.75rem;
     padding: 1.35rem;
     border: 1px solid var(--color-neutral-200);
     border-left: 4px solid var(--color-accent-500);
     border-radius: var(--radius-md);
     background: var(--color-neutral-50);
-    max-width: 62ch;
+    max-width: 66ch;
   }
   .loc-detail__callout h2 {
     font-size: clamp(1.25rem, 1.8vw, 1.55rem);
     margin-top: 0.4rem;
+  }
+  .loc-detail__callout p {
+    font-size: 1.05rem;
   }
   .loc-detail__callout a {
     margin-top: 0.8rem;
@@ -169,8 +244,8 @@ const otherBases = locations.filter(
   }
 
   .loc-detail__bases {
-    margin-top: 2rem;
-    max-width: 62ch;
+    margin-top: 2.75rem;
+    max-width: 66ch;
   }
   .loc-detail__bases ul {
     list-style: none;
@@ -201,7 +276,7 @@ const otherBases = locations.filter(
   }
 
   .loc-detail__meta {
-    margin-top: 2rem;
+    margin-top: 2.75rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -223,14 +298,47 @@ const otherBases = locations.filter(
     line-height: 1.45;
   }
 
+  /* ---- Right rail: call card + nearby areas + operator checks ---- */
+  .loc-detail__rail {
+    display: grid;
+    gap: 1rem;
+    align-self: start;
+  }
+
+  .loc-detail__call {
+    background: var(--color-primary-900);
+    border: 1px solid var(--color-primary-900);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .loc-detail__call p {
+    margin: 0.6rem 0 1rem;
+    color: var(--color-neutral-200);
+    line-height: 1.5;
+  }
+  .loc-detail__call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: -0.005em;
+  }
+  .loc-detail__call-btn :global(svg) {
+    color: var(--color-accent-400);
+  }
+  .loc-detail__call-btn:hover {
+    color: var(--color-accent-400);
+  }
+
   .loc-detail__areas {
     background: var(--color-neutral-50);
     border: 1px solid var(--color-neutral-200);
     border-radius: var(--radius-md);
     padding: 1.5rem;
-    align-self: start;
   }
-
   .loc-detail__areas ul {
     list-style: none;
     padding: 0;
@@ -239,7 +347,6 @@ const otherBases = locations.filter(
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem 1rem;
   }
-
   .loc-detail__areas li {
     display: inline-flex;
     align-items: center;
@@ -251,6 +358,32 @@ const otherBases = locations.filter(
     color: var(--color-accent-600);
   }
 
+  .loc-detail__badges {
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .loc-detail__badges ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .loc-detail__badges li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: start;
+    color: var(--color-neutral-800);
+    line-height: 1.4;
+  }
+  .loc-detail__badges li :global(svg) {
+    color: var(--color-accent-600);
+    margin-top: 2px;
+  }
+
   @media (min-width: 768px) {
     .loc-detail__meta { grid-template-columns: repeat(3, 1fr); }
   }
@@ -258,6 +391,10 @@ const otherBases = locations.filter(
     .loc-detail__inner {
       grid-template-columns: 1.5fr 1fr;
       gap: 3rem;
+    }
+    .loc-detail__rail {
+      position: sticky;
+      top: 1.5rem;
     }
   }
 </style>

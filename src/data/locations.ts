@@ -28,7 +28,11 @@ const FaqSchema = z.object({
 
 const ContentSectionSchema = z.object({
   heading: z.string().min(1),
+  // `body` may contain blank-line breaks (\n\n) to render multiple paragraphs.
+  // When `bullets` is present they render after the first paragraph, with any
+  // remaining paragraphs after the list (lead-in -> list -> wrap-up).
   body: z.string().min(80),
+  bullets: z.array(z.string().min(1)).min(2).optional(),
 });
 
 const AddressSchema = z.object({
@@ -98,27 +102,48 @@ const raw: Location[] = [
     detailSections: [
       {
         heading: "Car recovery in Harrow for cars, vans, 4x4s and motorbikes",
-        body: "Most Harrow callouts come from residential streets, station car parks, school runs, garage forecourts and the main routes out towards Wembley, Edgware, Northolt and the M1. We recover cars, vans from short-wheelbase up to long-wheelbase and Luton box vans, 4x4s, motorhomes and motorcycles, all on a flatbed so nothing is dragged. Modern vehicles are routine too: EVs, hybrids and keyless cars are loaded with the correct neutral procedure and high-voltage handling, never ground-towed. Whether it is a flat battery, a blown tyre, a clutch or gearbox failure, accident damage or a car that simply will not start, give us the pickup postcode and the destination and we confirm a realistic arrival time before the truck leaves.",
+        body: "Most Harrow callouts come from residential streets, station car parks, school runs, garage forecourts and the main routes out towards Wembley, Edgware, Northolt and the M1. Give us the pickup postcode and the destination and we confirm a realistic arrival time before the truck leaves. We recover the lot on a flatbed, so nothing is dragged:\n\nWhether it is a flat battery, a blown tyre, a clutch or gearbox failure, accident damage or a car that simply will not start, one flatbed and one fixed price covers the whole job.",
+        bullets: [
+          "Cars, including automatics and low-clearance vehicles",
+          "Vans from short-wheelbase up to long-wheelbase and Luton box vans",
+          "4x4s and motorhomes",
+          "Motorcycles, loaded and strapped properly",
+          "EVs, hybrids and keyless cars, never ground-towed",
+        ],
       },
       {
         heading: "Roadside help in Harrow before you need a tow",
-        body: "Not every Harrow job ends with the car on the back of a truck. A lot of calls are quick roadside fixes: a jump start for a dead battery, help when you are locked out or have lost your keys, a wheel change after a blown or flat tyre, or fuel brought to you when you have run dry or misfuelled. If the fault is something we can safely sort at the kerb, we get you moving again without a full recovery charge. If it cannot be fixed safely on the spot, the same driver loads the vehicle and takes it where it needs to go, so you are not waiting twice. We tell you honestly on the call which of the two it is likely to be.",
+        body: "Not every Harrow job ends with the car on the back of a truck. A lot of calls are quick roadside fixes, and if we can safely sort it at the kerb you are moving again without a full recovery charge:\n\nIf it cannot be fixed safely on the spot, the same driver loads the vehicle and takes it where it needs to go, so you are not waiting twice. We tell you honestly on the call which of the two it is likely to be.",
+        bullets: [
+          "Jump start for a flat or dead battery",
+          "Lockout help and lost-key situations",
+          "Wheel change after a blown or flat tyre",
+          "Fuel brought out if you have run dry or misfuelled",
+        ],
       },
       {
         heading: "Accident recovery, police pound release and auction collections",
-        body: "From Harrow we also handle the jobs that need more than a standard breakdown call. After a collision we recover accident-damaged cars by flatbed and can take them to your insurer-approved repairer, a garage of your choice or our own yard while a claim is sorted. If your vehicle has been seized and held at the Perivale or Charlton car pound, we collect it once the release paperwork is ready and deliver it home or to a repairer. We also collect cars bought at auction or on eBay and bring them back to Harrow or wherever you need them, which saves driving an unseen or untaxed vehicle across London. Tell us the destination and we plan the whole move on one call.",
+        body: "From Harrow we also handle the jobs that need more than a standard breakdown call. After a collision we recover accident-damaged cars by flatbed and can take them to your insurer-approved repairer, a garage of your choice or our own yard while a claim is sorted.\n\nIf your vehicle has been seized and held at the Perivale or Charlton car pound, we collect it once the release paperwork is ready and deliver it home or to a repairer. We also collect cars bought at auction or on eBay and bring them back to Harrow or wherever you need them, which saves driving an unseen or untaxed vehicle across London. Tell us the destination and we plan the whole move on one call.",
       },
       {
         heading: "Secure vehicle storage at our Harrow yard",
-        body: "The Harrow site is also our secure storage yard, which matters when a vehicle cannot go straight home after recovery. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock come off the truck and into a gated, CCTV-monitored compound, then get released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place. Because one operator handles recovery and storage, there are fewer handovers, a clear chain of custody and you always know where the vehicle is. Storage can be arranged on the same call as the recovery, short term while parts or approval are sorted, or longer if a claim or sale takes time.",
+        body: "The Harrow site is also our secure storage yard, which matters when a vehicle cannot go straight home after recovery. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock come off the truck and into a gated, CCTV-monitored compound, then get released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place.\n\nBecause one operator handles recovery and storage, there are fewer handovers, a clear chain of custody and you always know where the vehicle is. Storage can be arranged on the same call as the recovery, short term while parts or approval are sorted, or longer if a claim or sale takes time.",
       },
       {
         heading: "Harrow neighbourhoods and routes we cover",
-        body: "We cover the whole of Harrow and the HA postcodes, including North Harrow, South Harrow, Harrow-on-the-Hill, Harrow town centre, Wealdstone, Kenton, Pinner, Hatch End, Rayners Lane, Stanmore and Edgware. Common callout points include the A40, the A409 Headstone Road, the A410 Uxbridge Road, the A312, Pinner Road, Kenton Road, Northwick Park and the runs towards Wembley and the M1. We attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. Every Harrow job is dispatched from, and if needed stored at, our own HA2 yard, so the response time we quote is based on where the truck actually is.",
+        body: "We cover the whole of Harrow and the HA postcodes, with common callout points right across the borough:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. Every Harrow job is dispatched from, and if needed stored at, our own HA2 yard, so the response time we quote is based on where the truck actually is.",
+        bullets: [
+          "North Harrow, South Harrow and Harrow-on-the-Hill",
+          "Harrow town centre, Wealdstone and Kenton",
+          "Pinner, Hatch End and Rayners Lane",
+          "Stanmore and Edgware",
+          "The A40, A409, A410 and A312",
+          "Pinner Road, Kenton Road and Northwick Park",
+        ],
       },
       {
         heading: "Why Harrow drivers choose Speedy Recovery",
-        body: "We are genuinely based in Harrow, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels. Our six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
+        body: "We are genuinely based in Harrow, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels.\n\nOur six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
       },
     ],
     responseMinutes: 20,
