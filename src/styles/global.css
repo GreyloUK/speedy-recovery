@@ -50,11 +50,15 @@
 
 @layer base {
   html {
+    /* Approx height of the sticky site header; used to offset sticky
+       sidebars and anchor scroll targets so they clear the header. */
+    --header-height: 5.5rem;
     font-family: var(--font-sans);
     color: var(--color-neutral-900);
     background: #fff;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
   }
 
   body {

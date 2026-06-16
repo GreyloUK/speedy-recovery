@@ -56,11 +56,11 @@ const LocationSchema = z.object({
     })
     .nullable(),
   intro: z.string().min(40),
-  detailSections: z.array(ContentSectionSchema).min(2).max(7),
+  detailSections: z.array(ContentSectionSchema).min(2).max(10),
   responseMinutes: z.number().int().positive(),
   nearbyAreas: z.array(z.string().min(1)).min(3),
   servicesOffered: z.array(z.string().min(1)).min(3),
-  faqs: z.array(FaqSchema).min(2).max(5),
+  faqs: z.array(FaqSchema).min(2).max(8),
   heroImage: NullableImageSchema,
   verified: z.boolean(),
   gbpName: z.string().min(1).optional(),
@@ -112,7 +112,7 @@ const raw: Location[] = [
         ],
       },
       {
-        heading: "Roadside help in Harrow before you need a tow",
+        heading: "Can you fix my car at the roadside in Harrow?",
         body: "Not every Harrow job ends with the car on the back of a truck. A lot of calls are quick roadside fixes, and if we can safely sort it at the kerb you are moving again without a full recovery charge:\n\nIf it cannot be fixed safely on the spot, the same driver loads the vehicle and takes it where it needs to go, so you are not waiting twice. We tell you honestly on the call which of the two it is likely to be.",
         bullets: [
           "Jump start for a flat or dead battery",
@@ -120,6 +120,20 @@ const raw: Location[] = [
           "Wheel change after a blown or flat tyre",
           "Fuel brought out if you have run dry or misfuelled",
         ],
+      },
+      {
+        heading: "What should I do when my car breaks down in Harrow?",
+        body: "If you have stopped somewhere live or exposed, your safety comes before the car. A few quick steps make the recovery faster and safer:\n\nFrom there, call us with the fault, the vehicle and whether it still rolls and steers. We confirm a fixed price and a realistic arrival time, and the same flatbed takes the vehicle wherever it needs to go.",
+        bullets: [
+          "Get yourself and any passengers to a safe spot, off the carriageway where you can",
+          "Switch on your hazard lights so other drivers see you early",
+          "Note the nearest postcode, junction or landmark so we can reach you quickly",
+          "Stay well clear of moving traffic while you wait, especially on the A40 or A409",
+        ],
+      },
+      {
+        heading: "How much does car recovery in Harrow cost?",
+        body: "We give a fixed price on the call before the truck leaves, so there is no meter running and no surprise when we arrive. The quote depends on the vehicle, the pickup postcode, the destination and whether it is a straight recovery or a more involved job such as a pound collection or a winch-out.\n\nThere is no out-of-hours surcharge, so a callout at 3am costs the same as one at noon. If we are paying police pound fees on your behalf they are reconciled separately with receipts, and for an insurer-approved accident recovery we can usually bill the work directly to your insurer.",
       },
       {
         heading: "Accident recovery, police pound release and auction collections",
@@ -131,7 +145,7 @@ const raw: Location[] = [
       },
       {
         heading: "Harrow neighbourhoods and routes we cover",
-        body: "We cover the whole of Harrow and the HA postcodes, with common callout points right across the borough:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. Every Harrow job is dispatched from, and if needed stored at, our own HA2 yard, so the response time we quote is based on where the truck actually is.",
+        body: "We cover the whole of Harrow and the HA postcodes, with common callout points right across the borough:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. From the same HA2 base we also reach the towns that ring Harrow, including Stanmore, Pinner, Edgware, Northolt, Wembley, Ruislip, Uxbridge, Bushey and Borehamwood. Every Harrow job is dispatched from, and if needed stored at, our own yard, so the response time we quote is based on where the truck actually is.",
         bullets: [
           "North Harrow, South Harrow and Harrow-on-the-Hill",
           "Harrow town centre, Wealdstone and Kenton",
@@ -143,7 +157,7 @@ const raw: Location[] = [
       },
       {
         heading: "Why Harrow drivers choose Speedy Recovery",
-        body: "We are genuinely based in Harrow, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels.\n\nOur six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
+        body: "We have been recovering vehicles from Harrow since 1995, and we are genuinely based here, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels.\n\nOur six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
       },
     ],
     responseMinutes: 20,
@@ -187,6 +201,14 @@ const raw: Location[] = [
       {
         q: "Can you collect a car I bought at auction or on eBay and bring it to Harrow?",
         a: "Yes. We regularly collect auction, dealer and private-sale vehicles and deliver them to Harrow or anywhere across London and the M25, which avoids driving an unseen, untaxed or uninsured car home. Give us the collection postcode and we confirm a fixed price before we set off.",
+      },
+      {
+        q: "Do you charge extra for car recovery in Harrow at night or weekends?",
+        a: "No. We are genuinely 24/7 with no out-of-hours surcharge, so a night, weekend or bank holiday callout in Harrow costs the same as a daytime one. You get a fixed price on the call before the truck leaves.",
+      },
+      {
+        q: "Can you recover a car with no MOT, no insurance or a PG9 prohibition?",
+        a: "Yes. Because the vehicle travels on a flatbed rather than under its own power, we can legally move a car with no MOT, no insurance or a PG9 prohibition. This is common with police pound releases and seized vehicles.",
       },
     ],
     heroImage: harrowImage,
