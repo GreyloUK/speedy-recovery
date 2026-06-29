@@ -90,9 +90,9 @@ const raw: Service[] = [
     shortDescription:
       "24/7 car, van and motorcycle recovery across London + M25: breakdowns, flat batteries, blown tyres, anywhere your vehicle has stopped.",
     gridDescription:
-      "If your vehicle has stopped moving, we are 25 minutes away on average, any hour, every day. That covers a breakdown on the North Circular, a flat battery in a residential street, a blown tyre on the motorway or a motorbike that needs loading safely. Our 6-vehicle fleet runs flatbeds and a 7.5-ton recovery truck, so we can move cars, vans and motorcycles without rolling damage. One call covers collection, recovery and delivery to your chosen destination.",
+      "If your vehicle has stopped moving, we are 25 minutes away on average, any hour, every day. That covers a breakdown on the A40, a flat battery in a residential street, a blown tyre on the motorway or a motorbike that needs loading safely. Our 6-vehicle fleet runs flatbeds and a 12-ton recovery truck, so we can move cars, vans and motorcycles without rolling damage. One call covers collection, recovery and delivery to your chosen destination.",
     longDescription:
-      "If your car, van or motorcycle has stopped, we are 25 minutes away on average, 24 hours a day, every day of the year. That covers a breakdown on the North Circular, a flat battery in a residential street or a blown tyre on the motorway. Our 6-vehicle fleet includes flatbeds and a 7.5-ton recovery truck for heavy or loaded vehicles, so we can move anything from a city car to a long-wheelbase van without damage. We work with the AA, FMG and local garages, and we carry PAS43 certification and a full O-Licence: the credentials insurers and workshops need.",
+      "If your car, van or motorcycle has stopped, we are 25 minutes away on average, 24 hours a day, every day of the year. That covers a breakdown on the A40, a flat battery in a residential street or a blown tyre on the motorway. Our 6-vehicle fleet includes flatbeds and a 12-ton recovery truck for heavy or loaded vehicles, so we can move anything from a city car to a long-wheelbase van without damage. We work with the AA, FMG and local garages, and we carry PAS43 certification and a full O-Licence: the credentials insurers and workshops need.",
     detailSections: [
       {
         heading: "24 hour breakdown recovery for cars, vans and motorbikes",
@@ -112,7 +112,7 @@ const raw: Service[] = [
       },
       {
         heading: "Recovery to your chosen garage, home or storage",
-        body: "A breakdown does not always end with the vehicle going home. Some customers need delivery to a local garage, others need an insurer-approved repairer, a dealership, a workplace, secure storage or a second address where the vehicle can be inspected. We agree the destination before the truck leaves and can help decide the practical option if you are unsure. If the vehicle cannot be repaired immediately, our Harrow storage yard can hold it securely while parts, insurance approval or onward transport are arranged.",
+        body: "A breakdown does not always end with the vehicle going home. Some customers need delivery to a local garage, others need an insurer-approved repairer, a dealership, a workplace, secure storage or a second address where the vehicle can be inspected. We agree the destination before the truck leaves and can help decide the practical option if you are unsure. If the vehicle cannot be repaired immediately, our secure Northolt storage yard can hold it securely while parts, insurance approval or onward transport are arranged.",
       },
       {
         heading: "When to call for professional recovery",
@@ -124,10 +124,10 @@ const raw: Service[] = [
       "25-minute average response across London + M25",
       "Cars, vans and motorcycles recovered safely",
       "Flatbed recovery, no rolling damage",
-      "7.5-ton truck for heavy or loaded vehicles",
+      "12-ton truck for heavy or loaded vehicles",
       "PAS43 certified, O-Licence holder",
     ],
-    priceNote: "Fixed quote confirmed on the call, no meter running",
+    priceNote: "Fixed quote confirmed on the call, no surprise add-ons",
     heroImage: peopleCarrierRecoveryImage,
     gridImage: dpdVanRecoveryImage,
     galleryImages: [
@@ -160,11 +160,11 @@ const raw: Service[] = [
       },
       {
         q: "Can you recover any vehicle?",
-        a: "Cars, vans, light commercials, motorbikes and EVs are all covered by our 6-vehicle fleet, which includes flatbeds and a 7.5-ton recovery truck for heavy or loaded vehicles.",
+        a: "Cars, vans, light commercials, motorbikes and EVs are all covered by our 6-vehicle fleet, which includes flatbeds and a 12-ton recovery truck for heavy or loaded vehicles.",
       },
       {
         q: "Is the price fixed before you arrive?",
-        a: "Yes. We confirm a fixed quote on the call based on pickup postcode, destination and vehicle type. No meter running, no surprise add-ons.",
+        a: "Yes. We confirm a fixed quote on the call based on pickup postcode, destination and vehicle type. No surprise add-ons, nothing added on arrival.",
       },
       {
         q: "Do you work with insurers?",
@@ -249,7 +249,7 @@ const raw: Service[] = [
       },
       {
         q: "What if the vehicle is badly damaged?",
-        a: "Our 7.5-ton recovery truck and HIAB can handle vehicles that other operators can't, including cars that won't roll. We lift from above rather than dragging.",
+        a: "Our 12-ton recovery truck and HIAB can handle vehicles that other operators can't, including cars that won't roll. We lift from above rather than dragging.",
       },
       {
         q: "Do you work with the police?",
@@ -368,7 +368,7 @@ const raw: Service[] = [
     shortDescription:
       "EV, hybrid, keyless, forklift, motorbike and classic recovery: specialist fleet and trained drivers for vehicles others decline.",
     gridDescription:
-      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving between sites, a motorbike that needs soft-strap transport, a classic too low to winch. These are the vehicles a generic operator declines, damages, or charges double for. We run a specialist fleet and train drivers on the protocol each type requires: flatbed-only for EVs and hybrids, manufacturer-approved entry for keyless, soft-strap or wheel-chock for bikes, HIAB lift where needed, and 7.5-ton capacity for heavy or loaded vehicles.",
+      "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving between sites, a motorbike that needs soft-strap transport, a classic too low to winch. These are the vehicles a generic operator declines, damages, or charges double for. We run a specialist fleet and train drivers on the protocol each type requires: flatbed-only for EVs and hybrids, manufacturer-approved entry for keyless, soft-strap or wheel-chock for bikes, HIAB lift where needed, and 12-ton capacity for heavy or loaded vehicles.",
     longDescription:
       "A modern EV with a locked-down 12V battery, a keyless car you can't get into without the fob, a forklift that needs moving, a motorbike that needs soft-strap transport, a classic that can't be winched. These are the vehicles a generic recovery operator declines, damages, or charges double for. We operate a specialist fleet and train our drivers in the protocols each type requires. Flatbed-only transport for EVs and hybrids, manufacturer-approved recovery procedures for keyless vehicles, soft-strap or wheel-chock transport for bikes, HIAB support for classics and low-clearance vehicles, and careful forklift transportation across London + M25. The important part is matching the recovery method to the vehicle before anything is moved. We plan the loading, restraint and destination around the risk, whether the job is urgent or booked in advance. If a vehicle has limited steering, locked brakes, unusual weight, tight access or fragile bodywork, we would rather know that on the call and send the right equipment than improvise beside the vehicle.",
     detailSections: [
@@ -386,11 +386,11 @@ const raw: Service[] = [
       },
       {
         heading: "Forklift and low-clearance vehicle transport",
-        body: "For forklifts, low-clearance cars and specialist vehicles, we assess weight, access, loading angle and destination before quoting. HIAB support and 7.5-ton capacity help us handle jobs that a standard roadside operator may decline.",
+        body: "For forklifts, low-clearance cars and specialist vehicles, we assess weight, access, loading angle and destination before quoting. HIAB support and 12-ton capacity help us handle jobs that a standard roadside operator may decline.",
       },
       {
         heading: "Specialist recovery planning before dispatch",
-        body: "Specialist recovery is often decided before the truck leaves the yard. We ask about the vehicle type, whether it rolls, whether keys are available, the surface it is parked on, loading access, height restrictions and the intended destination. That information helps us avoid sending the wrong vehicle to a difficult job. It also gives customers a clearer quote because HIAB support, 7.5-ton capacity, keyless procedures or extra loading time can be factored in at the start rather than becoming a surprise later.",
+        body: "Specialist recovery is often decided before the truck leaves the yard. We ask about the vehicle type, whether it rolls, whether keys are available, the surface it is parked on, loading access, height restrictions and the intended destination. That information helps us avoid sending the wrong vehicle to a difficult job. It also gives customers a clearer quote because HIAB support, 12-ton capacity, keyless procedures or extra loading time can be factored in at the start rather than becoming a surprise later.",
       },
       {
         heading: "Trade, garage and business vehicle moves",
@@ -484,7 +484,7 @@ const raw: Service[] = [
       },
       {
         heading: "Secure holding after repossession",
-        body: "A repossessed vehicle often needs to be held securely before auction, inspection, repair, collection by an authorised party or onward delivery. Our Harrow yard gives finance and fleet clients a controlled storage option with CCTV monitoring and release procedures, reducing the number of handovers after recovery. We can collect the vehicle, hold it under agreed authority and release it only when the correct instruction is received. That is particularly useful when the asset needs condition checks, documentation or lender approval before it moves again.",
+        body: "A repossessed vehicle often needs to be held securely before auction, inspection, repair, collection by an authorised party or onward delivery. Our Northolt yard gives finance and fleet clients a controlled storage option with CCTV monitoring and release procedures, reducing the number of handovers after recovery. We can collect the vehicle, hold it under agreed authority and release it only when the correct instruction is received. That is particularly useful when the asset needs condition checks, documentation or lender approval before it moves again.",
       },
       {
         heading: "Discreet removal across London + M25",
@@ -492,7 +492,7 @@ const raw: Service[] = [
       },
       {
         heading: "Vehicle types and onward destinations",
-        body: "Repossession and asset recovery can involve ordinary cars, vans, fleet vehicles, keyless vehicles, light commercials, damaged vehicles and assets that have been left at garages or business premises. We can move the vehicle to secure storage, an auction house, a repairer, a lender-appointed site or another nominated destination once authority is confirmed. For loaded or heavier vehicles, our 7.5-ton capacity gives us more options than a small recovery truck, while still keeping the movement documented and controlled. We can also support follow-on movement after the first recovery, such as storage-to-auction, storage-to-repairer or handover to a verified collection agent. Each stage is agreed with the authorised contact so the vehicle is not released or redirected without clear instruction, and the final destination is recorded before transport.",
+        body: "Repossession and asset recovery can involve ordinary cars, vans, fleet vehicles, keyless vehicles, light commercials, damaged vehicles and assets that have been left at garages or business premises. We can move the vehicle to secure storage, an auction house, a repairer, a lender-appointed site or another nominated destination once authority is confirmed. For loaded or heavier vehicles, our 12-ton capacity gives us more options than a small recovery truck, while still keeping the movement documented and controlled. We can also support follow-on movement after the first recovery, such as storage-to-auction, storage-to-repairer or handover to a verified collection agent. Each stage is agreed with the authorised contact so the vehicle is not released or redirected without clear instruction, and the final destination is recorded before transport.",
       },
     ],
     bullets: [
@@ -643,18 +643,18 @@ const raw: Service[] = [
     name: "Vehicle Storage",
     seoTitle: "Vehicle Storage London - Secure Car Storage",
     metaDescription:
-      "Secure vehicle storage in Harrow for London + M25. CCTV-monitored yard for recovered cars, insurance claims, police pound release and trade storage.",
+      "Secure vehicle storage in Northolt for London + M25. CCTV-monitored yard for recovered cars, insurance claims, police pound release and trade storage.",
     heroTitle: "Secure Vehicle Storage London + M25",
     shortDescription:
-      "Secure short- and long-term vehicle storage in Harrow: CCTV, gated yard, insurance-approved.",
+      "Secure short- and long-term vehicle storage in Northolt: CCTV, gated yard, insurance-approved.",
     gridDescription:
-      "If you need secure vehicle storage after a recovery, accident, police pound release or insurance claim, our Harrow yard gives you a controlled place to hold the vehicle while the next step is agreed. The site is gated and CCTV-monitored, with storage receipts available for insurers, repairers and fleet operators that need clear chain-of-custody records. We can collect the vehicle ourselves, receive it after another recovery, and release it to you, a repairer or a nominated third party once authority is confirmed.",
+      "If you need secure vehicle storage after a recovery, accident, police pound release or insurance claim, our Northolt yard gives you a controlled place to hold the vehicle while the next step is agreed. The site is gated and CCTV-monitored, with storage receipts available for insurers, repairers and fleet operators that need clear chain-of-custody records. We can collect the vehicle ourselves, receive it after another recovery, and release it to you, a repairer or a nominated third party once authority is confirmed.",
     longDescription:
-      "If you need somewhere secure to keep a vehicle after recovery, police pound release, an accident or an insurance claim, our Harrow yard provides CCTV-monitored, gated vehicle storage with controlled release. We regularly hold vehicles while customers wait for an insurer decision, a repairer slot, a buyer collection, auction forwarding or further inspection. We can collect the vehicle as part of the recovery, receive it from another operator, issue a storage receipt for your records, and release it to you, a repairer or a nominated third party once authority is confirmed. Storage is quoted by vehicle type, access, expected length of stay and any release requirements, so private customers, insurers and trade customers know what is being arranged before the vehicle is moved.",
+      "If you need somewhere secure to keep a vehicle after recovery, police pound release, an accident or an insurance claim, our Northolt yard provides CCTV-monitored, gated vehicle storage with controlled release. We regularly hold vehicles while customers wait for an insurer decision, a repairer slot, a buyer collection, auction forwarding or further inspection. We can collect the vehicle as part of the recovery, receive it from another operator, issue a storage receipt for your records, and release it to you, a repairer or a nominated third party once authority is confirmed. Storage is quoted by vehicle type, access, expected length of stay and any release requirements, so private customers, insurers and trade customers know what is being arranged before the vehicle is moved.",
     detailSections: [
       {
         heading: "Secure car storage after recovery",
-        body: "Many vehicles need somewhere safe to sit before the next decision is made. That could be after an accident, after police pound release, during an insurance claim, while a repairer slot is arranged or before a buyer or auction house collects. Our Harrow yard provides controlled, CCTV-monitored storage for those situations.",
+        body: "Many vehicles need somewhere safe to sit before the next decision is made. That could be after an accident, after police pound release, during an insurance claim, while a repairer slot is arranged or before a buyer or auction house collects. Our Northolt yard provides controlled, CCTV-monitored storage for those situations.",
       },
       {
         heading: "Vehicle storage for insurers, trade and private customers",
@@ -666,7 +666,7 @@ const raw: Service[] = [
       },
       {
         heading: "Controlled release and chain of custody",
-        body: "Vehicle storage is only useful if release is controlled properly. We record the collection and delivery details, hold the vehicle in our Harrow yard and release it to the owner, repairer, insurer, buyer or nominated third party once authority is confirmed. This matters for accident claims, police pound collections, repossession work, trade storage and vehicles waiting for repair approval. A clear chain of custody gives everyone involved confidence about where the vehicle has been and who has authorised the next movement.",
+        body: "Vehicle storage is only useful if release is controlled properly. We record the collection and delivery details, hold the vehicle in our Northolt yard and release it to the owner, repairer, insurer, buyer or nominated third party once authority is confirmed. This matters for accident claims, police pound collections, repossession work, trade storage and vehicles waiting for repair approval. A clear chain of custody gives everyone involved confidence about where the vehicle has been and who has authorised the next movement.",
       },
       {
         heading: "Storage as part of the recovery plan",
@@ -678,7 +678,7 @@ const raw: Service[] = [
       },
     ],
     bullets: [
-      "CCTV-monitored, gated yard in Harrow",
+      "CCTV-monitored, gated yard in Northolt",
       "Insurance-approved secure-storage receipt provided",
       "Same-day collection from recovery, ours or anyone else's",
       "Short- or longer-term storage arranged by call",
@@ -710,7 +710,7 @@ const raw: Service[] = [
     schema: {
       serviceType: "Vehicle Storage",
       description:
-        "Secure, CCTV-monitored vehicle storage in Harrow for London + M25 with controlled release, storage receipts and quoted arrangements.",
+        "Secure, CCTV-monitored vehicle storage in Northolt for London + M25 with controlled release, storage receipts and quoted arrangements.",
     },
   },
 ];

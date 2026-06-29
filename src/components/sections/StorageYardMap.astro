@@ -1,0 +1,166 @@
+---
+import { business } from "../../data";
+import Icon from "../ui/Icon.astro";
+
+const yard = business.googleProfiles.storageYard;
+---
+
+<section class="storage-yard">
+  <div class="container-page storage-yard__inner">
+    <div class="storage-yard__intro">
+      <span class="section-label">Our storage yard</span>
+      <h2>Secure vehicle storage in Northolt, UB5</h2>
+      <p>
+        Our gated, CCTV-monitored storage yard is on Wood End Gardens, Northolt
+        (UB5 4QH), a short run from both our Harrow base and our Perivale
+        operating point. Recovered cars,
+        insurance-claim vehicles and police-pound collections are held here
+        under controlled release, with a storage receipt for your records. It's
+        a separate, verified Google Business Profile from our recovery bases:
+      </p>
+      <a
+        href={yard.href}
+        class="storage-yard__gbp"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-astro-prefetch="false"
+      >
+        <span class="storage-yard__gbp-icon" aria-hidden="true">
+          <Icon name="google" size={18} />
+        </span>
+        <span class="storage-yard__gbp-text">
+          <span class="storage-yard__gbp-label">View the yard on</span>
+          <span class="storage-yard__gbp-name">Google Maps</span>
+        </span>
+        <span class="storage-yard__gbp-arrow" aria-hidden="true">
+          <Icon name="arrow-right" size={16} />
+        </span>
+      </a>
+    </div>
+
+    <aside class="storage-yard__map" aria-label="Speedy Recovery storage yard in Northolt on Google Maps">
+      <iframe
+        src={yard.embedSrc}
+        title="Speedy Recovery storage yard in Northolt on Google Maps"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .storage-yard {
+    background: var(--color-neutral-50);
+    border-top: 1px solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+  .storage-yard__inner {
+    padding-block: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .storage-yard__intro { max-width: 60ch; }
+  .storage-yard__intro h2 { margin-top: 0.5rem; }
+  .storage-yard__intro p {
+    margin-top: 0.85rem;
+    color: var(--color-neutral-700);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .storage-yard__gbp {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.8rem 1.1rem;
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary-900);
+    box-shadow: var(--shadow-card);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+  }
+  .storage-yard__gbp:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-hover);
+  }
+  .storage-yard__gbp:focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 2px;
+  }
+  .storage-yard__gbp-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    flex: none;
+  }
+  .storage-yard__gbp-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .storage-yard__gbp-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-neutral-600);
+  }
+  .storage-yard__gbp-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    margin-top: 0.2rem;
+  }
+  .storage-yard__gbp-arrow {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary-700);
+    transition: color 180ms ease;
+  }
+  .storage-yard__gbp:hover .storage-yard__gbp-arrow { color: var(--color-accent-600); }
+
+  .storage-yard__map {
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: var(--color-neutral-100);
+    min-height: 300px;
+    position: relative;
+  }
+  .storage-yard__map iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (min-width: 900px) {
+    .storage-yard__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      padding-block: 4rem;
+      align-items: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .storage-yard__gbp,
+    .storage-yard__gbp-arrow { transition: none; }
+  }
+</style>

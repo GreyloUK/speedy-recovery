@@ -10,6 +10,12 @@ function baseName(slug: string | undefined) {
   if (!slug) return "";
   return locations.find((l) => l.slug === slug)?.name ?? "";
 }
+
+const widerCoverage = [
+  "Pinner", "Ruislip", "Northwood", "Stanmore", "Edgware", "Kenton",
+  "Wealdstone", "Sudbury", "Alperton", "Harlesden", "Willesden", "Acton",
+  "Hanwell", "Northolt", "Eastcote", "Uxbridge", "Hillingdon", "West Drayton",
+];
 ---
 
 <section class="areas-hub">
@@ -123,6 +129,21 @@ function baseName(slug: string | undefined) {
         ))}
       </ul>
     )}
+
+    {/* ===== Wider coverage, no dedicated page ===== */}
+    <div class="areas-hub__wider">
+      <h2 class="areas-hub__wider-title">Also covered across London + M25</h2>
+      <p class="areas-hub__wider-lead">
+        Same fleet, same certifications, same 24/7 dispatch. We reach these
+        areas from the nearer base, so call us even if your town isn't listed
+        above:
+      </p>
+      <ul class="areas-hub__chips">
+        {widerCoverage.map((name) => (
+          <li class="areas-hub__chip">{name}</li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -382,6 +403,39 @@ function baseName(slug: string | undefined) {
   .coverage-card:hover .coverage-card__link {
     gap: 0.55rem;
     color: var(--color-accent-600);
+  }
+
+  /* ---- Wider coverage chips ---- */
+  .areas-hub__wider {
+    margin-top: 3.25rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-neutral-200);
+  }
+  .areas-hub__wider-title { margin: 0; }
+  .areas-hub__wider-lead {
+    margin-top: 0.75rem;
+    max-width: 62ch;
+    color: var(--color-neutral-700);
+    line-height: 1.55;
+    font-size: 1rem;
+  }
+  .areas-hub__chips {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .areas-hub__chip {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary-900);
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-xs);
+    padding: 0.4rem 0.8rem;
   }
 
   @media (min-width: 720px) {

@@ -24,6 +24,8 @@ const areasChildren: readonly NavLink[] = [
   { label: "Ealing", href: "/areas/ealing/" },
   { label: "Hayes", href: "/areas/hayes/" },
   { label: "Southall", href: "/areas/southall/" },
+  { label: "Wembley", href: "/areas/wembley/" },
+  { label: "Park Royal", href: "/areas/park-royal/" },
 ];
 
 export const navigation = {

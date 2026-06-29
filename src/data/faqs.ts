@@ -18,7 +18,7 @@ const raw: Faq[] = [
   },
   {
     q: "What does it cost?",
-    a: "We quote a fixed price on the call: no meter running, no surprise extras. If your recovery is insurer-approved (PAS43 / AA / FMG) we usually bill the insurer direct.",
+    a: "We quote a fixed price on the call: no surprise extras, nothing added on arrival. If your recovery is insurer-approved (PAS43 / AA / FMG) we usually bill the insurer direct.",
   },
   {
     q: "Do you handle insurance work?",

@@ -6,6 +6,8 @@ import harrowImage from "../assets/images/areas/car-recovery-harrow.jpg";
 import hayesImage from "../assets/images/areas/hayes.jpg";
 import perivaleImage from "../assets/images/areas/perivale.jpg";
 import southallImage from "../assets/images/areas/southall.jpg";
+import wembleyImage from "../assets/images/areas/wembley.jpg";
+import parkRoyalImage from "../assets/images/areas/park-royal.jpg";
 
 type LocalImage = typeof harrowImage;
 
@@ -98,7 +100,7 @@ const raw: Location[] = [
       lng: -0.3596593,
     },
     intro:
-      "Car recovery in Harrow runs from our own registered yard at Cardoc House in North Harrow, HA2 6AE, so a flatbed is dispatched from inside the borough rather than routed through a national call centre. We are PAS43 certified, hold a full O-Licence and run IVR-trained drivers, we work directly on the AA and FMG panels, and the same Harrow yard is our secure, CCTV-monitored storage facility. Being based in HA2 means a typical 20-minute response across HA1, HA2, HA3, HA7 and HA8, covering Harrow-on-the-Hill, Wealdstone, Pinner, Stanmore, Kenton and Hatch End, plus the A40, A409, A410 and A312. From this base we handle breakdowns, accident recovery, police pound collection, secure storage and car, van, 4x4 and motorcycle recovery, 24 hours a day, with a fixed price agreed before the truck leaves the yard.",
+      "Car recovery in Harrow runs from our own registered yard at Cardoc House in North Harrow, HA2 6AE, so a flatbed is dispatched from inside the borough rather than routed through a national call centre. We are PAS43 certified, hold a full O-Licence and run IVR-trained drivers, we work directly on the AA and FMG panels, and our secure, CCTV-monitored storage yard is a short run away in Northolt, UB5. Being based in HA2 means a typical 20-minute response across HA1, HA2, HA3, HA7 and HA8, covering Harrow-on-the-Hill, Wealdstone, Pinner, Stanmore, Kenton and Hatch End, plus the A40, A409, A410 and A312. From this base we handle breakdowns, accident recovery, police pound collection, secure storage and car, van, 4x4 and motorcycle recovery, 24 hours a day, with a fixed price agreed before the truck leaves the yard.",
     detailSections: [
       {
         heading: "Car recovery in Harrow for cars, vans, 4x4s and motorbikes",
@@ -133,19 +135,19 @@ const raw: Location[] = [
       },
       {
         heading: "How much does car recovery in Harrow cost?",
-        body: "We give a fixed price on the call before the truck leaves, so there is no meter running and no surprise when we arrive. The quote depends on the vehicle, the pickup postcode, the destination and whether it is a straight recovery or a more involved job such as a pound collection or a winch-out.\n\nThere is no out-of-hours surcharge, so a callout at 3am costs the same as one at noon. If we are paying police pound fees on your behalf they are reconciled separately with receipts, and for an insurer-approved accident recovery we can usually bill the work directly to your insurer.",
+        body: "We give a fixed price on the call before the truck leaves, so there are no surprises when we arrive. The quote depends on the vehicle, the pickup postcode, the destination and whether it is a straight recovery or a more involved job such as a pound collection or a winch-out.\n\nThere is no out-of-hours surcharge, so a callout at 3am costs the same as one at noon. If we are paying police pound fees on your behalf they are reconciled separately with receipts, and for an insurer-approved accident recovery we can usually bill the work directly to your insurer.",
       },
       {
         heading: "Accident recovery, police pound release and auction collections",
-        body: "From Harrow we also handle the jobs that need more than a standard breakdown call. After a collision we recover accident-damaged cars by flatbed and can take them to your insurer-approved repairer, a garage of your choice or our own yard while a claim is sorted.\n\nIf your vehicle has been seized and held at the Perivale or Charlton car pound, we collect it once the release paperwork is ready and deliver it home or to a repairer. We also collect cars bought at auction or on eBay and bring them back to Harrow or wherever you need them, which saves driving an unseen or untaxed vehicle across London. Tell us the destination and we plan the whole move on one call.",
+        body: "From Harrow we also handle the jobs that need more than a standard breakdown call. After a collision we recover accident-damaged cars by flatbed and can take them to your insurer-approved repairer, a garage of your choice or our secure Northolt yard while a claim is sorted.\n\nIf your vehicle has been seized and held at the Perivale or Charlton car pound, we collect it once the release paperwork is ready and deliver it home or to a repairer. We also collect cars bought at auction or on eBay and bring them back to Harrow or wherever you need them, which saves driving an unseen or untaxed vehicle across London. Tell us the destination and we plan the whole move on one call.",
       },
       {
-        heading: "Secure vehicle storage at our Harrow yard",
+        heading: "Secure vehicle storage at our Northolt yard",
         body: "The Harrow site is also our secure storage yard, which matters when a vehicle cannot go straight home after recovery. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock come off the truck and into a gated, CCTV-monitored compound, then get released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place.\n\nBecause one operator handles recovery and storage, there are fewer handovers, a clear chain of custody and you always know where the vehicle is. Storage can be arranged on the same call as the recovery, short term while parts or approval are sorted, or longer if a claim or sale takes time.",
       },
       {
         heading: "Harrow neighbourhoods and routes we cover",
-        body: "We cover the whole of Harrow and the HA postcodes, with common callout points right across the borough:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. From the same HA2 base we also reach the towns that ring Harrow, including Stanmore, Pinner, Edgware, Northolt, Wembley, Ruislip, Uxbridge, Bushey and Borehamwood. Every Harrow job is dispatched from, and if needed stored at, our own yard, so the response time we quote is based on where the truck actually is.",
+        body: "We cover the whole of Harrow and the HA postcodes, with common callout points right across the borough:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. From the same HA2 base we also reach the towns that ring Harrow, including Stanmore, Pinner, Edgware, Northolt, Wembley, Ruislip, Uxbridge, Bushey and Borehamwood. Every Harrow job is dispatched from our base, and if a vehicle needs holding it goes to our secure Northolt yard, so the response time we quote is based on where the truck actually is.",
         bullets: [
           "North Harrow, South Harrow and Harrow-on-the-Hill",
           "Harrow town centre, Wealdstone and Kenton",
@@ -157,7 +159,7 @@ const raw: Location[] = [
       },
       {
         heading: "Why Harrow drivers choose Speedy Recovery",
-        body: "We have been recovering vehicles from Harrow since 1995, and we are genuinely based here, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels.\n\nOur six-vehicle fleet runs flatbeds, a 7.5-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
+        body: "We have been recovering vehicles from Harrow since 1995, and we are genuinely based here, not a number that diverts to a broker, so the truck starts from HA2 rather than the far side of London. We hold PAS43 2012 certification, a full O-Licence and run IVR-trained drivers, which is exactly what insurers, fleet operators and the police pounds require, and we work directly on the AA and FMG panels.\n\nOur six-vehicle fleet runs flatbeds, a 12-ton recovery truck for heavy or loaded vehicles and HIAB support, so the right truck is matched to the job before dispatch. Drivers across Harrow rate us five stars on our verified Google Business Profile, and the price is fixed on the call with no out-of-hours surcharge.",
       },
     ],
     responseMinutes: 20,
@@ -217,7 +219,7 @@ const raw: Location[] = [
     gbpUrl: business.googleProfiles.harrow.href,
     mapEmbedSrc: business.googleProfiles.harrow.embedSrc,
     napIntro:
-      "Our registered base sits just off Pinner Road in North Harrow, a secure yard that also serves as our vehicle storage facility. From here we cover HA1 through HA8, Stanmore, Pinner and Edgware, with a 20-minute average response across the borough.",
+      "Our registered base sits just off Pinner Road in North Harrow, with secure vehicle storage at our dedicated yard nearby in Northolt. From here we cover HA1 through HA8, Stanmore, Pinner and Edgware, with a 20-minute average response across the borough.",
   },
 
   {
@@ -230,7 +232,7 @@ const raw: Location[] = [
       lng: -0.31315745,
     },
     intro:
-      "Our Perivale operating point on Walmgate Road, UB6 7LH sits beside one of the busiest recovery corridors in west London. From here we handle car recovery in Perivale, Greenford, Northolt, Ealing, Hanwell and Park Royal, plus the A40 itself, with a typical response of about 22 minutes. Walmgate Road is also home to the Metropolitan Police car pound. If your vehicle has been released from Perivale car pound but cannot legally or safely be driven, we collect it on a flatbed and deliver it to your home, your repairer or our secure Harrow yard. Breakdowns, accident recovery, motorcycles, vans, keyless cars and EVs all run from this base around the clock.",
+      "Our Perivale operating point on Walmgate Road, UB6 7LH sits beside one of the busiest recovery corridors in west London. From here we handle car recovery in Perivale, Greenford, Northolt, Ealing, Hanwell and Park Royal, plus the A40 itself, with a typical response of about 22 minutes. Walmgate Road is also home to the Metropolitan Police car pound. If your vehicle has been released from Perivale car pound but cannot legally or safely be driven, we collect it on a flatbed and deliver it to your home, your repairer or our secure Northolt yard. Breakdowns, accident recovery, motorcycles, vans, keyless cars and EVs all run from this base around the clock.",
     detailSections: [
       {
         heading: "Car recovery in Perivale, UB6 and the A40 corridor",
@@ -249,7 +251,7 @@ const raw: Location[] = [
       },
       {
         heading: "Local support for garages, fleets and private drivers",
-        body: "The Perivale base supports private drivers, local repairers, trade customers and fleet operators across west London. A van stuck on an industrial estate, a motorcycle that needs careful loading, a classic car heading to a specialist garage or a vehicle moving after an insurance claim are all routine jobs from this yard.\n\nWe have been recovering vehicles across west London since 1995, and if a vehicle needs holding after collection we take it to our secure Harrow yard and release it under agreed authority.",
+        body: "The Perivale base supports private drivers, local repairers, trade customers and fleet operators across west London. A van stuck on an industrial estate, a motorcycle that needs careful loading, a classic car heading to a specialist garage or a vehicle moving after an insurance claim are all routine jobs from this yard.\n\nWe have been recovering vehicles across west London since 1995, and if a vehicle needs holding after collection we take it to our secure Northolt yard and release it under agreed authority.",
       },
       {
         heading: "Which Perivale roads and areas do you cover?",
@@ -288,7 +290,7 @@ const raw: Location[] = [
     faqs: [
       {
         q: "Where is your Perivale base?",
-        a: "3 Walmgate Road, Perivale. It's an operational base. Vehicle storage runs out of our main Harrow yard.",
+        a: "3 Walmgate Road, Perivale. It's an operational base. Vehicle storage runs out of our dedicated yard in Northolt.",
       },
       {
         q: "Do you cover A40 breakdowns?",
@@ -334,7 +336,7 @@ const raw: Location[] = [
       },
       {
         heading: "Can you recover vans and commercials around Greenford?",
-        body: "Yes. The A40 and the Greenford and Park Royal commercial routes are regular recovery points for us. Vans and light commercials often need more than roadside assistance, particularly when they are loaded, have clutch or gearbox failure, or cannot be moved safely by a small patrol vehicle. Our fleet includes a 7.5-ton recovery truck for heavier or loaded vehicles, plus HIAB support where access or vehicle condition means the job needs more than a simple winch onto a flatbed. Speedy Recovery has run recovery across west London since 1995, so loaded yards and tight industrial estates are familiar ground.",
+        body: "Yes. The A40 and the Greenford and Park Royal commercial routes are regular recovery points for us. Vans and light commercials often need more than roadside assistance, particularly when they are loaded, have clutch or gearbox failure, or cannot be moved safely by a small patrol vehicle. Our fleet includes a 12-ton recovery truck for heavier or loaded vehicles, plus HIAB support where access or vehicle condition means the job needs more than a simple winch onto a flatbed. Speedy Recovery has run recovery across west London since 1995, so loaded yards and tight industrial estates are familiar ground.",
       },
       {
         heading: "Cars, motorcycles, EVs and keyless vehicles in UB6",
@@ -481,7 +483,7 @@ const raw: Location[] = [
     basedAt: "perivale",
     geo: null,
     intro:
-      "Hayes is covered from our Perivale base by running down the A40, onto the A312 and into UB3 and UB4. Typical response is around 25 minutes depending on traffic. We regularly handle car recovery in Hayes, Yeading, Hayes End, Southall, Hillingdon and the Heathrow corridor, including airport collection vehicles that will not start, vans working the freight routes, and breakdowns on the A312, A4 and M4 approaches. Fleet and commercial work is a major part of this patch, so we carry a 7.5-ton recovery truck for heavier and/or loaded vehicles, plus HIAB support where a standard flatbed is not enough. From a flat battery outside a home to accident recovery near the Heathrow routes, Speedy Recovery can collect, transport and deliver the vehicle to your chosen destination or secure storage.",
+      "Hayes is covered from our Perivale base by running down the A40, onto the A312 and into UB3 and UB4. Typical response is around 25 minutes depending on traffic. We regularly handle car recovery in Hayes, Yeading, Hayes End, Southall, Hillingdon and the Heathrow corridor, including airport collection vehicles that will not start, vans working the freight routes, and breakdowns on the A312, A4 and M4 approaches. Fleet and commercial work is a major part of this patch, so we carry a 12-ton recovery truck for heavier and/or loaded vehicles, plus HIAB support where a standard flatbed is not enough. From a flat battery outside a home to accident recovery near the Heathrow routes, Speedy Recovery can collect, transport and deliver the vehicle to your chosen destination or secure storage.",
     detailSections: [
       {
         heading: "Car recovery in Hayes, UB3 and UB4",
@@ -496,7 +498,7 @@ const raw: Location[] = [
       },
       {
         heading: "Can you recover vans and fleet vehicles in Hayes?",
-        body: "Yes. The Hayes and Heathrow corridor produces a lot of van and light-commercial recovery work because of freight routes, airport support businesses, trades, couriers and fleet operators. A loaded van with clutch failure, a light commercial with suspension damage or a vehicle stuck at a depot entrance needs the right truck rather than a quick tow. Our 7.5-ton recovery vehicle and HIAB support help us recover heavier and loaded vehicles and move them to repair, storage or a nominated business address. We have handled this kind of commercial work since 1995.",
+        body: "Yes. The Hayes and Heathrow corridor produces a lot of van and light-commercial recovery work because of freight routes, airport support businesses, trades, couriers and fleet operators. A loaded van with clutch failure, a light commercial with suspension damage or a vehicle stuck at a depot entrance needs the right truck rather than a quick tow. Our 12-ton recovery vehicle and HIAB support help us recover heavier and loaded vehicles and move them to repair, storage or a nominated business address. We have handled this kind of commercial work since 1995.",
       },
       {
         heading: "Do you cover the A312, A4 and M4 around Hayes?",
@@ -540,7 +542,7 @@ const raw: Location[] = [
       },
       {
         q: "Can you recover vans and light commercials in Hayes?",
-        a: "Yes. We run a 7.5-ton recovery truck for heavier and/or loaded vehicles, plus a HIAB for commercial-vehicle work, which is a big part of what we do in the Heathrow freight corridor.",
+        a: "Yes. We run a 12-ton recovery truck for heavier and/or loaded vehicles, plus a HIAB for commercial-vehicle work, which is a big part of what we do in the Heathrow freight corridor.",
       },
       {
         q: "How long does it take to get to Hayes from your base?",
@@ -581,11 +583,11 @@ const raw: Location[] = [
       },
       {
         heading: "Can you recover loaded vans from the Southall industrial estates?",
-        body: "Yes. Southall's industrial land along the Grand Union Canal and around Bridge Road produces loaded-van and light-commercial recovery work that a standard patrol cannot move. Clutch and gearbox failures, suspension damage and vehicles stuck at depot entrances need the right truck rather than a tow rope. Our fleet includes a 7.5-ton recovery truck for heavier and loaded vehicles, plus HIAB support where access is tight, so trade and fleet vehicles can be recovered to a repairer, depot or secure storage without a second move.",
+        body: "Yes. Southall's industrial land along the Grand Union Canal and around Bridge Road produces loaded-van and light-commercial recovery work that a standard patrol cannot move. Clutch and gearbox failures, suspension damage and vehicles stuck at depot entrances need the right truck rather than a tow rope. Our fleet includes a 12-ton recovery truck for heavier and loaded vehicles, plus HIAB support where access is tight, so trade and fleet vehicles can be recovered to a repairer, depot or secure storage without a second move.",
       },
       {
         heading: "Honest dispatch, real response times",
-        body: "We do not claim a Southall office. Calls are dispatched from our Perivale operating point, which borders the area and keeps typical response around 20 minutes depending on traffic. The call handler gives you an arrival window based on where the truck actually is, confirms a fixed price for the job, and keeps you updated if A312 or Uxbridge Road traffic changes the picture.\n\nWorking the streets around Old Southall and Norwood Green since 1995, we know the corridor well, and if the vehicle needs to be held rather than delivered, our secure Harrow yard is available through the same call.",
+        body: "We do not claim a Southall office. Calls are dispatched from our Perivale operating point, which borders the area and keeps typical response around 20 minutes depending on traffic. The call handler gives you an arrival window based on where the truck actually is, confirms a fixed price for the job, and keeps you updated if A312 or Uxbridge Road traffic changes the picture.\n\nWorking the streets around Old Southall and Norwood Green since 1995, we know the corridor well, and if the vehicle needs to be held rather than delivered, our secure Northolt yard is available through the same call.",
       },
     ],
     responseMinutes: 20,
@@ -618,7 +620,7 @@ const raw: Location[] = [
       },
       {
         q: "Can you recover loaded vans from the Southall industrial estates?",
-        a: "Yes. We run a 7.5-ton recovery truck for heavier and/or loaded vehicles plus HIAB support, so couriers, trades and fleet vans around Bridge Road and the canal-side estates are routine work for us.",
+        a: "Yes. We run a 12-ton recovery truck for heavier and/or loaded vehicles plus HIAB support, so couriers, trades and fleet vans around Bridge Road and the canal-side estates are routine work for us.",
       },
       {
         q: "Is the price fixed, and do you charge extra out of hours in Southall?",
@@ -626,6 +628,146 @@ const raw: Location[] = [
       },
     ],
     heroImage: southallImage,
+    verified: false,
+  },
+
+  {
+    slug: "wembley",
+    name: "Wembley",
+    postcode: "HA9",
+    address: { ...perivaleAddress },
+    basedAt: "perivale",
+    geo: null,
+    intro:
+      "Car recovery in Wembley is dispatched from our Perivale operating point, reaching HA9 and HA0 in around 20 minutes via the A4005 Bridgewater Road or the A406. We cover Wembley Park, Wembley Central, North Wembley, Tokyngton and Alperton, plus the streets around the stadium and arena, where event-day congestion, tight residential parking and the A404 Harrow Road all generate steady recovery work. From a flat battery outside a house off Forty Lane to a car that will not start in a retail-park car park, or an accident on the North Circular, we recover cars, vans, motorcycles, EVs and keyless vehicles by flatbed, 24 hours a day. We confirm the exact pickup point, whether the vehicle rolls and steers, and the destination before a truck leaves Perivale.",
+    detailSections: [
+      {
+        heading: "Car recovery in Wembley, HA9 and HA0",
+        body: "Wembley recovery calls are handled from Perivale, a short run across the A406 or down the A4005. We collect from across HA9 and HA0, including:\n\nFlatbed recovery is the default for cars, vans, motorcycles, EVs and keyless vehicles, including accident-damaged cars that should not be driven and vehicles that fail to start after an event. The destination, whether that is home, a garage, an insurer-approved repairer or secure storage, is agreed before dispatch.",
+        bullets: [
+          "Residential streets around Wembley Park and Tokyngton",
+          "Stadium and arena car parks on event days",
+          "The London Designer Outlet and retail parks",
+          "Workplaces and depots across HA0 and HA9",
+        ],
+      },
+      {
+        heading: "Can you recover near the stadium on an event day?",
+        body: "Yes, and it is one of the trickier jobs in the area. Concert and match days close roads, fill car parks and leave Olympic Way and Forty Lane heavily congested, so a stranded vehicle needs an operator who knows the approaches and can reach it from the right direction. We confirm your exact location and the nearest open route before the truck leaves Perivale, and we keep you updated if stewarding or road closures change the picture. Flatbed recovery means we can clear the vehicle cleanly once we reach it, without adding to the congestion.",
+      },
+      {
+        heading: "Do you cover the North Circular and A404 in Wembley?",
+        body: "Yes. The A406 North Circular along the south of Wembley and the A404 Harrow Road are busy, fast routes where breakdowns and accidents need clearing quickly and safely. We attend immobilised and accident-damaged vehicles with flatbed recovery as the default, and where a vehicle will not select neutral, has steering or suspension damage or should not be driven after a collision, we load it safely and take it to your home, repairer or secure storage.",
+      },
+      {
+        heading: "Heavier and commercial vehicles in Wembley",
+        body: "Wembley and the Alperton industrial fringe produce loaded-van and light-commercial recovery work alongside the private-car jobs. A loaded van with clutch failure, a fleet vehicle stuck at a depot or a car boxed in on a tight estate needs the right truck rather than a quick tow. Our fleet includes a 12-ton recovery truck for heavier and loaded vehicles, plus a HIAB for keyless cars, vehicles parked in between others and specialist lifts, so trade and fleet vehicles can be recovered to a repairer, depot or secure storage without a second move.",
+      },
+    ],
+    responseMinutes: 20,
+    nearbyAreas: [
+      "Wembley Park",
+      "North Wembley",
+      "Alperton",
+      "Tokyngton",
+      "Sudbury",
+      "Harlesden",
+      "Stonebridge",
+      "Perivale",
+    ],
+    servicesOffered: [
+      "car-recovery",
+      "accident-recovery",
+      "police-pound-release",
+      "specialist-recovery",
+      "vehicle-repossession",
+      "vehicle-storage",
+    ],
+    faqs: [
+      {
+        q: "How quickly can you reach Wembley?",
+        a: "Typically around 20 minutes from our Perivale operating point, via the A4005 or the A406. Event-day road closures around the stadium can add time, and we'll give you an honest window on the call.",
+      },
+      {
+        q: "Can you recover a vehicle near Wembley Stadium on a match or concert day?",
+        a: "Yes. We know the Olympic Way and Forty Lane approaches and the car-park layouts, and we confirm the nearest open route before the truck leaves so we reach you from the right direction despite the closures.",
+      },
+      {
+        q: "Do you cover the North Circular through Wembley?",
+        a: "Yes. The A406 along the south of Wembley is one of our regular routes. Flatbed on scene, the vehicle cleared safely, then delivered to your chosen destination or secure storage.",
+      },
+    ],
+    heroImage: wembleyImage,
+    verified: false,
+  },
+
+  {
+    slug: "park-royal",
+    name: "Park Royal",
+    postcode: "NW10",
+    address: { ...perivaleAddress },
+    basedAt: "perivale",
+    geo: null,
+    intro:
+      "Park Royal sits directly beside our Perivale operating point, just east along the A40, so it is one of the fastest areas in our west London coverage with a typical response around 15 minutes. As one of the largest industrial and logistics estates in Europe, Park Royal and NW10 generate a heavy mix of fleet, van and light-commercial recovery work alongside private cars: loaded vehicles with clutch or gearbox failure, vans stuck at depot entrances, accident recovery on Western Avenue and the North Circular, and keyless or immobilised cars at the First Central and Abbey Road business parks. We recover everything on a flatbed, with a 12-ton recovery truck and HIAB support for the heavier and tighter jobs, and confirm the pickup point, vehicle condition and destination before a truck leaves Perivale.",
+    detailSections: [
+      {
+        heading: "Commercial and fleet recovery in Park Royal, NW10",
+        body: "Park Royal is built around manufacturing, food production, logistics and trade, so a large share of our work here is vans and light commercials rather than only private cars. We collect from across the estate and the surrounding NW10 streets, including:\n\nFor loaded or heavier vehicles our 12-ton recovery truck gives us more options than a small recovery truck, and where a vehicle is boxed in between others, will not take a key or needs lifting clear, the HIAB does the work a winch cannot. The destination, whether a repairer, depot, dealer or secure storage, is agreed before dispatch.",
+        bullets: [
+          "Industrial units and depots across the estate",
+          "First Central and the Abbey Road business parks",
+          "Western Avenue (A40) and the A406 approaches",
+          "Residential NW10 streets towards Harlesden and Willesden",
+        ],
+      },
+      {
+        heading: "Can you recover loaded vans and heavier vehicles?",
+        body: "Yes, and it is a core part of what we do in Park Royal. A loaded panel van with clutch or gearbox failure, a light commercial with suspension damage or a vehicle that has broken down fully laden cannot be moved safely by a small patrol vehicle. Our 12-ton recovery truck is built for exactly this, and our HIAB handles vehicles parked tightly between others or in positions a winch cannot reach. We move them to a repairer, depot or secure storage in a single, documented job, which matters for fleet operators and trade customers who need a clean record of the movement.",
+      },
+      {
+        heading: "Do you cover Western Avenue and the North Circular?",
+        body: "Yes. The A40 Western Avenue runs straight past our Perivale base and through Park Royal, and the A406 North Circular meets it at the Hanger Lane gyratory, so these are routes we work daily. Breakdowns and accidents on fast dual carriageways need clearing quickly and safely, and flatbed recovery is our default. Where a vehicle has been damaged, will not select neutral or should not be driven after a collision, we load it safely and take it where the driver, fleet manager or insurer needs it to go.",
+      },
+      {
+        heading: "Honest dispatch, real response times",
+        body: "We do not claim a Park Royal office. Calls are dispatched from our Perivale operating point next door, which keeps typical response around 15 minutes depending on traffic and the time of day. The call handler gives you an arrival window based on where the truck actually is, confirms a fixed price for the job, and keeps you updated if the A40 or Hanger Lane traffic changes the picture. If the vehicle needs holding rather than delivering, secure storage is available through the same call.",
+      },
+    ],
+    responseMinutes: 15,
+    nearbyAreas: [
+      "North Acton",
+      "Harlesden",
+      "Willesden",
+      "Alperton",
+      "Hanger Lane",
+      "Greenford",
+      "Perivale",
+      "Acton",
+    ],
+    servicesOffered: [
+      "car-recovery",
+      "accident-recovery",
+      "specialist-recovery",
+      "vehicle-repossession",
+      "supercar-classic-car-transportation",
+      "vehicle-storage",
+    ],
+    faqs: [
+      {
+        q: "How quickly can you reach Park Royal?",
+        a: "Usually around 15 minutes, because Park Royal is right next to our Perivale operating point along the A40. We'll give you an honest arrival window on the call based on traffic and where the nearest truck is.",
+      },
+      {
+        q: "Can you recover loaded vans and fleet vehicles from the estate?",
+        a: "Yes. We run a 12-ton recovery truck for heavier and loaded vehicles plus HIAB support for vehicles boxed in or needing a lift, so loaded vans, light commercials and fleet vehicles around the estate are routine work for us.",
+      },
+      {
+        q: "Do you handle accident recovery on Western Avenue and the North Circular?",
+        a: "Yes. The A40 and the A406 at Hanger Lane are daily routes for us. We attend with flatbed recovery as the default, clear the vehicle safely and deliver it to your repairer, depot or secure storage.",
+      },
+    ],
+    heroImage: parkRoyalImage,
     verified: false,
   },
 ];

@@ -5,6 +5,7 @@ import Icon from "../../components/ui/Icon.astro";
 import Hero from "../../components/sections/Hero.astro";
 import TrustRibbon from "../../components/sections/TrustRibbon.astro";
 import ServiceDetail from "../../components/sections/ServiceDetail.astro";
+import StorageYardMap from "../../components/sections/StorageYardMap.astro";
 import PhoneCTA from "../../components/sections/PhoneCTA.astro";
 import Process from "../../components/sections/Process.astro";
 import ReviewsGoogle from "../../components/sections/ReviewsGoogle.astro";
@@ -83,6 +84,8 @@ const otherServices = services.filter((s) => s.slug !== service.slug).map((s) =>
     serviceSlug={service.slug}
     galleryImages={service.galleryImages}
   />
+
+  {service.slug === "vehicle-storage" && <StorageYardMap />}
 
   {((service.relatedResources && service.relatedResources.length > 0) ||
     (service.relatedAreas && service.relatedAreas.length > 0)) && (
