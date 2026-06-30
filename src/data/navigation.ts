@@ -20,6 +20,7 @@ const servicesChildren: readonly NavLink[] = [
 const areasChildren: readonly NavLink[] = [
   { label: "Harrow", href: "/areas/harrow/" },
   { label: "Perivale", href: "/areas/perivale/" },
+  { label: "Northolt", href: "/areas/northolt/" },
   { label: "Greenford", href: "/areas/greenford/" },
   { label: "Ealing", href: "/areas/ealing/" },
   { label: "Hayes", href: "/areas/hayes/" },

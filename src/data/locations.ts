@@ -4,6 +4,7 @@ import ealingImage from "../assets/images/areas/ealing.jpg";
 import greenfordImage from "../assets/images/areas/greenford.jpg";
 import harrowImage from "../assets/images/areas/car-recovery-harrow.jpg";
 import hayesImage from "../assets/images/areas/hayes.jpg";
+import northoltImage from "../assets/images/areas/northolt.jpg";
 import perivaleImage from "../assets/images/areas/perivale.jpg";
 import southallImage from "../assets/images/areas/southall.jpg";
 import wembleyImage from "../assets/images/areas/wembley.jpg";
@@ -51,6 +52,10 @@ const LocationSchema = z.object({
   postcode: z.string().min(2),
   address: AddressSchema,
   basedAt: z.string().optional(),
+  // "base" = dispatch base (Harrow, Perivale). "storage" = our verified
+  // storage-yard GBP (Northolt) — verified and schema-eligible, but NOT a
+  // dispatch point, so the hub presents it apart from the operating bases.
+  role: z.enum(["base", "storage"]).optional(),
   geo: z
     .object({
       lat: z.number(),
@@ -312,6 +317,121 @@ const raw: Location[] = [
     mapEmbedSrc: business.googleProfiles.perivalePolicePound.embedSrc,
     napIntro:
       "Our Perivale operating point on Walmgate Road covers UB5, UB6, UB7, W5, W7 and the industrial estates around Greenford and Park Royal. The A40 corridor is a core part of our patch and we keep a truck positioned here, so response is usually under 25 minutes.",
+  },
+
+  {
+    slug: "northolt",
+    name: "Northolt",
+    postcode: "UB5",
+    role: "storage",
+    address: {
+      street: business.googleProfiles.storageYard.street,
+      locality: business.googleProfiles.storageYard.locality,
+      region: "Ealing",
+      postcode: business.googleProfiles.storageYard.postcode,
+      country: "GB",
+    },
+    geo: {
+      lat: 51.5577506,
+      lng: -0.3464303,
+    },
+    intro:
+      "Car recovery in Northolt is genuinely local for us, because our secure storage yard sits on Wood End Gardens, UB5 4QH, just off Mandeville Road. A flatbed dispatched into UB5 starts from inside Northolt or our Perivale point a few minutes down the A40, so a typical response is around 15 minutes across Northolt, Northolt Park, Wood End and the streets around the Target Roundabout, A312 and Western Avenue. We are PAS43 certified, hold a full O-Licence and run IVR-trained drivers, we work directly on the AA and FMG panels, and because the storage yard is here, a recovered vehicle that cannot go straight home is off the truck and behind a gated, CCTV-monitored fence within minutes. From this base we handle breakdowns, accident recovery, police pound collection, van and commercial recovery, keyless and EV recovery and secure storage, 24 hours a day, with a fixed price agreed before the truck leaves.",
+    detailSections: [
+      {
+        heading: "Car recovery in Northolt, UB5 and the A40 corridor",
+        body: "Most Northolt callouts come from residential streets around Northolt Park and Wood End, the retail and industrial units off Yeading Lane and Kensington Road, station car parks and the fast routes that cross the area: the A40 Western Avenue, the A312 Parkway and the Target Roundabout. Give us the pickup postcode and the destination and we confirm a realistic arrival time before the truck leaves. Everything goes on a flatbed, so nothing is dragged:\n\nWhether it is a flat battery, a blown tyre, a clutch or gearbox failure, accident damage or a car that simply will not start, one flatbed and one fixed price covers the whole job.",
+        bullets: [
+          "Cars, including automatics and low-clearance vehicles",
+          "Vans from short-wheelbase up to long-wheelbase and Luton box vans",
+          "4x4s and motorhomes",
+          "Motorcycles, loaded and strapped properly",
+          "EVs, hybrids and keyless cars, never ground-towed",
+        ],
+      },
+      {
+        heading: "Home to our secure storage yard on Wood End Gardens",
+        body: "Northolt is where our secure storage yard lives, on Wood End Gardens, UB5 4QH, which makes it the one area where recovery and storage happen on the same site. When a vehicle cannot go straight home after a breakdown, an accident or a pound release, it comes off the truck and straight into a gated, CCTV-monitored compound rather than being driven across London first.\n\nBecause one operator handles both the recovery and the storage, there are fewer handovers, a clear chain of custody and you always know where the vehicle is. Accident-damaged cars, insurer-held vehicles, pound collections and trade stock can be held short term while parts or approval are sorted, or longer if a claim or sale takes time, then released to a repairer, buyer, insurer, fleet manager or nominated driver once the authority is in place.",
+      },
+      {
+        heading: "Can you recover vans and commercials around Northolt?",
+        body: "Yes. The A40, the A312 and the industrial units around Yeading Lane and the Grand Union Canal generate a steady stream of van and light-commercial work, particularly loaded vehicles that a small patrol van cannot move. Our fleet includes a 12-ton recovery truck for heavier or loaded vehicles, plus HIAB support where access is tight or a vehicle needs lifting clear rather than winching. Couriers, trades and fleet operators across UB5 use us to move vehicles to a repairer, depot or our own storage yard in a single documented job, and we have handled this kind of commercial work since 1995.",
+      },
+      {
+        heading: "What should I do when my car breaks down in Northolt?",
+        body: "If you have stopped somewhere live or exposed, especially on the A40 or the A312 Parkway, your safety comes before the car. A few quick steps make the recovery faster and safer:\n\nFrom there, call us with the fault, the vehicle and whether it still rolls and steers. We confirm a fixed price and a realistic arrival time, and the same flatbed takes the vehicle wherever it needs to go, including our storage yard a few streets away if it cannot go straight home.",
+        bullets: [
+          "Get yourself and any passengers to a safe spot, off the carriageway where you can",
+          "Switch on your hazard lights so other drivers see you early",
+          "Note the nearest postcode, junction or landmark so we can reach you quickly",
+          "Stay well clear of moving traffic while you wait, especially on the A40 or A312",
+        ],
+      },
+      {
+        heading: "Northolt roads and neighbourhoods we cover",
+        body: "We cover the whole of Northolt and the UB5 streets, with common callout points right across the area:\n\nWe attend homes, garages, business premises, station car parks and live roadside incidents where a patrol van cannot get the vehicle moving again. From the same base we also reach the towns that ring Northolt, including Greenford, Perivale, South Ruislip, Yeading, Ruislip and Sudbury. Every Northolt job is dispatched locally, and if a vehicle needs holding it goes straight to our yard on Wood End Gardens, so the response time we quote is based on where the truck actually is.",
+        bullets: [
+          "Northolt Park, Wood End and West End",
+          "The Target Roundabout and Mandeville Road",
+          "Yeading Lane, Kensington Road and the industrial units",
+          "The A40 Western Avenue and the A312 Parkway",
+          "Belvue Park and the streets around Northolt station",
+          "Towards RAF Northolt and South Ruislip",
+        ],
+      },
+      {
+        heading: "How much does car recovery in Northolt cost?",
+        body: "We give a fixed price on the call before the truck leaves, so there are no surprises when we arrive. The quote depends on the vehicle, the pickup postcode, the destination and whether it is a straight recovery or a more involved job such as a pound collection or a winch-out.\n\nThere is no out-of-hours surcharge, so a callout at 3am costs the same as one at noon. If we are paying police pound fees on your behalf they are reconciled separately with receipts, and for an insurer-approved accident recovery we can usually bill the work directly to your insurer.",
+      },
+    ],
+    responseMinutes: 15,
+    nearbyAreas: [
+      "Northolt Park",
+      "Wood End",
+      "Greenford",
+      "Perivale",
+      "South Ruislip",
+      "Yeading",
+      "Ruislip",
+      "Sudbury",
+    ],
+    servicesOffered: [
+      "car-recovery",
+      "accident-recovery",
+      "police-pound-release",
+      "specialist-recovery",
+      "vehicle-repossession",
+      "vehicle-storage",
+    ],
+    faqs: [
+      {
+        q: "Where exactly is your Northolt yard?",
+        a: "Wood End Gardens, Northolt, UB5 4QH, just off Mandeville Road. It's our secure, CCTV-monitored storage yard and the site we recover vehicles to when they can't go straight home.",
+      },
+      {
+        q: "How quickly can you get to me in Northolt?",
+        a: "Typical response across UB5 is around 15 minutes, because we dispatch locally and from our Perivale point a few minutes down the A40. On A40 or A312 incidents we give an honest window on the call.",
+      },
+      {
+        q: "Can you recover my car and store it in the same place?",
+        a: "Yes, and Northolt is the one area where that happens on a single site. A vehicle that can't go straight home comes off the truck and into our gated, CCTV-monitored yard on Wood End Gardens, then is released to your repairer, insurer or a nominated driver once the authority is in place.",
+      },
+      {
+        q: "Can you recover an electric or keyless car in Northolt?",
+        a: "Yes. EVs, hybrids and keyless cars are recovered on a flatbed only, never ground-towed, using the correct neutral-selection and high-voltage handling procedure for the vehicle. A dead key fob, a locked transmission or an electronic handbrake is a routine call for us.",
+      },
+      {
+        q: "Do you charge extra for car recovery in Northolt at night or weekends?",
+        a: "No. We are genuinely 24/7 with no out-of-hours surcharge, so a night, weekend or bank holiday callout in Northolt costs the same as a daytime one. You get a fixed price on the call before the truck leaves.",
+      },
+    ],
+    heroImage: northoltImage,
+    verified: true,
+    gbpName: business.googleProfiles.storageYard.name,
+    gbpUrl: business.googleProfiles.storageYard.href,
+    mapEmbedSrc: business.googleProfiles.storageYard.embedSrc,
+    napIntro:
+      "Our secure storage yard sits on Wood End Gardens in Northolt, UB5 4QH, just off Mandeville Road. From here we cover the whole of UB5 and border Greenford and Perivale, with a typical 15-minute response and recovery straight to the yard when a vehicle needs holding.",
   },
 
   {

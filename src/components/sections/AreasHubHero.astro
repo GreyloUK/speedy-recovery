@@ -1,7 +1,8 @@
 ---
 import { locations } from "../../data";
 
-const bases = locations.filter((l) => !l.basedAt);
+const bases = locations.filter((l) => !l.basedAt && l.role !== "storage");
+const storageYards = locations.filter((l) => l.role === "storage");
 const coverage = locations.filter((l) => Boolean(l.basedAt));
 const avgResponse = Math.round(
   locations.reduce((sum, l) => sum + l.responseMinutes, 0) / locations.length,
@@ -9,6 +10,7 @@ const avgResponse = Math.round(
 
 const stats = [
   { label: "Operating bases", value: `${bases.length} verified` },
+  { label: "Storage yard", value: `${storageYards.length} verified` },
   { label: "Coverage areas", value: `${coverage.length} active` },
   { label: "Avg response", value: `${avgResponse} min` },
   { label: "Dispatch", value: "24 hours, every day" },
@@ -21,7 +23,7 @@ const stats = [
       <span class="section-label-dark">Coverage</span>
       <h1>Vehicle Recovery Areas Covered in London + M25</h1>
       <p class="areas-hero__tagline">
-        Two operating bases. {locations.length} areas dispatched.
+        Two operating bases, one secure storage yard. {coverage.length} coverage areas.
       </p>
       <p class="areas-hero__lead">
         Most recovery operators claim "London + M25" and drive from wherever the

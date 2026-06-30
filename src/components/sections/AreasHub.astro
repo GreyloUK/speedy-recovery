@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import { locations } from "../../data";
 import Icon from "../ui/Icon.astro";
 
-const bases = locations.filter((l) => !l.basedAt);
+const bases = locations.filter((l) => !l.basedAt && l.role !== "storage");
+const storageYards = locations.filter((l) => l.role === "storage");
 const coverage = locations.filter((l) => Boolean(l.basedAt));
 
 function baseName(slug: string | undefined) {
@@ -14,7 +15,7 @@ function baseName(slug: string | undefined) {
 const widerCoverage = [
   "Pinner", "Ruislip", "Northwood", "Stanmore", "Edgware", "Kenton",
   "Wealdstone", "Sudbury", "Alperton", "Harlesden", "Willesden", "Acton",
-  "Hanwell", "Northolt", "Eastcote", "Uxbridge", "Hillingdon", "West Drayton",
+  "Hanwell", "Eastcote", "Uxbridge", "Hillingdon", "West Drayton",
 ];
 ---
 
@@ -88,6 +89,74 @@ const widerCoverage = [
         </li>
       ))}
     </ul>
+
+    <!-- ===== Secure storage yard ===== -->
+    {storageYards.length > 0 && (
+      <header class="areas-hub__head areas-hub__head--second">
+        <span class="section-label">Secure storage yard</span>
+        <h2>Recovery and storage on one site.</h2>
+        <p>
+          Our verified Northolt yard is where a recovered vehicle goes when it
+          cannot head straight home. Gated, CCTV-monitored and the only area
+          where recovery and storage happen on the same site.
+        </p>
+      </header>
+    )}
+
+    {storageYards.length > 0 && (
+      <ul class="bases bases--single">
+        {storageYards.map((l) => (
+          <li class="bases__item">
+            <a href={`/areas/${l.slug}/`} class="base-card">
+              <figure class="base-card__media">
+                {l.heroImage ? (
+                  <Image
+                    src={l.heroImage}
+                    alt={`${l.name} storage yard, ${l.address.street}`}
+                    loading="lazy"
+                    decoding="async"
+                    widths={[480, 720, 960, 1200]}
+                    sizes="(min-width: 900px) 45vw, calc(100vw - 2.5rem)"
+                    quality="mid"
+                  />
+                ) : (
+                  <span class="base-card__placeholder" aria-hidden="true">
+                    <Icon name="map-pin" size={28} />
+                  </span>
+                )}
+                <span class="base-card__badge">
+                  <Icon name="badge-check" size={14} /> GBP verified
+                </span>
+              </figure>
+
+              <div class="base-card__body">
+                <span class="section-label">{l.postcode}</span>
+                <h3>{l.name}</h3>
+                <p class="base-card__addr">
+                  {l.address.street}<br />
+                  {l.address.locality}, {l.address.region} {l.address.postcode}
+                </p>
+
+                <dl class="base-card__meta">
+                  <div>
+                    <dt>Response</dt>
+                    <dd>{l.responseMinutes} min avg</dd>
+                  </div>
+                  <div>
+                    <dt>Nearby</dt>
+                    <dd>{l.nearbyAreas.slice(0, 3).join(" · ")}</dd>
+                  </div>
+                </dl>
+
+                <span class="base-card__link">
+                  View {l.name} yard <Icon name="arrow-right" size={16} />
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
 
     <!-- ===== Coverage areas ===== -->
     {coverage.length > 0 && (
@@ -182,6 +251,7 @@ const widerCoverage = [
     gap: 1.25rem;
   }
   .bases__item { margin: 0; }
+  .bases--single { max-width: 540px; }
 
   .base-card {
     display: flex;
