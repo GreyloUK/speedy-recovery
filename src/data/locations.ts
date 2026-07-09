@@ -759,9 +759,10 @@ const raw: Location[] = [
     name: "Wembley",
     postcode: "HA9",
     address: {
-      locality: "Wembley",
+      street: business.googleProfiles.wembley.street,
+      locality: business.googleProfiles.wembley.locality,
       region: "London",
-      postcode: "HA9",
+      postcode: business.googleProfiles.wembley.postcode,
       country: "GB",
     },
     geo: {
