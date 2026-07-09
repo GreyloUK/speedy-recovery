@@ -54,13 +54,13 @@ const description = "Contact Speedy Recovery for 24/7 phone dispatch on 07850 90
     <aside class="contact__bases">
       <span class="section-label">Operating bases</span>
       <ul>
-        {locations.map((l) => (
+        {locations.filter((l) => !l.basedAt).map((l) => (
           <li>
             <Icon name="map-pin" size={20} />
             <div>
               <h3>{l.name}</h3>
               <address>
-                {l.address.street}<br />
+                {l.address.street && <>{l.address.street}<br /></>}
                 {l.address.locality}<br />
                 {l.address.region} <span class:list={[l.address.postcode.startsWith("[TK") && "tk"]}>{l.address.postcode}</span>
               </address>

@@ -44,6 +44,12 @@ export const business = {
       embedSrc:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79373.25567472517!2d-0.31315744999999995!3d51.5606392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6a125cccb7204775%3A0xf1a0fb33713c1480!2sSpeedy%20Recovery%20-%20Perivale%20Car%20Pound%20Recovery!5e0!3m2!1sen!2suk!4v1778843450398!5m2!1sen!2suk",
     },
+    wembley: {
+      name: "Speedy Recovery - Wembley",
+      href: "https://www.google.com/maps?cid=17719359197392556520",
+      embedSrc:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.226585172172!2d-0.2989767!3d51.56407960000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761315d90fe68d%3A0xf5e7cf4f102251e8!2sSpeedy%20Recovery%20-%20Wembley!5e0!3m2!1sen!2suk!4v1783590755866!5m2!1sen!2suk",
+    },
     storageYard: {
       name: "Speedy Recovery - Storage Yard",
       street: "Wood End Gardens",

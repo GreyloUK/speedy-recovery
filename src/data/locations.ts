@@ -39,7 +39,10 @@ const ContentSectionSchema = z.object({
 });
 
 const AddressSchema = z.object({
-  street: z.string().min(1),
+  // Optional: verified GBPs that hide their exact address (service-area
+  // profiles, e.g. Wembley) publish locality-level NAP only — never invent
+  // a street line for these.
+  street: z.string().min(1).optional(),
   locality: z.string().min(1),
   region: z.string().min(1),
   postcode: z.string().min(2),
@@ -755,15 +758,22 @@ const raw: Location[] = [
     slug: "wembley",
     name: "Wembley",
     postcode: "HA9",
-    address: { ...perivaleAddress },
-    basedAt: "perivale",
-    geo: null,
+    address: {
+      locality: "Wembley",
+      region: "London",
+      postcode: "HA9",
+      country: "GB",
+    },
+    geo: {
+      lat: 51.5640796,
+      lng: -0.2989767,
+    },
     intro:
-      "Car recovery in Wembley is dispatched from our Perivale operating point, reaching HA9 and HA0 in around 20 minutes via the A4005 Bridgewater Road or the A406. We cover Wembley Park, Wembley Central, North Wembley, Tokyngton and Alperton, plus the streets around the stadium and arena, where event-day congestion, tight residential parking and the A404 Harrow Road all generate steady recovery work. From a flat battery outside a house off Forty Lane to a car that will not start in a retail-park car park, or an accident on the North Circular, we recover cars, vans, motorcycles, EVs and keyless vehicles by flatbed, 24 hours a day. We confirm the exact pickup point, whether the vehicle rolls and steers, and the destination before a truck leaves Perivale.",
+      "Car recovery in Wembley runs from our own Wembley operating point, with backup from the Perivale yard a short run down the A4005, so a flatbed typically reaches HA9 or HA0 in around 20 minutes. We cover Wembley Park, Wembley Central, North Wembley, Tokyngton and Alperton, plus the streets around the stadium and arena, where event-day congestion, tight residential parking and the A404 Harrow Road all generate steady recovery work. From a flat battery outside a house off Forty Lane to a car that will not start in a retail-park car park, or an accident on the North Circular, we recover cars, vans, motorcycles, EVs and keyless vehicles by flatbed, 24 hours a day. We confirm the exact pickup point, whether the vehicle rolls and steers, and the destination before the truck sets off.",
     detailSections: [
       {
         heading: "Car recovery in Wembley, HA9 and HA0",
-        body: "Wembley recovery calls are handled from Perivale, a short run across the A406 or down the A4005. We collect from across HA9 and HA0, including:\n\nFlatbed recovery is the default for cars, vans, motorcycles, EVs and keyless vehicles, including accident-damaged cars that should not be driven and vehicles that fail to start after an event. The destination, whether that is home, a garage, an insurer-approved repairer or secure storage, is agreed before dispatch.",
+        body: "Wembley recovery calls are handled from our local operating point, with the Perivale yard a short run down the A4005 when extra trucks are needed. We collect from across HA9 and HA0, including:\n\nFlatbed recovery is the default for cars, vans, motorcycles, EVs and keyless vehicles, including accident-damaged cars that should not be driven and vehicles that fail to start after an event. The destination, whether that is home, a garage, an insurer-approved repairer or secure storage, is agreed before dispatch.",
         bullets: [
           "Residential streets around Wembley Park and Tokyngton",
           "Stadium and arena car parks on event days",
@@ -773,7 +783,7 @@ const raw: Location[] = [
       },
       {
         heading: "Can you recover near the stadium on an event day?",
-        body: "Yes, and it is one of the trickier jobs in the area. Concert and match days close roads, fill car parks and leave Olympic Way and Forty Lane heavily congested, so a stranded vehicle needs an operator who knows the approaches and can reach it from the right direction. We confirm your exact location and the nearest open route before the truck leaves Perivale, and we keep you updated if stewarding or road closures change the picture. Flatbed recovery means we can clear the vehicle cleanly once we reach it, without adding to the congestion.",
+        body: "Yes, and it is one of the trickier jobs in the area. Concert and match days close roads, fill car parks and leave Olympic Way and Forty Lane heavily congested, so a stranded vehicle needs an operator who knows the approaches and can reach it from the right direction. We confirm your exact location and the nearest open route before the truck sets off, and we keep you updated if stewarding or road closures change the picture. Flatbed recovery means we can clear the vehicle cleanly once we reach it, without adding to the congestion.",
       },
       {
         heading: "Do you cover the North Circular and A404 in Wembley?",
@@ -806,7 +816,7 @@ const raw: Location[] = [
     faqs: [
       {
         q: "How quickly can you reach Wembley?",
-        a: "Typically around 20 minutes from our Perivale operating point, via the A4005 or the A406. Event-day road closures around the stadium can add time, and we'll give you an honest window on the call.",
+        a: "Typically around 20 minutes anywhere in HA9 and HA0. Event-day road closures around the stadium can add time, and we'll give you an honest window on the call.",
       },
       {
         q: "Can you recover a vehicle near Wembley Stadium on a match or concert day?",
@@ -818,7 +828,12 @@ const raw: Location[] = [
       },
     ],
     heroImage: wembleyImage,
-    verified: false,
+    verified: true,
+    gbpName: business.googleProfiles.wembley.name,
+    gbpUrl: business.googleProfiles.wembley.href,
+    mapEmbedSrc: business.googleProfiles.wembley.embedSrc,
+    napIntro:
+      "Our Wembley operating point covers HA9 and HA0, from Wembley Park and the stadium approaches down to Alperton and the North Circular. Trucks work this patch around the clock, with a typical response of about 20 minutes.",
   },
 
   {
