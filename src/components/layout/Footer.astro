@@ -46,6 +46,9 @@ const logoSrc = "/images/Speed%20Recovery%20Logo.svg";
   <div class="footer__legal container-page">
     <span>&copy; {new Date().getFullYear()} {business.legalName}. All rights reserved.</span>
     <span>24 hours, every day.</span>
+    <span class="footer__credit">
+      Built by <a href="https://localadder.co.uk/" rel="nofollow noopener" target="_blank">🪜 Local Ladder</a>
+    </span>
   </div>
 </footer>
 
@@ -163,6 +166,17 @@ const logoSrc = "/images/Speed%20Recovery%20Logo.svg";
     justify-content: space-between;
     color: var(--color-neutral-600);
     font-size: 1rem;
+  }
+  .footer__credit {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+  }
+  .footer__credit a {
+    color: var(--color-neutral-700);
+    font-weight: 600;
+  }
+  .footer__credit a:hover {
+    color: var(--color-accent-700);
   }
 
   @media (min-width: 768px) {
